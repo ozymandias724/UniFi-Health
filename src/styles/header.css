@@ -1,0 +1,8 @@
+header.site-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    
+}
+header.site-header p {
+    text-align: center;
+}
