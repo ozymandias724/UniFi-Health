@@ -1,0 +1,64 @@
+input#university-search-input {
+  width: min(100%, 38rem);
+  padding: 0.875rem 1.125rem;
+  border: 1px solid var(--border-default);
+  border-radius: 1rem;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow:
+    0 8px 24px rgb(15 23 42 / 10%),
+    0 2px 6px rgb(15 23 42 / 5%);
+}
+
+input#university-search-input::placeholder {
+  color: var(--text-secondary);
+  opacity: 1;
+}
+
+input#university-search-input:focus {
+  border-color: var(--accent-primary);
+}
+
+input#university-search-input + ul {
+  width: min(100%, 38rem);
+  max-height: 18rem;
+  margin: var(--space-sm) 0 0;
+  padding: var(--space-xs) 0;
+  overflow-y: auto;
+  list-style: none;
+  border: 1px solid var(--border-default);
+  border-radius: 1rem;
+  background-color: var(--bg-surface);
+  box-shadow:
+    0 8px 24px rgb(15 23 42 / 10%),
+    0 2px 6px rgb(15 23 42 / 5%);
+}
+
+input#university-search-input + ul:empty {
+  display: none;
+}
+
+input#university-search-input + ul li + li {
+  border-top: 1px solid var(--bg-subtle);
+}
+
+input#university-search-input + ul button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1.125rem;
+  border: 0;
+  background-color: transparent;
+  color: var(--text-primary);
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+}
+
+input#university-search-input + ul button:hover,
+input#university-search-input + ul button:focus-visible {
+  background-color: var(--bg-subtle);
+}
+
+input#university-search-input + ul button:focus-visible {
+  outline-offset: -2px;
+}

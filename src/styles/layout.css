@@ -1,43 +1,34 @@
 #root {
-  min-height: 100vh;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
+  isolation: isolate;
 }
 
 .site-header,
 .site-footer {
-  padding: 1rem;
+  padding: var(--space-md);
 }
 
 .main {
   flex: 1;
   width: min(100% - 2rem, 70rem);
   margin-inline: auto;
-  padding-block: 1.5rem;
+  padding-block: var(--space-lg);
 }
 
-.main {
-  > section {
-    margin-block: 2rem 0;
-  }
+.main > section + section {
+  margin-block-start: var(--space-2xl);
 }
 
-section.intro {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.intro .container,
+.university-search .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-section.university-search {
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  input[type="search"] {
-  }
+.university-search > .financial-overview,
+.university-search > .university-finances {
+  margin-block-start: var(--space-xl);
 }

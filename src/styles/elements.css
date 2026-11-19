@@ -1,12 +1,8 @@
-/* ==========================================================================
-   Button Element
-   ========================================================================== */
-
 .btn {
-  /* Component-scoped tokens (defaulting to primary variant) */
   --_bg: var(--accent-primary);
-  --_fg: oklch(99% 0.005 250);
+  --_fg: var(--accent-text);
   --_border: transparent;
+  --_hover-bg: var(--accent-hover);
 
   display: inline-flex;
   align-items: center;
@@ -34,14 +30,16 @@
     transform 80ms ease;
 }
 
-/* --- Interactive States --- */
+.btn + .btn {
+  margin-left: 0.5rem; /* Add spacing between buttons */
+}
+
 .btn:hover:not(:disabled) {
-  background-color: oklch(from var(--_bg) calc(l - 0.06) c h);
+  background-color: var(--_hover-bg);
 }
 
 .btn:active:not(:disabled) {
   transform: translateY(1px);
-  background-color: oklch(from var(--_bg) calc(l - 0.1) c h);
 }
 
 .btn:disabled {
@@ -49,29 +47,26 @@
   cursor: not-allowed;
 }
 
-/* --- Variants --- */
 .btn[data-variant="secondary"] {
   --_bg: var(--bg-surface);
   --_fg: var(--text-primary);
   --_border: var(--border-default);
+  --_hover-bg: var(--bg-subtle);
 }
 
 .btn[data-variant="ghost"] {
   --_bg: transparent;
   --_fg: var(--text-primary);
   --_border: transparent;
-}
-
-.btn[data-variant="ghost"]:hover:not(:disabled) {
-  background-color: var(--bg-subtle);
+  --_hover-bg: var(--bg-subtle);
 }
 
 .btn[data-variant="danger"] {
-  --_bg: var(--danger-500);
-  --_fg: oklch(99% 0.005 25);
+  --_bg: var(--status-poor);
+  --_fg: var(--accent-text);
+  --_hover-bg: var(--status-poor-hover);
 }
 
-/* --- Sizes --- */
 .btn[data-size="sm"] {
   padding-block: 0.375rem;
   padding-inline: 0.75rem;
@@ -83,4 +78,10 @@
   padding-block: 0.75rem;
   padding-inline: 1.375rem;
   font-size: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
 }

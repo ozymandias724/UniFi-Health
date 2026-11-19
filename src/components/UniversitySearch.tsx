@@ -41,6 +41,8 @@ function UniversitySearch({ universities, onSelect }: UniversitySearchProps) {
         ],
         threshold: 0.3,
         ignoreLocation: true,
+        useTokenSearch: true,
+        tokenMatch: "all",
       }),
     [universities],
   );
@@ -52,7 +54,7 @@ function UniversitySearch({ universities, onSelect }: UniversitySearchProps) {
   return (
     <div className="container">
       <input
-        id="university-search"
+        id="university-search-input"
         type="search"
         placeholder="Search universities..."
         value={search}
