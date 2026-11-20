@@ -3,6 +3,21 @@
   border-bottom: 1px solid var(--border-default);
 }
 
-.site-header p {
-  text-align: center;
+.site-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.site-header nav a {
+  padding: var(--space-sm) 0.75rem;
+  border-radius: var(--radius-md);
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  background-color: var(--bg-subtle);
+  color: var(--accent-hover);
 }

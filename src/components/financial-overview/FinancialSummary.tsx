@@ -35,25 +35,27 @@ function FinancialSummary({ finances }: FinancialSummaryProps) {
 
   return (
     <section className="financial-summary">
-      <h3>Reported Financial Figures</h3>
+      <div className="container">
+        <h3>Reported Financial Figures</h3>
 
-      <dl className="financial-summary-metrics">
-        {metrics.map(({ label, value }) => (
-          <div key={label} className="financial-summary-metric">
-            <dt>{label}</dt>
-            <dd>{value == null ? "N/A" : currencyFormatter.format(value)}</dd>
-          </div>
-        ))}
-      </dl>
+        <dl className="financial-summary-metrics">
+          {metrics.map(({ label, value }) => (
+            <div key={label} className="financial-summary-metric">
+              <dt>{label}</dt>
+              <dd>{value == null ? "N/A" : currencyFormatter.format(value)}</dd>
+            </div>
+          ))}
+        </dl>
 
-      <p className="financial-summary-enrollment">
-        Estimated full-time equivalent enrollment:{" "}
-        <strong>
-          {finances.est_fte == null
-            ? "N/A"
-            : integerFormatter.format(finances.est_fte)}
-        </strong>
-      </p>
+        <p className="financial-summary-enrollment">
+          Estimated full-time equivalent enrollment:{" "}
+          <strong>
+            {finances.est_fte == null
+              ? "N/A"
+              : integerFormatter.format(finances.est_fte)}
+          </strong>
+        </p>
+      </div>
     </section>
   );
 }

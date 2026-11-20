@@ -1,0 +1,22 @@
+@import "./overview-donut.css";
+
+section.financial-overview {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-default);
+  padding: var(--space-md) var(--space-lg);
+}
+
+section.financial-overview .financial-overview-charts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* Add some spacing between charts */
+}
+
+section.financial-overview .financial-overview-charts > .category-chart {
+  flex: 1 1 45%; /* Allow charts to grow and shrink, with a minimum width */
+}
+section.financial-overview section.revenue-coverage,
+section.financial-overview section.financial-summary,
+section.financial-overview section.financial-overview-charts {
+  margin-top: var(--space-2xl);
+}

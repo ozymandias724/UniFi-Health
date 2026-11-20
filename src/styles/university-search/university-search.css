@@ -1,13 +1,17 @@
-input#university-search-input {
+.university-search-control {
+  position: relative;
   width: min(100%, 38rem);
+  margin-inline: auto;
+}
+
+input#university-search-input {
+  width: 100%;
   padding: 0.875rem 1.125rem;
   border: 1px solid var(--border-default);
   border-radius: 1rem;
   background-color: var(--bg-surface);
   color: var(--text-primary);
-  box-shadow:
-    0 8px 24px rgb(15 23 42 / 10%),
-    0 2px 6px rgb(15 23 42 / 5%);
+  box-shadow: var(--shadow-elevation-1);
 }
 
 input#university-search-input::placeholder {
@@ -20,18 +24,19 @@ input#university-search-input:focus {
 }
 
 input#university-search-input + ul {
-  width: min(100%, 38rem);
+  position: absolute;
+  z-index: 1;
+  inset-block-start: calc(100% + var(--space-sm));
+  inset-inline: 0;
   max-height: 18rem;
-  margin: var(--space-sm) 0 0;
+  margin: 0;
   padding: var(--space-xs) 0;
   overflow-y: auto;
   list-style: none;
   border: 1px solid var(--border-default);
   border-radius: 1rem;
   background-color: var(--bg-surface);
-  box-shadow:
-    0 8px 24px rgb(15 23 42 / 10%),
-    0 2px 6px rgb(15 23 42 / 5%);
+  box-shadow: var(--shadow-elevation-2);
 }
 
 input#university-search-input + ul:empty {
@@ -61,4 +66,11 @@ input#university-search-input + ul button:focus-visible {
 
 input#university-search-input + ul button:focus-visible {
   outline-offset: -2px;
+}
+
+section.selected-university {
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  margin-block-start: var(--space-lg);
 }

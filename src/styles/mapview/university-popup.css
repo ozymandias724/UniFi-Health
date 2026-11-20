@@ -1,0 +1,43 @@
+.university-popup {
+  min-width: 220px;
+}
+
+.university-popup h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+}
+
+.university-popup-location {
+  margin: 0 0 1rem;
+  color: #666;
+}
+
+.university-popup-finances {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+.university-popup-finances > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.university-popup-finances span {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.university-popup-finances strong {
+  font-size: 1.125rem;
+}
+
+.university-popup a {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 600;
+}

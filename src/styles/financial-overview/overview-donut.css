@@ -1,0 +1,25 @@
+div.revenue-coverage-chart {
+  .recharts-tooltip-wrapper {
+    z-index: 10;
+  }
+}
+
+/* 
+    MARKUP FROM DOM
+
+    <div
+    class="recharts-default-tooltip"
+    >
+    <p class="recharts-tooltip-label"></p>
+    <ul class="recharts-tooltip-item-list">
+        <li
+        class="recharts-tooltip-item"
+        >
+        <span class="recharts-tooltip-item-name">Expenses within revenue</span
+        ><span class="recharts-tooltip-item-separator"> : </span
+        ><span class="recharts-tooltip-item-value">$5,306,601,984</span
+        ><span class="recharts-tooltip-item-unit"></span>
+        </li>
+    </ul>
+    </div>
+*/

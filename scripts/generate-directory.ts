@@ -1,6 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 
-const DIRECTORY_YEAR = 2025;
+const DIRECTORY_YEAR = 2023;
 const OUTPUT_PATH = "public/data/universities.json";
 
 interface University {
