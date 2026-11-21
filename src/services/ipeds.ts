@@ -51,6 +51,25 @@ export interface VariableMetadata {
   description: string | null;
 }
 
+export interface UniversityFinanceSummary {
+  unitid: number;
+  year: number;
+  total_revenues_additions: number | null;
+  total_expenses_deductions: number | null;
+}
+
+export async function getFinanceSummaries(): Promise<
+  UniversityFinanceSummary[]
+> {
+  const response = await fetch(`${import.meta.env.BASE_URL}data/finances.json`);
+
+  if (!response.ok) {
+    throw new Error(`Failed to load financial summaries: ${response.status}`);
+  }
+
+  return (await response.json()) as UniversityFinanceSummary[];
+}
+
 // Fetch the list of universities from a local JSON file
 export async function getUniversities(): Promise<University[]> {
   const response = await fetch(

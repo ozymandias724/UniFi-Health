@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import type { University } from "../../services/ipeds";
+import { MAP_FOCUS_ZOOM } from "../../config/map";
 
 
 interface MapNavigatorProps {
@@ -18,7 +19,7 @@ function MapNavigator({ selectedUniversity }: MapNavigatorProps) {
       return;
     }
 
-    map.flyTo([selectedUniversity.latitude, selectedUniversity.longitude], 12, {
+    map.flyTo([selectedUniversity.latitude, selectedUniversity.longitude], MAP_FOCUS_ZOOM, {
       duration: 1.5,
     });
   }, [map, selectedUniversity]);

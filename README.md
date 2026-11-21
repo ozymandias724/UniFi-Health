@@ -7,6 +7,16 @@ This template provides a minimal setup to get React working in Vite with HMR and
 Vite and its React plugin require Node.js 20.19 or later in the 20.x series,
 or Node.js 22.12 or later.
 
+## Financial summary dataset
+
+Run `npm run generate:finances` with Node.js 24, or Node.js 22.18 or later in
+the 22.x series, to regenerate `public/data/finances.json` from the existing
+university directory and 2023 IPEDS finance data. This command is independent
+of development and builds. Missing or suppressed values are stored as `null`;
+the generated data is provided by the Urban Institute's
+[Education Data Portal](https://educationdata.urban.org/) under the
+[ODC Attribution License](https://opendatacommons.org/licenses/by/1-0/).
+
 ## Styles
 
 `src/main.tsx` loads modern-normalize before `src/index.css`, which imports the

@@ -17,7 +17,7 @@
   border-radius: 8px;
   overflow: hidden;
 }
-
+/* 
 .university-cluster {
   background: rgb(100 116 139 / 35%);
   border-radius: 50%;
@@ -47,4 +47,43 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+
+.university-marker-container {
+  background: transparent;
+  border: none;
+}
+
+.university-marker {
+  width: 32px;
+  height: 32px;
+  background: var(--marker-color);
+  border: 2px solid white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+}
+
+.university-cluster {
+  background: transparent;
+  border: none;
+}
+
+.university-cluster-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  background: var(--cluster-color);
+  border: 3px solid white;
+  border-radius: 50%;
+
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+
+  box-shadow: 0 3px 10px rgb(0 0 0 / 25%);
 }

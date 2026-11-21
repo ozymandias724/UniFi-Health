@@ -3,11 +3,12 @@ import type { University } from "../../services/ipeds";
 
 interface UniversityPopupProps {
   university: University;
+  ratio: number | null;
 }
 
-function UniversityPopup({ university }: UniversityPopupProps) {
+function UniversityPopup({ university, ratio }: UniversityPopupProps) {
   // Placeholder data until we build our financial data pipeline.
-  const revenueExpenseRatio = 108.4;
+  
   const reportingYear = 2023;
 
   return (
@@ -21,7 +22,7 @@ function UniversityPopup({ university }: UniversityPopupProps) {
       <div className="university-popup-finances">
         <div>
           <span>Revenue / Expenses</span>
-          <strong>{revenueExpenseRatio.toFixed(1)}%</strong>
+          <strong>{ratio !== null ? `${ratio.toFixed(1)}%` : "N/A"}</strong>
         </div>
 
         <div>

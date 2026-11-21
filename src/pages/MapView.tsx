@@ -3,10 +3,15 @@
 */
 
 // react stuff
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 // my components
-import { getUniversities, type University } from "../services/ipeds";
+import {
+  getUniversities,
+  getFinanceSummaries,
+  type University,
+  type UniversityFinanceSummary,
+} from "../services/ipeds";
 import UniversitySearch from "../components/UniversitySearch";
 import MapNavigator from "../components/map/MapNavigator";
 
@@ -20,11 +25,32 @@ import "leaflet/dist/leaflet.css";
 
 function MapView() {
   const [universities, setUniversities] = useState<University[]>([]);
+  const [finances, setFinances] = useState<UniversityFinanceSummary[]>([]);
+
   const [selectedUniversity, setSelectedUniversity] =
     useState<University | null>(null);
 
+  const financesByUnitid = useMemo(
+    () => new Map(finances.map((record) => [record.unitid, record])),
+    [finances],
+  );
+
   useEffect(() => {
-    getUniversities().then(setUniversities).catch(console.error);
+    async function loadMapData() {
+      try {
+        const [universities, finances] = await Promise.all([
+          getUniversities(),
+          getFinanceSummaries(),
+        ]);
+
+        setUniversities(universities);
+        setFinances(finances);
+      } catch (error) {
+        console.error("Failed to load map data:", error);
+      }
+    }
+
+    loadMapData();
   }, []);
 
   return (
@@ -32,7 +58,10 @@ function MapView() {
       <section className="map-view">
         <div className="container">
           <h1>University Map</h1>
-          <p>Loaded {universities.length} universities.</p>
+          <p>
+            Loaded {universities.length} universities and {finances.length}{" "}
+            financial summaries.
+          </p>
 
           <UniversitySearch
             universities={universities}
@@ -55,9 +84,8 @@ function MapView() {
             <UniversityMarkers
               universities={universities}
               selectedUniversity={selectedUniversity}
+              financesByUnitid={financesByUnitid}
             />
-
-            
           </MapContainer>
         </div>
       </section>
