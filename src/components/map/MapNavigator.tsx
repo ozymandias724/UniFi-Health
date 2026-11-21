@@ -1,3 +1,7 @@
+/*
+ * A nonvisual Leaflet helper: when search selects a university with
+ * coordinates, fly to it at the shared focus zoom level.
+ */
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
 import type { University } from "../../services/ipeds";

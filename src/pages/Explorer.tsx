@@ -1,3 +1,12 @@
+/*
+ * Financial Explorer page.
+ * - Loads the local university directory and field metadata.
+ * - Accepts a unitid query parameter, including links from the map.
+ * - Fetches the selected institution's 2023 finance record from the API.
+ *
+ * The search component owns its input, while this page owns the selected
+ * institution and the financial data displayed below it.
+ */
 import "../App.css";
 import {
   getUniversities,
@@ -8,7 +17,7 @@ import {
   type University,
 } from "../services/ipeds";
 import UniversitySearch from "../components/UniversitySearch";
-import UniversityFinances from "../components/UniversityFinances";
+// import UniversityFinances from "../components/UniversityFinances";
 import FinancialOverview from "../components/financial-overview/FinancialOverview";
 import { useEffect, useState } from "react";
 
@@ -29,7 +38,7 @@ function Explorer() {
     {},
   );
 
-  //
+  // The URL can initialize the selection once the directory has loaded.
   const [searchParams] = useSearchParams();
   const unitidParam = searchParams.get("unitid");
 
@@ -59,8 +68,7 @@ function Explorer() {
     getUniversities().then(setUniversities).catch(console.error);
   }, []);
 
-  // Load financial data for the selected university
-
+  // Ignore responses for a previous selection after the effect is cleaned up.
   useEffect(() => {
     if (!selectedUniversity) return;
 
@@ -119,7 +127,7 @@ function Explorer() {
         {finances && (
           <>
             <FinancialOverview finances={finances} variables={variables} />
-            <UniversityFinances finances={finances} variables={variables} />
+            {/* <UniversityFinances finances={finances} variables={variables} /> */}
           </>
         )}
       </main>

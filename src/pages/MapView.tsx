@@ -1,6 +1,9 @@
-/* 
-    Where I will build the OpenStreetMap view for universities' financial data
-*/
+/*
+ * University map page. The directory supplies locations, while the local
+ * finance summaries supply marker and cluster colors. Search selection moves
+ * the map via MapNavigator and lets UniversityMarkers reveal the matching
+ * popup. Tiles are loaded from OpenStreetMap.
+ */
 
 // react stuff
 import { useEffect, useState, useMemo } from "react";

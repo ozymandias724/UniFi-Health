@@ -1,3 +1,8 @@
+/*
+ * Fetch Education Data Portal variable metadata, decode labels, and save it
+ * keyed by variable name for the Explorer's financial labels.
+ * Run from the project root; the script replaces variables.json.
+ */
 import { mkdir, writeFile } from "node:fs/promises";
 import * as he from "he";
 

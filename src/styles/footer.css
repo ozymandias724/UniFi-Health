@@ -1,8 +1,14 @@
+/*
+ * Shared footer styling. Its width and outer padding come from layout.css;
+ * this file supplies the surface and subdued placeholder text.
+ */
 .site-footer {
-  background-color: var(--bg-surface);
+  background-color: var(--bg-panel);
   border-top: 1px solid var(--border-default);
 }
 
 .site-footer p {
   text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
 }

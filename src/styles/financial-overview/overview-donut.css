@@ -1,10 +1,17 @@
+/*
+ * Recharts positions the donut tooltip in its own wrapper. Raising that
+ * wrapper keeps the tooltip above the chart's centered percentage label.
+ */
 div.revenue-coverage-chart {
   .recharts-tooltip-wrapper {
     z-index: 10;
   }
 }
 
-/* 
+/*
+    Reference markup from Recharts; the common tooltip theme is defined in
+    financial-overview.css.
+
     MARKUP FROM DOM
 
     <div

@@ -1,23 +1,138 @@
+/*
+ * Shared header and navigation dialog. The dialog occupies the mobile
+ * viewport and becomes a right-hand drawer at the desktop breakpoint.
+ */
 .site-header {
-  background-color: var(--bg-surface);
+  background-color: var(--bg-panel);
   border-bottom: 1px solid var(--border-default);
 }
 
-.site-header nav {
+.site-header > .container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-sm);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
 
-.site-header nav a {
-  padding: var(--space-sm) 0.75rem;
-  border-radius: var(--radius-md);
-  color: var(--accent-primary);
+.site-brand {
+  color: var(--text-primary);
+  font-weight: 700;
   text-decoration: none;
 }
 
-.site-header nav a:hover {
+/* The open and close buttons share an accessible, touch-sized target. */
+.nav-icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: var(--space-sm);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.nav-icon-button:hover {
   background-color: var(--bg-subtle);
-  color: var(--accent-hover);
+}
+
+.nav-icon-button svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+}
+
+/*
+ * Start with an opaque fallback, then add a little transparency where
+ * color-mix is supported. The backdrop dims the page behind the dialog.
+ */
+.site-nav-dialog {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: var(--space-lg);
+  border: 0;
+  background-color: var(--bg-surface);
+  background-color: color-mix(in srgb, var(--bg-surface) 94%, transparent);
+  color: var(--text-primary);
+  backdrop-filter: blur(12px);
+  overflow-y: auto;
+}
+
+.site-nav-dialog::backdrop {
+  background-color: rgb(0 0 0 / 55%);
+}
+
+/* Only lay out the dialog when open; otherwise it must remain hidden. */
+.site-nav-dialog[open] {
+  display: grid;
+  place-items: center;
+}
+
+.site-nav-close {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+}
+
+.site-nav-dialog nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  padding-block: 4rem;
+}
+
+.site-nav-dialog nav a {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+}
+
+.site-nav-dialog nav a:hover {
+  background-color: var(--bg-subtle);
+  color: var(--accent-primary);
+}
+
+/* Wider screens use a slide-in drawer instead of covering the whole page. */
+@media (min-width: 768px) {
+  .site-nav-dialog {
+    inset: 0 0 0 auto;
+    width: min(24rem, 100%);
+    border-left: 1px solid var(--border-default);
+    box-shadow: var(--shadow-elevation-2);
+  }
+
+  .site-nav-dialog[open] {
+    animation: site-nav-enter 220ms ease-out;
+  }
+}
+
+@keyframes site-nav-enter {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* The drawer is still usable without its entrance animation. */
+@media (prefers-reduced-motion: reduce) {
+  .site-nav-dialog[open] {
+    animation: none;
+  }
 }

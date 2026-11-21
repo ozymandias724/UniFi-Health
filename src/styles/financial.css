@@ -1,21 +1,19 @@
-/* Financial overview */
-.financial-overview {
-  display: grid;
-  gap: var(--space-xl);
-  min-width: 0;
-}
-
-.financial-overview > h2,
-.financial-overview h3 {
-  margin: 0 0 var(--space-md);
-}
-
+/*
+ * Internal layouts for the financial views. The overview's outer cards and
+ * Recharts-specific theme overrides are in financial-overview/.
+ */
 /* Revenue coverage donut */
+.revenue-coverage {
+  text-align: center;
+}
+
 .revenue-coverage-layout {
   display: grid;
   grid-template-columns: minmax(0, 260px) minmax(0, 1fr);
   align-items: center;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
+  max-width: 44rem;
+  margin-inline: auto;
 }
 
 .revenue-coverage-chart {
@@ -23,6 +21,7 @@
   height: 240px;
 }
 
+/* The center label overlays the chart without blocking chart interactions. */
 .revenue-coverage-center {
   position: absolute;
   inset: 0;
@@ -37,7 +36,8 @@
 .revenue-coverage-center strong { font-size: 1.75rem; }
 .revenue-coverage-center span { max-width: 90px; font-size: 0.75rem; }
 .revenue-coverage-details dl { margin: 0; }
-.revenue-coverage-details dl > div { margin-bottom: 1rem; }
+.revenue-coverage-details dl > div + div { margin-top: var(--space-md); }
+.revenue-coverage-details dt { color: var(--text-secondary); }
 .revenue-coverage-details dd {
   margin: 0;
   font-size: 1.25rem;
@@ -45,19 +45,20 @@
   font-variant-numeric: tabular-nums;
 }
 .revenue-coverage-note { margin: 1rem 0 0; font-size: 0.875rem; color: var(--text-secondary); }
+.revenue-coverage-details p { margin-top: var(--space-md); }
 
 /* Financial summary */
 .financial-summary-metrics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--space-md);
   margin: 0;
 }
 
 .financial-summary-metric {
   min-width: 0;
   padding: 1rem;
-  background-color: var(--bg-surface);
+  background-color: var(--bg-subtle);
   border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
 }
@@ -70,13 +71,21 @@
   font-variant-numeric: tabular-nums;
   overflow-wrap: anywhere;
 }
-.financial-summary-enrollment { margin: 1rem 0 0; }
+.financial-summary-enrollment { margin: var(--space-lg) 0 0; color: var(--text-secondary); }
+.financial-summary-enrollment strong { color: var(--text-primary); }
 
-/* Category charts */
-.financial-overview-charts { display: grid; gap: var(--space-xl); min-width: 0; }
+/*
+ * Category charts retain room for long labels; on narrow screens the plot
+ * scrolls within its own focusable region instead of widening the page.
+ */
+.financial-overview-charts > .container { display: grid; gap: var(--space-xl); min-width: 0; }
 .category-chart { min-width: 0; }
+.category-chart-scroll-hint { display: none; }
+.category-chart-scroll { overflow-x: auto; }
+.category-chart-scroll:focus-visible { outline-offset: -2px; }
+.category-chart-plot { min-width: 30rem; }
 
-/* Detailed financial fields */
+/* Detailed fields belong to UniversityFinances, currently not rendered by Explorer. */
 .finance-category {
   margin-top: 2rem;
   padding-top: 1.5rem;
@@ -96,6 +105,7 @@
 .finance-field dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
 .finance-field.hidden { display: none; }
 
+/* Reduce columns progressively as the available width shrinks. */
 @media (max-width: 800px) {
   .financial-summary-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -104,6 +114,7 @@
   .revenue-coverage-layout { grid-template-columns: 1fr; }
   .revenue-coverage-chart { width: 100%; max-width: 260px; margin-inline: auto; }
   .financial-summary-metrics { grid-template-columns: 1fr; }
+  .category-chart-scroll-hint { display: block; margin-bottom: var(--space-sm); color: var(--text-secondary); font-size: 0.875rem; }
   .finance-field { grid-template-columns: 1fr; gap: 0.25rem; }
   .finance-field dd { text-align: left; }
 }

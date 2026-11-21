@@ -1,3 +1,7 @@
+/*
+ * Page-level structure: the root fills the viewport, the main content takes
+ * remaining space, and each page shares a centered maximum width.
+ */
 #root {
   min-height: 100svh;
   display: flex;
@@ -5,30 +9,53 @@
   isolation: isolate;
 }
 
+/* Header/footer and main content share the same approximate maximum width. */
 .site-header,
 .site-footer {
-  padding: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+}
+
+.site-header .container,
+.site-footer .container {
+  width: min(100%, 70rem);
+  margin-inline: auto;
 }
 
 .main {
   flex: 1;
-  width: min(100% - 2rem, 70rem);
+  width: min(100% - 2 * var(--space-lg), 70rem);
   margin-inline: auto;
-  padding-block: var(--space-lg);
+  padding-block: clamp(var(--space-xl), 5vw, var(--space-2xl));
 }
 
+/* Direct sibling sections get consistent vertical rhythm, not nested sections. */
 .main > section + section {
-  margin-block-start: var(--space-2xl);
+  margin-block-start: clamp(var(--space-xl), 4vw, var(--space-2xl));
 }
 
-.intro .container,
-.university-search .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Page introductions are centered without changing reusable component markup. */
+.intro {
+  text-align: center;
 }
 
-.university-search > .financial-overview,
-.university-search > .university-finances {
+.intro p,
+.map-view > .container > p {
+  margin-block-start: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.map-view > .container > h1,
+.map-view > .container > p {
+  text-align: center;
+}
+
+.map-view .university-search {
   margin-block-start: var(--space-xl);
+}
+
+/* Keep a smaller, predictable gutter on narrow screens. */
+@media (max-width: 600px) {
+  .main {
+    width: calc(100% - 2 * var(--space-md));
+  }
 }

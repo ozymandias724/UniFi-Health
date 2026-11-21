@@ -1,3 +1,8 @@
+/*
+ * Reusable horizontal bar chart for revenue or expenditure fields. Metadata
+ * supplies readable labels, and missing/non-finite values are omitted. The
+ * surrounding scroll region preserves label space on narrow screens.
+ */
 import {
   BarChart,
   Bar,
@@ -46,42 +51,55 @@ function CategoryChart({
     <section className="category-chart">
       <h3>{title}</h3>
 
-      <ResponsiveContainer
-        width="100%"
-        height={Math.max(300, data.length * 60)}
+      <p className="category-chart-scroll-hint">
+        Scroll horizontally to see the full chart.
+      </p>
+      <div
+        className="category-chart-scroll"
+        role="region"
+        aria-label={`${title} chart`}
+        tabIndex={0}
       >
-        <BarChart
-          data={data}
-          layout="vertical"
-          margin={{ top: 10, right: 30, bottom: 10, left: 10 }}
-        >
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+        <div className="category-chart-plot">
+          <ResponsiveContainer
+            width="100%"
+            height={Math.max(300, data.length * 60)}
+          >
+            <BarChart
+              data={data}
+              layout="vertical"
+              margin={{ top: 10, right: 30, bottom: 10, left: 10 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" horizontal={false} />
 
-          <XAxis
-            type="number"
-            tickFormatter={(value: number) =>
-              compactCurrencyFormatter.format(value)
-            }
-          />
+              <XAxis
+                type="number"
+                tickFormatter={(value: number) =>
+                  compactCurrencyFormatter.format(value)
+                }
+              />
 
-          <YAxis
-            type="category"
-            dataKey="name"
-            width={240}
-            tick={{ fontSize: 12 }}
-          />
+              <YAxis
+                type="category"
+                dataKey="name"
+                width={240}
+                tick={{ fontSize: 12 }}
+              />
 
-          <Tooltip
-            formatter={(value) =>
-              typeof value === "number"
-                ? currencyFormatter.format(value)
-                : "N/A"
-            }
-          />
+              <Tooltip
+                cursor={{ fill: "var(--bg-subtle)" }}
+                formatter={(value) =>
+                  typeof value === "number"
+                    ? currencyFormatter.format(value)
+                    : "N/A"
+                }
+              />
 
-          <Bar dataKey="value" fill="#4f9cf9" />
-        </BarChart>
-      </ResponsiveContainer>
+              <Bar dataKey="value" fill="var(--chart-primary)" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+      </div>
     </section>
   );
 }

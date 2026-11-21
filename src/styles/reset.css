@@ -1,3 +1,7 @@
+/*
+ * Small project reset, loaded after modern-normalize. It removes common
+ * margins and establishes predictable typography without styling components.
+ */
 body,
 h1,
 h2,
@@ -13,10 +17,12 @@ dd {
   margin: 0;
 }
 
+/* Use a readable default line height; individual headings are tighter below. */
 body {
   line-height: 1.5;
 }
 
+/* Prevent media, including chart SVGs, from exceeding their container. */
 img,
 picture,
 video,
@@ -26,6 +32,7 @@ svg {
   max-width: 100%;
 }
 
+/* Form controls otherwise often use browser-specific fonts and colors. */
 input,
 button,
 textarea,
@@ -34,6 +41,7 @@ select {
   color: inherit;
 }
 
+/* Long institution names should wrap rather than push layouts off screen. */
 p,
 h1,
 h2,

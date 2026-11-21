@@ -1,8 +1,12 @@
+/*
+ * Shared UI controls. Buttons use local custom properties so variants can
+ * swap colors without duplicating padding, sizing, and interaction rules.
+ */
 .btn {
-  --_bg: var(--accent-primary);
+  --_bg: var(--button-primary);
   --_fg: var(--accent-text);
   --_border: transparent;
-  --_hover-bg: var(--accent-hover);
+  --_hover-bg: var(--button-primary-hover);
 
   display: inline-flex;
   align-items: center;
@@ -30,8 +34,12 @@
     transform 80ms ease;
 }
 
-.btn + .btn {
-  margin-left: 0.5rem; /* Add spacing between buttons */
+/* Kitchen Sink examples wrap instead of relying on margins between buttons. */
+.button-examples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-md);
 }
 
 .btn:hover:not(:disabled) {
@@ -47,6 +55,7 @@
   cursor: not-allowed;
 }
 
+/* Variants override only the colors that differ from the primary button. */
 .btn[data-variant="secondary"] {
   --_bg: var(--bg-surface);
   --_fg: var(--text-primary);
@@ -67,6 +76,7 @@
   --_hover-bg: var(--status-poor-hover);
 }
 
+/* Size modifiers preserve the same button behavior and visual treatment. */
 .btn[data-size="sm"] {
   padding-block: 0.375rem;
   padding-inline: 0.75rem;
@@ -80,6 +90,7 @@
   font-size: 1rem;
 }
 
+/* Respect the operating system's motion preference. */
 @media (prefers-reduced-motion: reduce) {
   .btn {
     transition: none;

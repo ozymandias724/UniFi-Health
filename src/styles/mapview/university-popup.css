@@ -1,5 +1,24 @@
+/*
+ * Popup content and Leaflet wrapper overrides. Leaflet creates the outer
+ * wrapper/tip; the inner university-popup markup is owned by React.
+ */
 .university-popup {
   min-width: 220px;
+}
+
+/* Theme both the popup body and its arrow, including in dark mode. */
+.leaflet-container .leaflet-popup-content-wrapper,
+.leaflet-container .leaflet-popup-tip {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+}
+
+.leaflet-container .leaflet-popup-content-wrapper {
+  border: 1px solid var(--border-default);
+}
+
+.leaflet-container .leaflet-popup-content a {
+  color: var(--accent-primary);
 }
 
 .university-popup h3 {
@@ -9,16 +28,17 @@
 
 .university-popup-location {
   margin: 0 0 1rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
+/* Keep the ratio and reporting year together as a compact two-column summary. */
 .university-popup-finances {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
   padding: 0.75rem 0;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
 }
 
 .university-popup-finances > div {
@@ -29,7 +49,7 @@
 
 .university-popup-finances span {
   font-size: 0.75rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .university-popup-finances strong {

@@ -1,3 +1,12 @@
+/*
+ * Builds Leaflet markers and clusters from universities with coordinates.
+ * Marker colors represent revenue / expenses; cluster colors represent the
+ * percentage of valid ratios below 100%. The visible cluster count includes
+ * all child markers, even when some have no usable finance ratio.
+ *
+ * Marker refs let a search selection reveal the correct marker and open its
+ * popup after MapNavigator moves the map.
+ */
 import { useEffect, useRef } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";

@@ -1,21 +1,16 @@
-/* 
-  Developer Notes:
-  ? Functionality:
-  - Implements a search input for universities with fuzzy search using Fuse.js
-  - Displays search results as a list of buttons
-  - Calls onSelect callback when a university is selected
-  - Clears selection when search input changes
-  - Limits search results to 10 items
-
-  ? Still Needs:
-  - Styling for the search input and results list
-  - Handling no results found
-  - Accessibility improvements (e.g., keyboard navigation)
-  - Debouncing the search input to reduce unnecessary searches
-  - Pre-build the Fuse.js index for faster searches
-
-  ? Resources:
-  - https://www.fusejs.io/articles/using-fuse-with-react.html
+/*
+ * Shared university search for Explorer and Map View.
+ * Fuse.js searches name, city, and state, returning up to ten result buttons.
+ * The input and dropdown state stay local; onSelect passes the chosen record
+ * to the page, which decides whether to fetch finances or navigate the map.
+ *
+ * Editing the input clears this component's selected result, but does not
+ * notify the parent until another result is chosen. Escape closes the list,
+ * and pointer/blur handling allows a result click to complete before closing.
+ * Potential follow-ups include a no-results message, arrow-key navigation,
+ * debouncing, and prebuilding the Fuse index.
+ *
+ * Fuse.js reference: https://www.fusejs.io/articles/using-fuse-with-react.html
 */
 import Fuse from "fuse.js";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -105,6 +100,7 @@ function UniversitySearch({ universities, onSelect }: UniversitySearchProps) {
           ref={inputRef}
           id="university-search-input"
           type="search"
+          aria-label="Search universities"
           placeholder="Search universities..."
           value={search}
           onFocus={() => setIsOpen(true)}

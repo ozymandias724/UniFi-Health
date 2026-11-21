@@ -1,3 +1,8 @@
+/*
+ * Fetch the 2023 directory of active, degree-granting, four-year institutions
+ * and save the fields needed for search and mapping to public/data.
+ * Run from the project root; the script replaces universities.json.
+ */
 import { mkdir, writeFile } from "node:fs/promises";
 
 const DIRECTORY_YEAR = 2023;

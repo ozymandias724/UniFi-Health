@@ -1,3 +1,16 @@
+/*
+ * Global stylesheet entry point. main.tsx loads modern-normalize first.
+ * Fontsource supplies self-hosted font files; only the declared weights are
+ * available without the browser synthesizing or substituting a weight.
+ */
+@import "@fontsource/lato/400.css";
+@import "@fontsource/lato/700.css";
+@import "@fontsource/open-sans/400.css";
+@import "@fontsource/open-sans/500.css";
+@import "@fontsource/open-sans/600.css";
+@import "@fontsource/open-sans/700.css";
+
+/* Order matters: defaults and shared tokens come before component rules. */
 @import "./styles/reset.css";
 @import "./styles/global.css";
 @import "./styles/layout.css";
@@ -7,4 +20,5 @@
 @import "./styles/financial.css";
 @import "./styles/university-search/university-search.css";
 @import "./styles/financial-overview/financial-overview.css";
+/* mapview.css imports the popup styles; the map also loads Leaflet's CSS. */
 @import "./styles/mapview/mapview.css";

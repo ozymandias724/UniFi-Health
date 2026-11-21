@@ -1,3 +1,7 @@
+/*
+ * Browser entry point. Normalize browser defaults before loading the app's
+ * CSS, then mount the React tree under StrictMode during development.
+ */
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 // 1. Base normalization first

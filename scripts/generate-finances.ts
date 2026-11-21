@@ -1,3 +1,10 @@
+/*
+ * Generate the 2023 map finance summaries for IDs in universities.json.
+ * Requests are batched and paginated, with retries for transient failures.
+ * Missing/suppressed values are normalized to null, and output is validated
+ * before replacing the previous file. See generate-finances.test.ts for
+ * failure and data-normalization cases.
+ */
 import { randomUUID } from "node:crypto";
 import { mkdir, open, readFile, rename, unlink } from "node:fs/promises";
 import { dirname, resolve } from "node:path";

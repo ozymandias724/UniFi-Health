@@ -1,3 +1,11 @@
+/*
+ * Shared IPEDS data shapes and fetch functions. The directory, variable
+ * metadata, and map summaries are static JSON served from Vite's base URL.
+ * Detailed Explorer records are fetched from the Education Data Portal API.
+ *
+ * Nullable fields represent unavailable values; callers decide how to render
+ * or exclude them. Failed HTTP responses throw so pages can report errors.
+ */
 export interface University {
   unitid: number;
   inst_name: string;

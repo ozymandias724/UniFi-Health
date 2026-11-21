@@ -1,3 +1,12 @@
+/*
+ * Compares expenses with revenue using the selected institution's reported
+ * totals. The main ring splits revenue into expenses within revenue and any
+ * remainder; an outer ring highlights expenses above revenue. The overrun
+ * ring is capped at one full circle, while the text reports the full amount.
+ *
+ * This is a comparison of reported totals, not net income or an assessment
+ * of overall financial health. Invalid inputs show an unavailable message.
+ */
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import type { FinanceRecord } from "../../services/ipeds";
@@ -35,12 +44,12 @@ function RevenueCoverageDonut({ finances }: RevenueCoverageDonutProps) {
     {
       name: "Expenses within revenue",
       value: expenseWithinRevenue,
-      fill: "#5a8963",
+      fill: "var(--chart-expenses)",
     },
     {
       name: "Revenue above expenses",
       value: revenueAboveExpenses,
-      fill: "#344638",
+      fill: "var(--chart-remainder)",
     },
   ];
 
@@ -65,7 +74,7 @@ function RevenueCoverageDonut({ finances }: RevenueCoverageDonutProps) {
                       {
                         name: "Expenses above revenue",
                         value: overrunShare,
-                        fill: "#c94d3b",
+                        fill: "var(--chart-overrun)",
                       },
                       {
                         name: "Remaining overrun scale",

@@ -1,23 +1,36 @@
+/*
+ * Map layout and Leaflet marker appearance. Marker and cluster colors are
+ * supplied as CSS variables by UniversityMarkers.tsx.
+ */
 @import "./university-popup.css";
 .map-view {
   width: 100%;
 }
 
+/* Leaflet uses high stacking levels; keep search results above the map. */
 .map-view .university-search-control {
   z-index: 1000;
 }
 
 .map-view .university-map {
-  margin-top: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
+/* Leaflet needs a concrete map height; clamp keeps it usable on small screens. */
 .university-map {
   width: 100%;
-  height: 600px;
-  border-radius: 8px;
+  height: clamp(24rem, 65vh, 37.5rem);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
   overflow: hidden;
+  box-shadow: var(--shadow-elevation-1);
 }
-/* 
+
+/* Override Leaflet's own font without changing its other container styles. */
+.leaflet-container.university-map {
+  font-family: var(--font-sans);
+}
+/* Earlier cluster treatment retained as an inactive reference:
 .university-cluster {
   background: rgb(100 116 139 / 35%);
   border-radius: 50%;
@@ -50,6 +63,7 @@
 } */
 
 
+/* divIcon wrappers are transparent; the inner elements provide the circles. */
 .university-marker-container {
   background: transparent;
   border: none;

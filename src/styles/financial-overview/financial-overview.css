@@ -1,22 +1,44 @@
+/*
+ * Shared card surfaces and Recharts theme overrides for the financial
+ * overview. Internal chart and summary layouts live in financial.css.
+ */
 @import "./overview-donut.css";
 
-section.financial-overview {
+/* Each overview section is a sibling card in the Explorer's main layout. */
+.revenue-coverage,
+.financial-summary,
+.financial-overview-charts {
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-default);
-  padding: var(--space-md) var(--space-lg);
+  padding: clamp(var(--space-lg), 3vw, var(--space-xl));
+  background-color: var(--bg-panel);
+  box-shadow: var(--shadow-elevation-1);
+  min-width: 0;
 }
 
-section.financial-overview .financial-overview-charts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem; /* Add some spacing between charts */
+.revenue-coverage h3,
+.financial-summary h3,
+.category-chart h3 {
+  margin-block-end: var(--space-lg);
 }
 
-section.financial-overview .financial-overview-charts > .category-chart {
-  flex: 1 1 45%; /* Allow charts to grow and shrink, with a minimum width */
+/* Recharts renders SVG labels and grid lines rather than normal text elements. */
+.financial-overview-charts .recharts-cartesian-axis-tick-value {
+  fill: var(--text-secondary);
 }
-section.financial-overview section.revenue-coverage,
-section.financial-overview section.financial-summary,
-section.financial-overview section.financial-overview-charts {
-  margin-top: var(--space-2xl);
+
+.financial-overview-charts .recharts-cartesian-grid line {
+  stroke: var(--border-default);
+}
+
+/* Recharts supplies inline tooltip styles, so theme overrides need !important. */
+.recharts-default-tooltip {
+  background-color: var(--bg-surface) !important;
+  border: 1px solid var(--border-default) !important;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.recharts-default-tooltip .recharts-tooltip-item {
+  color: var(--text-primary) !important;
 }

@@ -1,5 +1,11 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router";
+/*
+ * Application shell: keep the header and footer shared across routes while
+ * loading each page on demand. BASE_URL keeps routes aligned with Vite's
+ * deployment base when the app is hosted under a subpath.
+ */
+import { BrowserRouter, Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
+import Header from "./components/Header";
 const MapView = lazy(() => import("./pages/MapView"));
 
 const Explorer = lazy(() => import("./pages/Explorer"));
@@ -8,16 +14,7 @@ const KitchenSink = lazy(() => import("./pages/KitchenSink"));
 function App() {
   return (
     <BrowserRouter basename={import.meta.env.BASE_URL}>
-      {/* Site Header */}
-      <header className="site-header">
-        <div className="container">
-          <nav>
-            <Link to="/">Financial Explorer</Link>
-            <Link to="/kitchen-sink">Kitchen Sink</Link>
-            <Link to="/map-view">Map View</Link>
-          </nav>
-        </div>
-      </header>
+      <Header />
 
       <Routes>
         <Route
