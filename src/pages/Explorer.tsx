@@ -17,7 +17,7 @@ import {
   type University,
 } from "../services/ipeds";
 import UniversitySearch from "../components/UniversitySearch";
-// import UniversityFinances from "../components/UniversityFinances";
+import UniversityFinances from "../components/UniversityFinances";
 import FinancialOverview from "../components/financial-overview/FinancialOverview";
 import { useEffect, useState } from "react";
 
@@ -127,7 +127,7 @@ function Explorer() {
         {finances && (
           <>
             <FinancialOverview finances={finances} variables={variables} />
-            {/* <UniversityFinances finances={finances} variables={variables} /> */}
+            <UniversityFinances finances={finances} variables={variables} />
           </>
         )}
       </main>
