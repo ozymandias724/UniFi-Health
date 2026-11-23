@@ -6,8 +6,8 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header";
+//
 const MapView = lazy(() => import("./pages/MapView"));
-
 const Explorer = lazy(() => import("./pages/Explorer"));
 const KitchenSink = lazy(() => import("./pages/KitchenSink"));
 
