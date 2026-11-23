@@ -43,7 +43,7 @@ async function fixture(t: { after: (fn: () => Promise<void>) => void }) {
   return { directory, output };
 }
 
-test("retries, follows pages, normalizes missing values, and retains missing institutions", async (t) => {
+test("retries, follows pages, normalizes missing values, and omits unmatched institutions", async (t) => {
   const { directory, output } = await fixture(t);
   let calls = 0;
   t.mock.method(globalThis, "fetch", async (input: string | URL | Request) => {
@@ -83,7 +83,6 @@ test("retries, follows pages, normalizes missing values, and retains missing ins
       assets: 0,
       total_revenues_additions: -10,
     }),
-    expectedSummary(103),
     expectedSummary(104),
   ]);
 });
@@ -115,7 +114,7 @@ test("retries a response body interrupted by a network error", async (t) => {
   });
   await generateFinances(directory, output);
   assert.equal(calls, 2);
-  assert.equal(JSON.parse(await readFile(output, "utf8")).length, 4);
+  assert.deepEqual(JSON.parse(await readFile(output, "utf8")), []);
 });
 
 test("rejects duplicate directory IDs before requesting data", async (t) => {

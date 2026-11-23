@@ -14,8 +14,8 @@ import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 
 const YEAR = 2023;
 const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds/finance/${YEAR}/`;
-const DIRECTORY_PATH = "public/data/universities.json";
-const OUTPUT_PATH = "public/data/finances.json";
+const DIRECTORY_PATH = `data/raw/directory-${YEAR}.json`;
+const OUTPUT_PATH = `data/raw/finances-${YEAR}.json`;
 const BATCH_SIZE = 300;
 const MAX_ATTEMPTS = 3;
 
@@ -33,14 +33,16 @@ const SUMMARY_FIELDS = [
   "equity_end",
 ] as const;
 
-
 // type SummaryField = (typeof SUMMARY_FIELDS)[number];
 // type UniversityFinanceSummary = {
 //   unitid: number;
 //   year: number;
 // } & Record<SummaryField, number | null>;
 
-function makeSummary(unitid: number, record: Record<string, unknown> = {}): UniversityFinanceSummary {
+function makeSummary(
+  unitid: number,
+  record: Record<string, unknown> = {},
+): UniversityFinanceSummary {
   const summary = { unitid, year: YEAR } as UniversityFinanceSummary;
   for (const field of SUMMARY_FIELDS) {
     summary[field] = financeValue(record[field]);
@@ -70,7 +72,10 @@ function financeValue(value: unknown): number | null {
     : null;
 }
 
-async function requestPage(url: string, requests: RequestCounter): Promise<unknown> {
+async function requestPage(
+  url: string,
+  requests: RequestCounter,
+): Promise<unknown> {
   for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
     let response: Response;
     try {
@@ -87,12 +92,19 @@ async function requestPage(url: string, requests: RequestCounter): Promise<unkno
       });
     } catch (error) {
       if (attempt === MAX_ATTEMPTS) {
-        throw new Error(`Finance API request failed after ${attempt} attempts`, {
-          cause: error,
-        });
+        throw new Error(
+          `Finance API request failed after ${attempt} attempts`,
+          {
+            cause: error,
+          },
+        );
       }
-      console.warn(`Finance API request failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`);
-      await new Promise((resolve) => setTimeout(resolve, 500 * 2 ** (attempt - 1)));
+      console.warn(
+        `Finance API request failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
+      );
+      await new Promise((resolve) =>
+        setTimeout(resolve, 500 * 2 ** (attempt - 1)),
+      );
       continue;
     }
 
@@ -101,24 +113,42 @@ async function requestPage(url: string, requests: RequestCounter): Promise<unkno
         return await response.json();
       } catch (error) {
         if (error instanceof SyntaxError) {
-          throw new Error("Finance API returned invalid JSON.", { cause: error });
-        }
-        if (attempt === MAX_ATTEMPTS) {
-          throw new Error(`Finance API response failed after ${attempt} attempts`, {
+          throw new Error("Finance API returned invalid JSON.", {
             cause: error,
           });
         }
-        console.warn(`Finance API response failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`);
-        await new Promise((resolve) => setTimeout(resolve, 500 * 2 ** (attempt - 1)));
+        if (attempt === MAX_ATTEMPTS) {
+          throw new Error(
+            `Finance API response failed after ${attempt} attempts`,
+            {
+              cause: error,
+            },
+          );
+        }
+        console.warn(
+          `Finance API response failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
+        );
+        await new Promise((resolve) =>
+          setTimeout(resolve, 500 * 2 ** (attempt - 1)),
+        );
         continue;
       }
     }
-    if ((response.status === 429 || response.status >= 500) && attempt < MAX_ATTEMPTS) {
-      console.warn(`Finance API returned ${response.status}; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`);
-      await new Promise((resolve) => setTimeout(resolve, 500 * 2 ** (attempt - 1)));
+    if (
+      (response.status === 429 || response.status >= 500) &&
+      attempt < MAX_ATTEMPTS
+    ) {
+      console.warn(
+        `Finance API returned ${response.status}; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
+      );
+      await new Promise((resolve) =>
+        setTimeout(resolve, 500 * 2 ** (attempt - 1)),
+      );
       continue;
     }
-    throw new Error(`Finance API error: ${response.status} ${response.statusText}`);
+    throw new Error(
+      `Finance API error: ${response.status} ${response.statusText}`,
+    );
   }
   throw new Error("Finance API request exhausted its retries.");
 }
@@ -179,7 +209,10 @@ async function fetchBatch(
     }
 
     received += data.results.length;
-    if (received > expectedCount || (data.results.length === 0 && data.next !== null)) {
+    if (
+      received > expectedCount ||
+      (data.results.length === 0 && data.next !== null)
+    ) {
       throw new Error("Incomplete or inconsistent finance API pagination.");
     }
     next = data.next;
@@ -205,16 +238,18 @@ function validateSummaries(
       summary.year !== YEAR ||
       Object.keys(summary).length !== fields.length ||
       fields.some((field) => !Object.hasOwn(summary, field)) ||
-      SUMMARY_FIELDS.some((field) =>
-        summary[field] !== null && financeValue(summary[field]) !== summary[field]
+      SUMMARY_FIELDS.some(
+        (field) =>
+          summary[field] !== null &&
+          financeValue(summary[field]) !== summary[field],
       )
     ) {
       throw new Error("Invalid financial summary.");
     }
     seen.add(summary.unitid);
   }
-  if (seen.size !== expected.size || summaries.length !== unitids.length) {
-    throw new Error("Financial summaries do not match the university directory.");
+  if (seen.size !== summaries.length) {
+    throw new Error("Duplicate financial summaries detected.");
   }
 }
 
@@ -229,8 +264,14 @@ export async function generateFinances(
   const unitids: number[] = [];
   const seen = new Set<number>();
   for (const university of directory) {
-    if (!isObject(university) || !isUnitid(university.unitid) || seen.has(university.unitid)) {
-      throw new Error("University directory contains an invalid or duplicate unitid.");
+    if (
+      !isObject(university) ||
+      !isUnitid(university.unitid) ||
+      seen.has(university.unitid)
+    ) {
+      throw new Error(
+        "University directory contains an invalid or duplicate unitid.",
+      );
     }
     unitids.push(university.unitid);
     seen.add(university.unitid);
@@ -240,11 +281,16 @@ export async function generateFinances(
   const requests = { count: 0 };
   for (let offset = 0; offset < unitids.length; offset += BATCH_SIZE) {
     const batch = unitids.slice(offset, offset + BATCH_SIZE);
-    console.log(`Fetching finance records for ${offset + 1}-${offset + batch.length} of ${unitids.length} universities...`);
+    console.log(
+      `Fetching finance records for ${offset + 1}-${offset + batch.length} of ${unitids.length} universities...`,
+    );
     await fetchBatch(batch, records, requests);
   }
+  
+  const summaries = unitids
+    .filter((unitid) => records.has(unitid))
+    .map((unitid) => records.get(unitid)!);
 
-  const summaries = unitids.map((unitid) => records.get(unitid) ?? makeSummary(unitid));
   validateSummaries(summaries, unitids);
 
   const json = JSON.stringify(summaries);
@@ -263,17 +309,24 @@ export async function generateFinances(
   }
 
   const usable = summaries.filter(
-    (summary) => summary.total_revenues_additions !== null && summary.total_expenses_deductions !== null,
+    (summary) =>
+      summary.total_revenues_additions !== null &&
+      summary.total_expenses_deductions !== null,
   ).length;
   console.log(`Universities processed: ${unitids.length}`);
   console.log(`Financial records matched: ${records.size}`);
-  console.log(`Universities without financial records: ${unitids.length - records.size}`);
+  console.log(
+    `Universities without financial records: ${unitids.length - records.size}`,
+  );
   console.log(`Universities with usable revenue and expense data: ${usable}`);
   console.log(`API requests: ${requests.count}`);
   console.log(`Saved ${outputPath} (${Buffer.byteLength(json)} bytes)`);
 }
 
-if (process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1])) {
+if (
+  process.argv[1] &&
+  fileURLToPath(import.meta.url) === resolve(process.argv[1])
+) {
   generateFinances().catch((error: unknown) => {
     console.error("Finance generation failed:", error);
     process.exitCode = 1;

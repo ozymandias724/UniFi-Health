@@ -1,12 +1,14 @@
-/*
+/**
  * Fetch the 2023 directory of active, degree-granting, four-year institutions
- * and save the fields needed for search and mapping to public/data.
- * Run from the project root; the script replaces universities.json.
+ * and save a source snapshot to data/raw.
+ *
+ * Run from the project root.
+ * Does not modify the application's published university directory.
  */
 import { mkdir, writeFile } from "node:fs/promises";
 
 const DIRECTORY_YEAR = 2023;
-const OUTPUT_PATH = "public/data/universities.json";
+const OUTPUT_PATH = `data/raw/directory-${DIRECTORY_YEAR}.json`;
 
 interface University {
   unitid: number;
@@ -63,7 +65,7 @@ async function generateDirectory(): Promise<void> {
     longitude: university.longitude,
   }));
 
-  await mkdir("public/data", { recursive: true });
+  await mkdir("data/raw", { recursive: true });
 
   await writeFile(OUTPUT_PATH, JSON.stringify(universities, null, 2), "utf8");
 

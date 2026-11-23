@@ -80,14 +80,6 @@
     "longitude": -85.488258
   },
   {
-    "unitid": 100937,
-    "inst_name": "Birmingham-Southern College",
-    "city": "Birmingham",
-    "state_abbr": "AL",
-    "latitude": 33.513774,
-    "longitude": -86.850552
-  },
-  {
     "unitid": 101116,
     "inst_name": "South University-Montgomery",
     "city": "Montgomery",
@@ -336,44 +328,12 @@
     "longitude": -110.950815
   },
   {
-    "unitid": 104586,
-    "inst_name": "Embry-Riddle Aeronautical University-Prescott",
-    "city": "Prescott",
-    "state_abbr": "AZ",
-    "latitude": 34.616766,
-    "longitude": -112.449741
-  },
-  {
-    "unitid": 104665,
-    "inst_name": "The School of Architecture",
-    "city": "Scottsdale",
-    "state_abbr": "AZ",
-    "latitude": 33.524271,
-    "longitude": -111.916785
-  },
-  {
-    "unitid": 104708,
-    "inst_name": "Glendale Community College",
-    "city": "Glendale",
-    "state_abbr": "AZ",
-    "latitude": 33.570226,
-    "longitude": -112.190735
-  },
-  {
     "unitid": 104717,
     "inst_name": "Grand Canyon University",
     "city": "Phoenix",
     "state_abbr": "AZ",
     "latitude": 33.513231,
     "longitude": -112.129929
-  },
-  {
-    "unitid": 105145,
-    "inst_name": "GateWay Community College",
-    "city": "Phoenix",
-    "state_abbr": "AZ",
-    "latitude": 33.449686,
-    "longitude": -111.997077
   },
   {
     "unitid": 105297,
@@ -406,14 +366,6 @@
     "state_abbr": "AZ",
     "latitude": 34.5452,
     "longitude": -112.477185
-  },
-  {
-    "unitid": 105668,
-    "inst_name": "Rio Salado College",
-    "city": "Tempe",
-    "state_abbr": "AZ",
-    "latitude": 33.413309,
-    "longitude": -111.97417
   },
   {
     "unitid": 105899,
@@ -880,78 +832,6 @@
     "longitude": -121.423549
   },
   {
-    "unitid": 110635,
-    "inst_name": "University of California-Berkeley",
-    "city": "Berkeley",
-    "state_abbr": "CA",
-    "latitude": 37.871918,
-    "longitude": -122.260463
-  },
-  {
-    "unitid": 110644,
-    "inst_name": "University of California-Davis",
-    "city": "Davis",
-    "state_abbr": "CA",
-    "latitude": 38.539667,
-    "longitude": -121.749567
-  },
-  {
-    "unitid": 110653,
-    "inst_name": "University of California-Irvine",
-    "city": "Irvine",
-    "state_abbr": "CA",
-    "latitude": 33.648434,
-    "longitude": -117.841248
-  },
-  {
-    "unitid": 110662,
-    "inst_name": "University of California-Los Angeles",
-    "city": "Los Angeles",
-    "state_abbr": "CA",
-    "latitude": 34.07178,
-    "longitude": -118.442179
-  },
-  {
-    "unitid": 110671,
-    "inst_name": "University of California-Riverside",
-    "city": "Riverside",
-    "state_abbr": "CA",
-    "latitude": 33.97246,
-    "longitude": -117.32741
-  },
-  {
-    "unitid": 110680,
-    "inst_name": "University of California-San Diego",
-    "city": "La Jolla",
-    "state_abbr": "CA",
-    "latitude": 32.877749,
-    "longitude": -117.235866
-  },
-  {
-    "unitid": 110699,
-    "inst_name": "University of California-San Francisco",
-    "city": "San Francisco",
-    "state_abbr": "CA",
-    "latitude": 37.763737,
-    "longitude": -122.458489
-  },
-  {
-    "unitid": 110705,
-    "inst_name": "University of California-Santa Barbara",
-    "city": "Santa Barbara",
-    "state_abbr": "CA",
-    "latitude": 34.416297,
-    "longitude": -119.846426
-  },
-  {
-    "unitid": 110714,
-    "inst_name": "University of California-Santa Cruz",
-    "city": "Santa Cruz",
-    "state_abbr": "CA",
-    "latitude": 36.995584,
-    "longitude": -122.058801
-  },
-  {
     "unitid": 110778,
     "inst_name": "Sofia University",
     "city": "Palo Alto",
@@ -1080,28 +960,12 @@
     "longitude": -118.25968
   },
   {
-    "unitid": 113236,
-    "inst_name": "Cypress College",
-    "city": "Cypress",
-    "state_abbr": "CA",
-    "latitude": 33.82833,
-    "longitude": -118.025143
-  },
-  {
     "unitid": 113582,
     "inst_name": "Design Institute of San Diego",
     "city": "San Diego",
     "state_abbr": "CA",
     "latitude": 32.880926,
     "longitude": -117.167374
-  },
-  {
-    "unitid": 113616,
-    "inst_name": "Dharma Realm Buddhist University",
-    "city": "Ukiah",
-    "state_abbr": "CA",
-    "latitude": 39.134532,
-    "longitude": -123.158174
   },
   {
     "unitid": 113698,
@@ -1126,14 +990,6 @@
     "state_abbr": "CA",
     "latitude": 34.030438,
     "longitude": -118.485119
-  },
-  {
-    "unitid": 114123,
-    "inst_name": "Empire College",
-    "city": "Santa Rosa",
-    "state_abbr": "CA",
-    "latitude": 38.468052,
-    "longitude": -122.729337
   },
   {
     "unitid": 114354,
@@ -1168,14 +1024,6 @@
     "longitude": -121.998245
   },
   {
-    "unitid": 114716,
-    "inst_name": "Foothill College",
-    "city": "Los Altos Hills",
-    "state_abbr": "CA",
-    "latitude": 37.361655,
-    "longitude": -122.127964
-  },
-  {
     "unitid": 114734,
     "inst_name": "Franciscan School of Theology",
     "city": "San Diego",
@@ -1206,14 +1054,6 @@
     "state_abbr": "CA",
     "latitude": 34.14778,
     "longitude": -118.140261
-  },
-  {
-    "unitid": 115010,
-    "inst_name": "Glendale Career College",
-    "city": "Glendale",
-    "state_abbr": "CA",
-    "latitude": 34.149771,
-    "longitude": -118.254719
   },
   {
     "unitid": 115083,
@@ -1392,36 +1232,12 @@
     "longitude": -122.190797
   },
   {
-    "unitid": 118888,
-    "inst_name": "Northeastern University Oakland",
-    "city": "Oakland",
-    "state_abbr": "CA",
-    "latitude": 37.781425,
-    "longitude": -122.182294
-  },
-  {
     "unitid": 118912,
     "inst_name": "MiraCosta College",
     "city": "Oceanside",
     "state_abbr": "CA",
     "latitude": 33.190483,
     "longitude": -117.302606
-  },
-  {
-    "unitid": 118976,
-    "inst_name": "Modesto Junior College",
-    "city": "Modesto",
-    "state_abbr": "CA",
-    "latitude": 37.651056,
-    "longitude": -121.009792
-  },
-  {
-    "unitid": 119058,
-    "inst_name": "Middlebury Institute of International Studies at Monterey",
-    "city": "Monterey",
-    "state_abbr": "CA",
-    "latitude": 36.599736,
-    "longitude": -121.897325
   },
   {
     "unitid": 119173,
@@ -1446,14 +1262,6 @@
     "state_abbr": "CA",
     "latitude": 32.829299,
     "longitude": -117.127296
-  },
-  {
-    "unitid": 119678,
-    "inst_name": "Naval Postgraduate School",
-    "city": "Monterey",
-    "state_abbr": "CA",
-    "latitude": 36.597159,
-    "longitude": -121.874248
   },
   {
     "unitid": 119775,
@@ -1592,22 +1400,6 @@
     "longitude": -117.714556
   },
   {
-    "unitid": 121619,
-    "inst_name": "Santa Ana College",
-    "city": "Santa Ana",
-    "state_abbr": "CA",
-    "latitude": 33.759309,
-    "longitude": -117.887558
-  },
-  {
-    "unitid": 121628,
-    "inst_name": "Pardee RAND Graduate School",
-    "city": "Santa Monica",
-    "state_abbr": "CA",
-    "latitude": 34.00973,
-    "longitude": -118.490655
-  },
-  {
     "unitid": 121691,
     "inst_name": "University of Redlands",
     "city": "Redlands",
@@ -1702,14 +1494,6 @@
     "state_abbr": "CA",
     "latitude": 36.82448,
     "longitude": -119.697657
-  },
-  {
-    "unitid": 122685,
-    "inst_name": "San Joaquin Valley College-Visalia",
-    "city": "Visalia",
-    "state_abbr": "CA",
-    "latitude": 36.328049,
-    "longitude": -119.384981
   },
   {
     "unitid": 122728,
@@ -1934,22 +1718,6 @@
     "state_abbr": "MN",
     "latitude": 44.98125,
     "longitude": -93.265738
-  },
-  {
-    "unitid": 125471,
-    "inst_name": "West Los Angeles College",
-    "city": "Culver City",
-    "state_abbr": "CA",
-    "latitude": 34.004512,
-    "longitude": -118.386664
-  },
-  {
-    "unitid": 125532,
-    "inst_name": "Carrington College-Sacramento",
-    "city": "Sacramento",
-    "state_abbr": "CA",
-    "latitude": 38.556104,
-    "longitude": -121.371383
   },
   {
     "unitid": 125718,
@@ -2280,14 +2048,6 @@
     "longitude": -104.983277
   },
   {
-    "unitid": 128328,
-    "inst_name": "United States Air Force Academy",
-    "city": "USAF Academy",
-    "state_abbr": "CO",
-    "latitude": 39.010957,
-    "longitude": -104.891358
-  },
-  {
     "unitid": 128391,
     "inst_name": "Western Colorado University",
     "city": "Gunnison",
@@ -2376,14 +2136,6 @@
     "longitude": -73.255903
   },
   {
-    "unitid": 129428,
-    "inst_name": "Rensselaer at Hartford",
-    "city": "Hartford",
-    "state_abbr": "CT",
-    "latitude": 41.773462,
-    "longitude": -72.673916
-  },
-  {
     "unitid": 129491,
     "inst_name": "Hartford International University for Religion and Peace",
     "city": "Hartford",
@@ -2422,14 +2174,6 @@
     "state_abbr": "CT",
     "latitude": 41.291314,
     "longitude": -72.961472
-  },
-  {
-    "unitid": 130110,
-    "inst_name": "Paier College",
-    "city": "Bridgeport",
-    "state_abbr": "CT",
-    "latitude": 41.163451,
-    "longitude": -73.194727
   },
   {
     "unitid": 130183,
@@ -2712,14 +2456,6 @@
     "longitude": -82.175692
   },
   {
-    "unitid": 132879,
-    "inst_name": "Johnson University Florida",
-    "city": "Kissimmee",
-    "state_abbr": "FL",
-    "latitude": 28.302547,
-    "longitude": -81.363053
-  },
-  {
     "unitid": 132903,
     "inst_name": "University of Central Florida",
     "city": "Orlando",
@@ -2974,14 +2710,6 @@
     "state_abbr": "FL",
     "latitude": 27.43804,
     "longitude": -82.590887
-  },
-  {
-    "unitid": 135610,
-    "inst_name": "Trinity International University-Florida",
-    "city": "Miami",
-    "state_abbr": "FL",
-    "latitude": 25.68307,
-    "longitude": -80.417646
   },
   {
     "unitid": 135717,
@@ -3832,28 +3560,12 @@
     "longitude": -87.629156
   },
   {
-    "unitid": 142887,
-    "inst_name": "American Academy of Art College",
-    "city": "Chicago",
-    "state_abbr": "IL",
-    "latitude": 41.87742,
-    "longitude": -87.624788
-  },
-  {
     "unitid": 142957,
     "inst_name": "American Islamic College",
     "city": "Chicago",
     "state_abbr": "IL",
     "latitude": 41.954969,
     "longitude": -87.646898
-  },
-  {
-    "unitid": 143048,
-    "inst_name": "School of the Art Institute of Chicago",
-    "city": "Chicago",
-    "state_abbr": "IL",
-    "latitude": 41.88105,
-    "longitude": -87.625758
   },
   {
     "unitid": 143084,
@@ -3886,14 +3598,6 @@
     "state_abbr": "IL",
     "latitude": 39.287896,
     "longitude": -89.870241
-  },
-  {
-    "unitid": 143297,
-    "inst_name": "Blessing Rieman College of Nursing and Health Sciences",
-    "city": "Quincy",
-    "state_abbr": "IL",
-    "latitude": 39.949641,
-    "longitude": -91.357497
   },
   {
     "unitid": 143358,
@@ -4040,14 +3744,6 @@
     "longitude": -89.40824
   },
   {
-    "unitid": 145497,
-    "inst_name": "Hebrew Theological College",
-    "city": "Skokie",
-    "state_abbr": "IL",
-    "latitude": 42.010103,
-    "longitude": -87.760874
-  },
-  {
     "unitid": 145558,
     "inst_name": "Rosalind Franklin University of Medicine and Science",
     "city": "North Chicago",
@@ -4176,14 +3872,6 @@
     "longitude": -88.079032
   },
   {
-    "unitid": 146667,
-    "inst_name": "Lincoln Christian University",
-    "city": "Lincoln",
-    "state_abbr": "IL",
-    "latitude": 40.148924,
-    "longitude": -89.346721
-  },
-  {
     "unitid": 146719,
     "inst_name": "Loyola University Chicago",
     "city": "Chicago",
@@ -4198,14 +3886,6 @@
     "state_abbr": "IL",
     "latitude": 41.797895,
     "longitude": -87.585989
-  },
-  {
-    "unitid": 146755,
-    "inst_name": "Trinity College of Nursing & Health Sciences",
-    "city": "Rock Island",
-    "state_abbr": "IL",
-    "latitude": 41.484924,
-    "longitude": -90.568862
   },
   {
     "unitid": 146977,
@@ -4230,14 +3910,6 @@
     "state_abbr": "IL",
     "latitude": 41.885452,
     "longitude": -87.62671
-  },
-  {
-    "unitid": 147129,
-    "inst_name": "Methodist College",
-    "city": "Peoria",
-    "state_abbr": "IL",
-    "latitude": 40.7804,
-    "longitude": -89.682864
   },
   {
     "unitid": 147244,
@@ -4384,14 +4056,6 @@
     "longitude": -87.668581
   },
   {
-    "unitid": 148575,
-    "inst_name": "Saint Francis Medical Center College of Nursing",
-    "city": "Peoria",
-    "state_abbr": "IL",
-    "latitude": 40.701241,
-    "longitude": -89.590322
-  },
-  {
     "unitid": 148584,
     "inst_name": "University of St Francis",
     "city": "Joliet",
@@ -4518,14 +4182,6 @@
     "state_abbr": "IL",
     "latitude": 41.836833,
     "longitude": -87.629138
-  },
-  {
-    "unitid": 149763,
-    "inst_name": "Oak Point University",
-    "city": "Oak Brook",
-    "state_abbr": "IL",
-    "latitude": 41.848066,
-    "longitude": -87.930551
   },
   {
     "unitid": 149772,
@@ -5160,14 +4816,6 @@
     "longitude": -90.579854
   },
   {
-    "unitid": 154262,
-    "inst_name": "St Luke's College",
-    "city": "Sioux City",
-    "state_abbr": "IA",
-    "latitude": 42.520081,
-    "longitude": -96.404724
-  },
-  {
     "unitid": 154350,
     "inst_name": "Simpson College",
     "city": "Indianola",
@@ -5390,14 +5038,6 @@
     "state_abbr": "KS",
     "latitude": 38.603173,
     "longitude": -95.264187
-  },
-  {
-    "unitid": 155636,
-    "inst_name": "Ottawa University-Kansas City",
-    "city": "Overland Park",
-    "state_abbr": "KS",
-    "latitude": 38.932055,
-    "longitude": -94.635461
   },
   {
     "unitid": 155681,
@@ -6312,14 +5952,6 @@
     "longitude": -76.605479
   },
   {
-    "unitid": 164155,
-    "inst_name": "United States Naval Academy",
-    "city": "Annapolis",
-    "state_abbr": "MD",
-    "latitude": 38.980507,
-    "longitude": -76.481692
-  },
-  {
     "unitid": 164173,
     "inst_name": "Stevenson University",
     "city": "Owings Mills",
@@ -7096,14 +6728,6 @@
     "longitude": -83.879987
   },
   {
-    "unitid": 169363,
-    "inst_name": "Concordia University Ann Arbor",
-    "city": "Ann Arbor",
-    "state_abbr": "MI",
-    "latitude": 42.273157,
-    "longitude": -83.68268
-  },
-  {
     "unitid": 169424,
     "inst_name": "Cranbrook Academy of Art",
     "city": "Bloomfield Hills",
@@ -7520,14 +7144,6 @@
     "longitude": -93.164479
   },
   {
-    "unitid": 173683,
-    "inst_name": "Hazelden Betty Ford Graduate School",
-    "city": "Center City",
-    "state_abbr": "MN",
-    "latitude": 45.375319,
-    "longitude": -92.805285
-  },
-  {
     "unitid": 173896,
     "inst_name": "Luther Seminary",
     "city": "Saint Paul",
@@ -7550,14 +7166,6 @@
     "state_abbr": "MN",
     "latitude": 44.146712,
     "longitude": -93.99945
-  },
-  {
-    "unitid": 173957,
-    "inst_name": "Mayo Clinic College of Medicine and Science",
-    "city": "Rochester",
-    "state_abbr": "MN",
-    "latitude": 44.02215,
-    "longitude": -92.466428
   },
   {
     "unitid": 174020,
@@ -7942,14 +7550,6 @@
     "state_abbr": "MO",
     "latitude": 37.239696,
     "longitude": -93.284286
-  },
-  {
-    "unitid": 176770,
-    "inst_name": "Cox College",
-    "city": "Springfield",
-    "state_abbr": "MO",
-    "latitude": 37.225116,
-    "longitude": -93.290233
   },
   {
     "unitid": 176789,
@@ -8544,14 +8144,6 @@
     "longitude": -95.974847
   },
   {
-    "unitid": 180878,
-    "inst_name": "Bryan College of Health Sciences",
-    "city": "Lincoln",
-    "state_abbr": "NE",
-    "latitude": 40.796768,
-    "longitude": -96.651532
-  },
-  {
     "unitid": 180948,
     "inst_name": "Chadron State College",
     "city": "Chadron",
@@ -8590,14 +8182,6 @@
     "state_abbr": "NE",
     "latitude": 40.59025,
     "longitude": -98.374403
-  },
-  {
-    "unitid": 181145,
-    "inst_name": "CHI Health School of Radiologic Technology",
-    "city": "Omaha",
-    "state_abbr": "NE",
-    "latitude": 41.32206,
-    "longitude": -96.020431
   },
   {
     "unitid": 181215,
@@ -8816,14 +8400,6 @@
     "longitude": -71.545152
   },
   {
-    "unitid": 182917,
-    "inst_name": "Magdalen College",
-    "city": "Warner",
-    "state_abbr": "NH",
-    "latitude": 43.314908,
-    "longitude": -71.834444
-  },
-  {
     "unitid": 182980,
     "inst_name": "New England College",
     "city": "Henniker",
@@ -8886,14 +8462,6 @@
     "state_abbr": "NH",
     "latitude": 42.986889,
     "longitude": -71.503622
-  },
-  {
-    "unitid": 183257,
-    "inst_name": "University of New Hampshire College of Professional Studies Online",
-    "city": "Manchester",
-    "state_abbr": "NH",
-    "latitude": 42.987209,
-    "longitude": -71.468755
   },
   {
     "unitid": 183275,
@@ -8982,14 +8550,6 @@
     "state_abbr": "NJ",
     "latitude": 40.867272,
     "longitude": -74.096452
-  },
-  {
-    "unitid": 184694,
-    "inst_name": "Fairleigh Dickinson University-Florham Campus",
-    "city": "Madison",
-    "state_abbr": "NJ",
-    "latitude": 40.774498,
-    "longitude": -74.432121
   },
   {
     "unitid": 184773,
@@ -9326,14 +8886,6 @@
     "state_abbr": "NY",
     "latitude": 42.651818,
     "longitude": -73.777495
-  },
-  {
-    "unitid": 188580,
-    "inst_name": "Albany Medical College",
-    "city": "Albany",
-    "state_abbr": "NY",
-    "latitude": 42.65382,
-    "longitude": -73.777289
   },
   {
     "unitid": 188641,
@@ -10016,22 +9568,6 @@
     "longitude": -74.006969
   },
   {
-    "unitid": 193830,
-    "inst_name": "New York Medical College",
-    "city": "Valhalla",
-    "state_abbr": "NY",
-    "latitude": 41.085031,
-    "longitude": -73.810042
-  },
-  {
-    "unitid": 193894,
-    "inst_name": "New York Theological Seminary",
-    "city": "New York",
-    "state_abbr": "NY",
-    "latitude": 40.811823,
-    "longitude": -73.961549
-  },
-  {
     "unitid": 193900,
     "inst_name": "New York University",
     "city": "New York",
@@ -10246,14 +9782,6 @@
     "state_abbr": "NY",
     "latitude": 44.589879,
     "longitude": -75.161343
-  },
-  {
-    "unitid": 195234,
-    "inst_name": "The College of Saint Rose",
-    "city": "Albany",
-    "state_abbr": "NY",
-    "latitude": 42.664297,
-    "longitude": -73.786661
   },
   {
     "unitid": 195243,
@@ -10656,22 +10184,6 @@
     "longitude": -73.959113
   },
   {
-    "unitid": 197027,
-    "inst_name": "United States Merchant Marine Academy",
-    "city": "Kings Point",
-    "state_abbr": "NY",
-    "latitude": 40.81357,
-    "longitude": -73.763004
-  },
-  {
-    "unitid": 197036,
-    "inst_name": "United States Military Academy",
-    "city": "West  Point",
-    "state_abbr": "NY",
-    "latitude": 41.388988,
-    "longitude": -73.956772
-  },
-  {
     "unitid": 197045,
     "inst_name": "Utica University",
     "city": "Utica",
@@ -10718,14 +10230,6 @@
     "state_abbr": "NY",
     "latitude": 40.884444,
     "longitude": -73.644909
-  },
-  {
-    "unitid": 197230,
-    "inst_name": "Wells College",
-    "city": "Aurora",
-    "state_abbr": "NY",
-    "latitude": 42.742943,
-    "longitude": -76.696028
   },
   {
     "unitid": 197285,
@@ -10830,14 +10334,6 @@
     "state_abbr": "NC",
     "latitude": 35.236763,
     "longitude": -82.729494
-  },
-  {
-    "unitid": 198109,
-    "inst_name": "Cabarrus College of Health Sciences",
-    "city": "Concord",
-    "state_abbr": "NC",
-    "latitude": 35.440038,
-    "longitude": -80.600824
   },
   {
     "unitid": 198136,
@@ -11376,14 +10872,6 @@
     "longitude": -98.00389
   },
   {
-    "unitid": 200697,
-    "inst_name": "Air Force Institute of Technology-Graduate School of Engineering & Management",
-    "city": "Wright-Patterson AFB",
-    "state_abbr": "OH",
-    "latitude": 39.782221,
-    "longitude": -84.082618
-  },
-  {
     "unitid": 200785,
     "inst_name": "Herzing University-Akron",
     "city": "Akron",
@@ -11432,14 +10920,6 @@
     "longitude": -84.371927
   },
   {
-    "unitid": 201177,
-    "inst_name": "Aultman College of Nursing and Health Sciences",
-    "city": "Canton",
-    "state_abbr": "OH",
-    "latitude": 40.796186,
-    "longitude": -81.404053
-  },
-  {
     "unitid": 201195,
     "inst_name": "Baldwin Wallace University",
     "city": "Berea",
@@ -11454,14 +10934,6 @@
     "state_abbr": "OH",
     "latitude": 40.895606,
     "longitude": -83.899439
-  },
-  {
-    "unitid": 201432,
-    "inst_name": "Bowling Green State University-Firelands",
-    "city": "Huron",
-    "state_abbr": "OH",
-    "latitude": 41.397566,
-    "longitude": -82.594266
   },
   {
     "unitid": 201441,
@@ -11520,14 +10992,6 @@
     "longitude": -83.880186
   },
   {
-    "unitid": 201821,
-    "inst_name": "The Christ College of Nursing and Health Sciences",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.121821,
-    "longitude": -84.509564
-  },
-  {
     "unitid": 201867,
     "inst_name": "Cincinnati College of Mortuary Science",
     "city": "Cincinnati",
@@ -11550,22 +11014,6 @@
     "state_abbr": "OH",
     "latitude": 39.149915,
     "longitude": -84.536936
-  },
-  {
-    "unitid": 201946,
-    "inst_name": "University of Cincinnati-Clermont College",
-    "city": "Batavia",
-    "state_abbr": "OH",
-    "latitude": 39.080645,
-    "longitude": -84.19437
-  },
-  {
-    "unitid": 201955,
-    "inst_name": "University of Cincinnati-Blue Ash College",
-    "city": "Blue Ash",
-    "state_abbr": "OH",
-    "latitude": 39.234333,
-    "longitude": -84.399956
   },
   {
     "unitid": 201964,
@@ -11672,14 +11120,6 @@
     "longitude": -84.505703
   },
   {
-    "unitid": 202912,
-    "inst_name": "Good Samaritan College of Nursing and Health Science",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.140348,
-    "longitude": -84.521196
-  },
-  {
     "unitid": 203067,
     "inst_name": "Hebrew Union College-Jewish Institute of Religion",
     "city": "New York",
@@ -11712,54 +11152,6 @@
     "longitude": -81.531224
   },
   {
-    "unitid": 203447,
-    "inst_name": "Kent State University at Ashtabula",
-    "city": "Ashtabula",
-    "state_abbr": "OH",
-    "latitude": 41.888296,
-    "longitude": -80.830377
-  },
-  {
-    "unitid": 203456,
-    "inst_name": "Kent State University at East Liverpool",
-    "city": "East Liverpool",
-    "state_abbr": "OH",
-    "latitude": 40.616966,
-    "longitude": -80.576702
-  },
-  {
-    "unitid": 203465,
-    "inst_name": "Kent State University at Stark",
-    "city": "North Canton",
-    "state_abbr": "OH",
-    "latitude": 40.868568,
-    "longitude": -81.43731
-  },
-  {
-    "unitid": 203474,
-    "inst_name": "Kent State University at Trumbull",
-    "city": "Warren",
-    "state_abbr": "OH",
-    "latitude": 41.278748,
-    "longitude": -80.836233
-  },
-  {
-    "unitid": 203483,
-    "inst_name": "Kent State University at Tuscarawas",
-    "city": "New Philadelphia",
-    "state_abbr": "OH",
-    "latitude": 40.467736,
-    "longitude": -81.407707
-  },
-  {
-    "unitid": 203492,
-    "inst_name": "Kent State University at Salem",
-    "city": "Salem",
-    "state_abbr": "OH",
-    "latitude": 40.86408,
-    "longitude": -80.835458
-  },
-  {
     "unitid": 203517,
     "inst_name": "Kent State University at Kent",
     "city": "Kent",
@@ -11768,28 +11160,12 @@
     "longitude": -81.342533
   },
   {
-    "unitid": 203526,
-    "inst_name": "Kent State University at Geauga",
-    "city": "Burton",
-    "state_abbr": "OH",
-    "latitude": 41.483727,
-    "longitude": -81.143085
-  },
-  {
     "unitid": 203535,
     "inst_name": "Kenyon College",
     "city": "Gambier",
     "state_abbr": "OH",
     "latitude": 40.374408,
     "longitude": -82.397977
-  },
-  {
-    "unitid": 203544,
-    "inst_name": "Kettering College",
-    "city": "Kettering",
-    "state_abbr": "OH",
-    "latitude": 39.695052,
-    "longitude": -84.192006
   },
   {
     "unitid": 203580,
@@ -11864,22 +11240,6 @@
     "longitude": -83.060146
   },
   {
-    "unitid": 204006,
-    "inst_name": "Miami University-Hamilton",
-    "city": "Hamilton",
-    "state_abbr": "OH",
-    "latitude": 39.377448,
-    "longitude": -84.563385
-  },
-  {
-    "unitid": 204015,
-    "inst_name": "Miami University-Middletown",
-    "city": "Middletown",
-    "state_abbr": "OH",
-    "latitude": 39.523776,
-    "longitude": -84.35724
-  },
-  {
     "unitid": 204024,
     "inst_name": "Miami University-Oxford",
     "city": "Oxford",
@@ -11942,14 +11302,6 @@
     "state_abbr": "OH",
     "latitude": 40.798777,
     "longitude": -82.581582
-  },
-  {
-    "unitid": 204468,
-    "inst_name": "Notre Dame College",
-    "city": "Cleveland",
-    "state_abbr": "OH",
-    "latitude": 41.506894,
-    "longitude": -81.516617
   },
   {
     "unitid": 204477,
@@ -12032,52 +11384,12 @@
     "longitude": -83.007525
   },
   {
-    "unitid": 204802,
-    "inst_name": "Ohio University-Eastern Campus",
-    "city": "Saint Clairsville",
-    "state_abbr": "OH",
-    "latitude": 40.073392,
-    "longitude": -80.976073
-  },
-  {
-    "unitid": 204820,
-    "inst_name": "Ohio University-Chillicothe Campus",
-    "city": "Chillicothe",
-    "state_abbr": "OH",
-    "latitude": 39.329404,
-    "longitude": -83.002175
-  },
-  {
-    "unitid": 204839,
-    "inst_name": "Ohio University-Southern Campus",
-    "city": "Ironton",
-    "state_abbr": "OH",
-    "latitude": 38.524781,
-    "longitude": -82.666876
-  },
-  {
-    "unitid": 204848,
-    "inst_name": "Ohio University-Lancaster Campus",
-    "city": "Lancaster",
-    "state_abbr": "OH",
-    "latitude": 39.738752,
-    "longitude": -82.586069
-  },
-  {
     "unitid": 204857,
     "inst_name": "Ohio University-Main Campus",
     "city": "Athens",
     "state_abbr": "OH",
     "latitude": 39.326798,
     "longitude": -82.100985
-  },
-  {
-    "unitid": 204866,
-    "inst_name": "Ohio University-Zanesville Campus",
-    "city": "Zanesville",
-    "state_abbr": "OH",
-    "latitude": 39.96098,
-    "longitude": -82.031063
   },
   {
     "unitid": 204909,
@@ -12192,14 +11504,6 @@
     "longitude": -82.579887
   },
   {
-    "unitid": 206279,
-    "inst_name": "Union Institute & University",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.119091,
-    "longitude": -84.497652
-  },
-  {
     "unitid": 206288,
     "inst_name": "United Theological Seminary",
     "city": "Dayton",
@@ -12214,14 +11518,6 @@
     "state_abbr": "OH",
     "latitude": 41.497035,
     "longitude": -81.465118
-  },
-  {
-    "unitid": 206394,
-    "inst_name": "The North Coast College",
-    "city": "Lakewood",
-    "state_abbr": "OH",
-    "latitude": 41.484253,
-    "longitude": -81.769767
   },
   {
     "unitid": 206437,
@@ -12288,14 +11584,6 @@
     "longitude": -84.064881
   },
   {
-    "unitid": 206613,
-    "inst_name": "Wright State University-Lake Campus",
-    "city": "Celina",
-    "state_abbr": "OH",
-    "latitude": 40.546074,
-    "longitude": -84.509194
-  },
-  {
     "unitid": 206622,
     "inst_name": "Xavier University",
     "city": "Cincinnati",
@@ -12310,14 +11598,6 @@
     "state_abbr": "OH",
     "latitude": 41.104928,
     "longitude": -80.64659
-  },
-  {
-    "unitid": 206817,
-    "inst_name": "Bacone College",
-    "city": "Muskogee",
-    "state_abbr": "OK",
-    "latitude": 35.777082,
-    "longitude": -95.334046
   },
   {
     "unitid": 206835,
@@ -12592,28 +11872,12 @@
     "longitude": -123.199642
   },
   {
-    "unitid": 209241,
-    "inst_name": "Mount Angel Seminary",
-    "city": "Saint Benedict",
-    "state_abbr": "OR",
-    "latitude": 45.057871,
-    "longitude": -122.775405
-  },
-  {
     "unitid": 209250,
     "inst_name": "Mt Hood Community College",
     "city": "Gresham",
     "state_abbr": "OR",
     "latitude": 45.514862,
     "longitude": -122.396972
-  },
-  {
-    "unitid": 209287,
-    "inst_name": "Multnomah University",
-    "city": "Portland",
-    "state_abbr": "OR",
-    "latitude": 45.527139,
-    "longitude": -122.575557
   },
   {
     "unitid": 209296,
@@ -12662,14 +11926,6 @@
     "state_abbr": "OR",
     "latitude": 44.045146,
     "longitude": -123.075792
-  },
-  {
-    "unitid": 209603,
-    "inst_name": "Pacific Northwest College of Art",
-    "city": "Portland",
-    "state_abbr": "OR",
-    "latitude": 45.526766,
-    "longitude": -122.678182
   },
   {
     "unitid": 209612,
@@ -12760,14 +12016,6 @@
     "longitude": -122.580586
   },
   {
-    "unitid": 210492,
-    "inst_name": "Bryn Athyn College of the New Church",
-    "city": "Bryn Athyn",
-    "state_abbr": "PA",
-    "latitude": 40.134393,
-    "longitude": -75.060808
-  },
-  {
     "unitid": 210571,
     "inst_name": "Albright College",
     "city": "Reading",
@@ -12808,14 +12056,6 @@
     "longitude": -75.394652
   },
   {
-    "unitid": 211024,
-    "inst_name": "Clarks Summit University",
-    "city": "Clarks Summit",
-    "state_abbr": "PA",
-    "latitude": 41.495062,
-    "longitude": -75.685472
-  },
-  {
     "unitid": 211088,
     "inst_name": "Arcadia University",
     "city": "Glenside",
@@ -12846,14 +12086,6 @@
     "state_abbr": "PA",
     "latitude": 40.954317,
     "longitude": -76.882616
-  },
-  {
-    "unitid": 211352,
-    "inst_name": "Cabrini University",
-    "city": "Radnor",
-    "state_abbr": "PA",
-    "latitude": 40.056355,
-    "longitude": -75.375263
   },
   {
     "unitid": 211431,
@@ -13136,14 +12368,6 @@
     "longitude": -76.287761
   },
   {
-    "unitid": 213446,
-    "inst_name": "Lancaster Theological Seminary",
-    "city": "Lancaster",
-    "state_abbr": "PA",
-    "latitude": 40.045235,
-    "longitude": -76.317631
-  },
-  {
     "unitid": 213507,
     "inst_name": "Lebanon Valley College",
     "city": "Annville",
@@ -13288,54 +12512,6 @@
     "longitude": -75.38893
   },
   {
-    "unitid": 214591,
-    "inst_name": "Pennsylvania State University-Penn State Erie-Behrend College",
-    "city": "Erie",
-    "state_abbr": "PA",
-    "latitude": 42.119417,
-    "longitude": -79.983818
-  },
-  {
-    "unitid": 214607,
-    "inst_name": "Pennsylvania State University-Penn State Great Valley",
-    "city": "Malvern",
-    "state_abbr": "PA",
-    "latitude": 40.052444,
-    "longitude": -75.522409
-  },
-  {
-    "unitid": 214625,
-    "inst_name": "Pennsylvania State University-Penn State New Kensington",
-    "city": "New Kensington",
-    "state_abbr": "PA",
-    "latitude": 40.551056,
-    "longitude": -79.697461
-  },
-  {
-    "unitid": 214634,
-    "inst_name": "Pennsylvania State University-Penn State Shenango",
-    "city": "Sharon",
-    "state_abbr": "PA",
-    "latitude": 41.235131,
-    "longitude": -80.50924
-  },
-  {
-    "unitid": 214643,
-    "inst_name": "Pennsylvania State University-Penn State Wilkes-Barre",
-    "city": "Dallas",
-    "state_abbr": "PA",
-    "latitude": 41.305602,
-    "longitude": -76.016151
-  },
-  {
-    "unitid": 214652,
-    "inst_name": "Pennsylvania State University-Penn State Scranton",
-    "city": "Dunmore",
-    "state_abbr": "PA",
-    "latitude": 41.439843,
-    "longitude": -75.621401
-  },
-  {
     "unitid": 214661,
     "inst_name": "Pennsylvania State System of Higher Education-Central Office",
     "city": "Harrisburg",
@@ -13344,124 +12520,12 @@
     "longitude": -76.855799
   },
   {
-    "unitid": 214670,
-    "inst_name": "Pennsylvania State University-Penn State Lehigh Valley",
-    "city": "Center Valley",
-    "state_abbr": "PA",
-    "latitude": 40.559201,
-    "longitude": -75.40267
-  },
-  {
-    "unitid": 214689,
-    "inst_name": "Pennsylvania State University-Penn State Altoona",
-    "city": "Altoona",
-    "state_abbr": "PA",
-    "latitude": 40.541759,
-    "longitude": -78.409601
-  },
-  {
-    "unitid": 214698,
-    "inst_name": "Pennsylvania State University-Penn State Beaver",
-    "city": "Monaca",
-    "state_abbr": "PA",
-    "latitude": 40.678271,
-    "longitude": -80.296316
-  },
-  {
-    "unitid": 214704,
-    "inst_name": "Pennsylvania State University-Penn State Berks",
-    "city": "Reading",
-    "state_abbr": "PA",
-    "latitude": 40.358839,
-    "longitude": -75.97329
-  },
-  {
-    "unitid": 214713,
-    "inst_name": "Pennsylvania State University-Penn State Harrisburg",
-    "city": "Middletown",
-    "state_abbr": "PA",
-    "latitude": 40.204253,
-    "longitude": -76.741216
-  },
-  {
-    "unitid": 214731,
-    "inst_name": "Pennsylvania State University-Penn State Brandywine",
-    "city": "Media",
-    "state_abbr": "PA",
-    "latitude": 39.927123,
-    "longitude": -75.449704
-  },
-  {
-    "unitid": 214740,
-    "inst_name": "Pennsylvania State University-Penn State DuBois",
-    "city": "DuBois",
-    "state_abbr": "PA",
-    "latitude": 41.127184,
-    "longitude": -78.751554
-  },
-  {
-    "unitid": 214759,
-    "inst_name": "Pennsylvania State University-Penn State Fayette- Eberly",
-    "city": "Lemont Furnace",
-    "state_abbr": "PA",
-    "latitude": 39.946455,
-    "longitude": -79.659317
-  },
-  {
-    "unitid": 214768,
-    "inst_name": "Pennsylvania State University-Penn State Hazleton",
-    "city": "Hazleton",
-    "state_abbr": "PA",
-    "latitude": 40.98396,
-    "longitude": -76.030975
-  },
-  {
     "unitid": 214777,
     "inst_name": "Pennsylvania State University-Main Campus",
     "city": "University Park",
     "state_abbr": "PA",
     "latitude": 40.7965,
     "longitude": -77.862848
-  },
-  {
-    "unitid": 214786,
-    "inst_name": "Pennsylvania State University-Penn State Greater Allegheny",
-    "city": "McKeesport",
-    "state_abbr": "PA",
-    "latitude": 40.345591,
-    "longitude": -79.827428
-  },
-  {
-    "unitid": 214795,
-    "inst_name": "Pennsylvania State University-Penn State Mont Alto",
-    "city": "Mont Alto",
-    "state_abbr": "PA",
-    "latitude": 39.842212,
-    "longitude": -77.541797
-  },
-  {
-    "unitid": 214801,
-    "inst_name": "Pennsylvania State University-Penn State Abington",
-    "city": "Abington",
-    "state_abbr": "PA",
-    "latitude": 40.117101,
-    "longitude": -75.110724
-  },
-  {
-    "unitid": 214810,
-    "inst_name": "Pennsylvania State University-Penn State Schuylkill",
-    "city": "Schuylkill Haven",
-    "state_abbr": "PA",
-    "latitude": 40.640512,
-    "longitude": -76.166374
-  },
-  {
-    "unitid": 214829,
-    "inst_name": "Pennsylvania State University-Penn State York",
-    "city": "York",
-    "state_abbr": "PA",
-    "latitude": 39.95283,
-    "longitude": -76.703486
   },
   {
     "unitid": 214883,
@@ -13496,14 +12560,6 @@
     "longitude": -75.19391
   },
   {
-    "unitid": 215105,
-    "inst_name": "University of the Arts",
-    "city": "Philadelphia",
-    "state_abbr": "PA",
-    "latitude": 39.946017,
-    "longitude": -75.165888
-  },
-  {
     "unitid": 215114,
     "inst_name": "Cairn University-Langhorne",
     "city": "Langhorne",
@@ -13520,44 +12576,12 @@
     "longitude": -75.216092
   },
   {
-    "unitid": 215266,
-    "inst_name": "University of Pittsburgh-Bradford",
-    "city": "Bradford",
-    "state_abbr": "PA",
-    "latitude": 41.943415,
-    "longitude": -78.673701
-  },
-  {
-    "unitid": 215275,
-    "inst_name": "University of Pittsburgh-Greensburg",
-    "city": "Greensburg",
-    "state_abbr": "PA",
-    "latitude": 40.276447,
-    "longitude": -79.532676
-  },
-  {
-    "unitid": 215284,
-    "inst_name": "University of Pittsburgh-Johnstown",
-    "city": "Johnstown",
-    "state_abbr": "PA",
-    "latitude": 40.265957,
-    "longitude": -78.834163
-  },
-  {
     "unitid": 215293,
     "inst_name": "University of Pittsburgh-Pittsburgh Campus",
     "city": "Pittsburgh",
     "state_abbr": "PA",
     "latitude": 40.444388,
     "longitude": -79.953254
-  },
-  {
-    "unitid": 215415,
-    "inst_name": "Pittsburgh Technical College",
-    "city": "Oakdale",
-    "state_abbr": "PA",
-    "latitude": 40.424679,
-    "longitude": -80.189404
   },
   {
     "unitid": 215424,
@@ -13626,14 +12650,6 @@
   {
     "unitid": 215798,
     "inst_name": "Saint Vincent College",
-    "city": "Latrobe",
-    "state_abbr": "PA",
-    "latitude": 40.29265,
-    "longitude": -79.403762
-  },
-  {
-    "unitid": 215813,
-    "inst_name": "Saint Vincent Seminary",
     "city": "Latrobe",
     "state_abbr": "PA",
     "latitude": 40.29265,
@@ -15624,14 +14640,6 @@
     "longitude": -113.565903
   },
   {
-    "unitid": 230366,
-    "inst_name": "Eagle Gate College-Murray",
-    "city": "Murray",
-    "state_abbr": "UT",
-    "latitude": 40.649984,
-    "longitude": -111.903609
-  },
-  {
     "unitid": 230418,
     "inst_name": "Ensign College",
     "city": "Salt Lake City",
@@ -15712,14 +14720,6 @@
     "longitude": -73.202746
   },
   {
-    "unitid": 230889,
-    "inst_name": "Goddard College",
-    "city": "Plainfield",
-    "state_abbr": "VT",
-    "latitude": 44.279087,
-    "longitude": -72.438388
-  },
-  {
     "unitid": 230959,
     "inst_name": "Middlebury College",
     "city": "Middlebury",
@@ -15774,14 +14774,6 @@
     "state_abbr": "VT",
     "latitude": 44.25425,
     "longitude": -72.572581
-  },
-  {
-    "unitid": 231165,
-    "inst_name": "Vermont State University",
-    "city": "Randolph",
-    "state_abbr": "VT",
-    "latitude": 43.939623,
-    "longitude": -72.604498
   },
   {
     "unitid": 231174,
@@ -15944,14 +14936,6 @@
     "longitude": -79.181653
   },
   {
-    "unitid": 232618,
-    "inst_name": "Centra College",
-    "city": "Lynchburg",
-    "state_abbr": "VA",
-    "latitude": 37.4051,
-    "longitude": -79.174101
-  },
-  {
     "unitid": 232672,
     "inst_name": "Mary Baldwin University",
     "city": "Staunton",
@@ -16032,14 +15016,6 @@
     "longitude": -79.171887
   },
   {
-    "unitid": 233356,
-    "inst_name": "Bon Secours Memorial College of Nursing",
-    "city": "Richmond",
-    "state_abbr": "VA",
-    "latitude": 37.646698,
-    "longitude": -77.433569
-  },
-  {
     "unitid": 233374,
     "inst_name": "University of Richmond",
     "city": "University of Richmond",
@@ -16086,14 +15062,6 @@
     "state_abbr": "VA",
     "latitude": 37.740368,
     "longitude": -79.35037
-  },
-  {
-    "unitid": 233684,
-    "inst_name": "Strayer University-Virginia",
-    "city": "Arlington",
-    "state_abbr": "VA",
-    "latitude": 38.890995,
-    "longitude": -77.085294
   },
   {
     "unitid": 233718,
@@ -16664,14 +15632,6 @@
     "longitude": -81.506192
   },
   {
-    "unitid": 237701,
-    "inst_name": "Potomac State College of West Virginia University",
-    "city": "Keyser",
-    "state_abbr": "WV",
-    "latitude": 39.438323,
-    "longitude": -78.981441
-  },
-  {
     "unitid": 237783,
     "inst_name": "Salem University",
     "city": "Salem",
@@ -16710,14 +15670,6 @@
     "state_abbr": "WV",
     "latitude": 40.164417,
     "longitude": -80.602256
-  },
-  {
-    "unitid": 237950,
-    "inst_name": "West Virginia University Institute of Technology",
-    "city": "Beckley",
-    "state_abbr": "WV",
-    "latitude": 37.775924,
-    "longitude": -81.184072
   },
   {
     "unitid": 237969,
@@ -17144,22 +16096,6 @@
     "longitude": 145.721733
   },
   {
-    "unitid": 241100,
-    "inst_name": "American University of Puerto Rico",
-    "city": "Bayamon",
-    "state_abbr": "PR",
-    "latitude": 18.407058,
-    "longitude": -66.186631
-  },
-  {
-    "unitid": 241128,
-    "inst_name": "American University of Puerto Rico",
-    "city": "Manati",
-    "state_abbr": "PR",
-    "latitude": 18.434072,
-    "longitude": -66.478655
-  },
-  {
     "unitid": 241191,
     "inst_name": "Universidad Adventista de las Antillas",
     "city": "Mayaguez",
@@ -17216,14 +16152,6 @@
     "longitude": -65.960036
   },
   {
-    "unitid": 241395,
-    "inst_name": "Pontifical Catholic University of Puerto Rico-Arecibo",
-    "city": "Arecibo",
-    "state_abbr": "PR",
-    "latitude": 18.446006,
-    "longitude": -66.679114
-  },
-  {
     "unitid": 241410,
     "inst_name": "Pontifical Catholic University of Puerto Rico-Ponce",
     "city": "Ponce",
@@ -17248,14 +16176,6 @@
     "longitude": -66.010617
   },
   {
-    "unitid": 241720,
-    "inst_name": "Colegio Universitario de San Juan",
-    "city": "San Juan",
-    "state_abbr": "PR",
-    "latitude": 18.428528,
-    "longitude": -66.066529
-  },
-  {
     "unitid": 241739,
     "inst_name": "Universidad Ana G. Mendez-Cupey Campus",
     "city": "San Juan",
@@ -17278,14 +16198,6 @@
     "state_abbr": "PR",
     "latitude": 18.466567,
     "longitude": -66.11841
-  },
-  {
-    "unitid": 241836,
-    "inst_name": "EDP University of Puerto Rico Inc-San Sebastian",
-    "city": "San Sebastian",
-    "state_abbr": "PR",
-    "latitude": 18.338036,
-    "longitude": -66.992287
   },
   {
     "unitid": 241951,
@@ -17320,92 +16232,12 @@
     "longitude": -65.826857
   },
   {
-    "unitid": 242617,
-    "inst_name": "Inter American University of Puerto Rico-San German",
-    "city": "San German",
-    "state_abbr": "PR",
-    "latitude": 18.08353,
-    "longitude": -67.05082
-  },
-  {
-    "unitid": 242626,
-    "inst_name": "Inter American University of Puerto Rico-Aguadilla",
-    "city": "Aguadilla",
-    "state_abbr": "PR",
-    "latitude": 18.467886,
-    "longitude": -67.121671
-  },
-  {
-    "unitid": 242635,
-    "inst_name": "Inter American University of Puerto Rico-Arecibo",
-    "city": "Arecibo",
-    "state_abbr": "PR",
-    "latitude": 18.47509,
-    "longitude": -66.75901
-  },
-  {
-    "unitid": 242644,
-    "inst_name": "Inter American University of Puerto Rico-Barranquitas",
-    "city": "Barranquitas",
-    "state_abbr": "PR",
-    "latitude": 18.182777,
-    "longitude": -66.303153
-  },
-  {
-    "unitid": 242653,
-    "inst_name": "Inter American University of Puerto Rico-Metro",
-    "city": "San Juan",
-    "state_abbr": "PR",
-    "latitude": 18.368988,
-    "longitude": -66.077711
-  },
-  {
-    "unitid": 242662,
-    "inst_name": "Inter American University of Puerto Rico-Ponce",
-    "city": "Mercedita",
-    "state_abbr": "PR",
-    "latitude": 18.007388,
-    "longitude": -66.578498
-  },
-  {
     "unitid": 242671,
     "inst_name": "Inter American University of Puerto Rico-Central Office",
     "city": "San Juan",
     "state_abbr": "PR",
     "latitude": 18.403964,
     "longitude": -66.069533
-  },
-  {
-    "unitid": 242680,
-    "inst_name": "Inter American University of Puerto Rico-Fajardo",
-    "city": "Fajardo",
-    "state_abbr": "PR",
-    "latitude": 18.329222,
-    "longitude": -65.648052
-  },
-  {
-    "unitid": 242699,
-    "inst_name": "Inter American University of Puerto Rico-Guayama",
-    "city": "Guayama",
-    "state_abbr": "PR",
-    "latitude": 17.96635,
-    "longitude": -66.108164
-  },
-  {
-    "unitid": 242705,
-    "inst_name": "Inter American University of Puerto Rico-Bayamon",
-    "city": "Bayamon",
-    "state_abbr": "PR",
-    "latitude": 18.351631,
-    "longitude": -66.182473
-  },
-  {
-    "unitid": 242723,
-    "inst_name": "Inter American University of Puerto Rico-School of Law",
-    "city": "San Juan",
-    "state_abbr": "PR",
-    "latitude": 18.428145,
-    "longitude": -66.072656
   },
   {
     "unitid": 242972,
@@ -17560,14 +16392,6 @@
     "longitude": -66.056084
   },
   {
-    "unitid": 243586,
-    "inst_name": "Pontifical Catholic University of Puerto Rico-Mayaguez",
-    "city": "Mayaguez",
-    "state_abbr": "PR",
-    "latitude": 18.182375,
-    "longitude": -67.145695
-  },
-  {
     "unitid": 243601,
     "inst_name": "Universidad Ana G. Mendez-Gurabo Campus",
     "city": "Gurabo",
@@ -17648,60 +16472,12 @@
     "longitude": -74.069798
   },
   {
-    "unitid": 245838,
-    "inst_name": "Antioch University-Los Angeles",
-    "city": "Culver City",
-    "state_abbr": "CA",
-    "latitude": 33.988533,
-    "longitude": -118.384458
-  },
-  {
-    "unitid": 245847,
-    "inst_name": "Antioch University-Santa Barbara",
-    "city": "Santa Barbara",
-    "state_abbr": "CA",
-    "latitude": 34.419203,
-    "longitude": -119.6958
-  },
-  {
-    "unitid": 245865,
-    "inst_name": "Antioch University-New England",
-    "city": "Keene",
-    "state_abbr": "NH",
-    "latitude": 42.932344,
-    "longitude": -72.293798
-  },
-  {
-    "unitid": 245883,
-    "inst_name": "Antioch University-Seattle",
-    "city": "Seattle",
-    "state_abbr": "WA",
-    "latitude": 47.615916,
-    "longitude": -122.346318
-  },
-  {
-    "unitid": 245892,
-    "inst_name": "Antioch University",
-    "city": "Yellow Springs",
-    "state_abbr": "OH",
-    "latitude": 39.80321,
-    "longitude": -83.908684
-  },
-  {
     "unitid": 245953,
     "inst_name": "Mid-America Christian University",
     "city": "Oklahoma City",
     "state_abbr": "OK",
     "latitude": 35.347785,
     "longitude": -97.578297
-  },
-  {
-    "unitid": 246345,
-    "inst_name": "Houston Graduate School of Theology",
-    "city": "Houston",
-    "state_abbr": "TX",
-    "latitude": 29.673594,
-    "longitude": -95.448846
   },
   {
     "unitid": 246789,
@@ -17792,22 +16568,6 @@
     "longitude": -118.150013
   },
   {
-    "unitid": 260813,
-    "inst_name": "Platt College-Aurora",
-    "city": "Greenwood Village",
-    "state_abbr": "CO",
-    "latitude": 39.613133,
-    "longitude": -104.899235
-  },
-  {
-    "unitid": 260992,
-    "inst_name": "Northwestern College",
-    "city": "Oak Lawn",
-    "state_abbr": "IL",
-    "latitude": 41.721406,
-    "longitude": -87.742567
-  },
-  {
     "unitid": 262086,
     "inst_name": "University of Massachusetts Global",
     "city": "Irvine",
@@ -17822,14 +16582,6 @@
     "state_abbr": "FL",
     "latitude": 27.384925,
     "longitude": -82.55858
-  },
-  {
-    "unitid": 262165,
-    "inst_name": "Montana Bible College",
-    "city": "Billings",
-    "state_abbr": "MT",
-    "latitude": 45.741788,
-    "longitude": -108.615675
   },
   {
     "unitid": 363712,
@@ -17862,14 +16614,6 @@
     "state_abbr": "AZ",
     "latitude": 33.377712,
     "longitude": -111.976087
-  },
-  {
-    "unitid": 364016,
-    "inst_name": "Paradise Valley Community College",
-    "city": "Phoenix",
-    "state_abbr": "AZ",
-    "latitude": 33.652135,
-    "longitude": -112.009865
   },
   {
     "unitid": 366003,
@@ -17912,14 +16656,6 @@
     "longitude": -117.159013
   },
   {
-    "unitid": 367884,
-    "inst_name": "Hodges University",
-    "city": "Fort Myers",
-    "state_abbr": "FL",
-    "latitude": 26.610865,
-    "longitude": -81.821419
-  },
-  {
     "unitid": 367954,
     "inst_name": "University of St. Augustine for Health Sciences",
     "city": "San Marcos",
@@ -17952,14 +16688,6 @@
     "longitude": -93.248107
   },
   {
-    "unitid": 369659,
-    "inst_name": "Oregon College of Oriental Medicine",
-    "city": "Portland",
-    "state_abbr": "OR",
-    "latitude": 45.524121,
-    "longitude": -122.671099
-  },
-  {
     "unitid": 372073,
     "inst_name": "Fremont University",
     "city": "Cerritos",
@@ -17984,14 +16712,6 @@
     "longitude": -73.992328
   },
   {
-    "unitid": 376224,
-    "inst_name": "CEM College-Humacao",
-    "city": "Humacao",
-    "state_abbr": "PR",
-    "latitude": 18.148771,
-    "longitude": -65.821107
-  },
-  {
     "unitid": 376385,
     "inst_name": "Universal Technology College of Puerto Rico",
     "city": "Aguadilla",
@@ -18014,22 +16734,6 @@
     "state_abbr": "WA",
     "latitude": 47.25249,
     "longitude": -122.43885
-  },
-  {
-    "unitid": 377555,
-    "inst_name": "University of Washington-Bothell Campus",
-    "city": "Bothell",
-    "state_abbr": "WA",
-    "latitude": 47.759773,
-    "longitude": -122.191293
-  },
-  {
-    "unitid": 377564,
-    "inst_name": "University of Washington-Tacoma Campus",
-    "city": "Tacoma",
-    "state_abbr": "WA",
-    "latitude": 47.244594,
-    "longitude": -122.438541
   },
   {
     "unitid": 377661,
@@ -18208,22 +16912,6 @@
     "longitude": -118.442756
   },
   {
-    "unitid": 404055,
-    "inst_name": "Brookline College-Tempe",
-    "city": "Tempe",
-    "state_abbr": "AZ",
-    "latitude": 33.4163,
-    "longitude": -111.961365
-  },
-  {
-    "unitid": 404222,
-    "inst_name": "Inter American University of Puerto Rico-School of Optometry",
-    "city": "Bayamon",
-    "state_abbr": "PR",
-    "latitude": 18.351631,
-    "longitude": -66.182473
-  },
-  {
     "unitid": 404338,
     "inst_name": "Schiller International University",
     "city": "Tampa",
@@ -18254,22 +16942,6 @@
     "state_abbr": "NY",
     "latitude": 40.704389,
     "longitude": -73.956772
-  },
-  {
-    "unitid": 406024,
-    "inst_name": "Galen College of Nursing-Tampa Bay",
-    "city": "Saint Petersburg",
-    "state_abbr": "FL",
-    "latitude": 27.865391,
-    "longitude": -82.648151
-  },
-  {
-    "unitid": 406033,
-    "inst_name": "Galen College of Nursing-San Antonio",
-    "city": "San Antonio",
-    "state_abbr": "TX",
-    "latitude": 29.507685,
-    "longitude": -98.585653
   },
   {
     "unitid": 407610,
@@ -18352,36 +17024,12 @@
     "longitude": -74.006721
   },
   {
-    "unitid": 414878,
-    "inst_name": "Trine University-Regional/Non-Traditional Campuses",
-    "city": "Angola",
-    "state_abbr": "IN",
-    "latitude": 41.632502,
-    "longitude": -85.008009
-  },
-  {
     "unitid": 414966,
     "inst_name": "Phillips Theological Seminary",
     "city": "Tulsa",
     "state_abbr": "OK",
     "latitude": 36.167983,
     "longitude": -95.868146
-  },
-  {
-    "unitid": 416801,
-    "inst_name": "The University of Texas MD Anderson Cancer Center",
-    "city": "Houston",
-    "state_abbr": "TX",
-    "latitude": 29.707016,
-    "longitude": -95.396804
-  },
-  {
-    "unitid": 417734,
-    "inst_name": "Southeast Missouri Hospital College of Nursing and Health Sciences",
-    "city": "Cape Girardeau",
-    "state_abbr": "MO",
-    "latitude": 37.302453,
-    "longitude": -89.54587
   },
   {
     "unitid": 417752,
@@ -18406,14 +17054,6 @@
     "state_abbr": "VA",
     "latitude": 36.765954,
     "longitude": -76.227712
-  },
-  {
-    "unitid": 420042,
-    "inst_name": "University of Phoenix-Hawaii",
-    "city": "Kapolei",
-    "state_abbr": "HI",
-    "latitude": 21.334103,
-    "longitude": -158.08161
   },
   {
     "unitid": 420246,
@@ -18480,28 +17120,12 @@
     "longitude": -112.183633
   },
   {
-    "unitid": 426314,
-    "inst_name": "Embry-Riddle Aeronautical University-Worldwide",
-    "city": "Daytona Beach",
-    "state_abbr": "FL",
-    "latitude": 29.189903,
-    "longitude": -81.048367
-  },
-  {
     "unitid": 428170,
     "inst_name": "Southeastern College-West Palm Beach",
     "city": "West Palm Beach",
     "state_abbr": "FL",
     "latitude": 26.702216,
     "longitude": -80.085966
-  },
-  {
-    "unitid": 428259,
-    "inst_name": "Ottawa University-Milwaukee",
-    "city": "Brookfield",
-    "state_abbr": "WI",
-    "latitude": 43.02963,
-    "longitude": -88.115185
   },
   {
     "unitid": 428453,
@@ -18518,22 +17142,6 @@
     "state_abbr": "TX",
     "latitude": 29.735747,
     "longitude": -95.524765
-  },
-  {
-    "unitid": 429094,
-    "inst_name": "AOMA Graduate School of Integrative Medicine",
-    "city": "Austin",
-    "state_abbr": "TX",
-    "latitude": 30.228551,
-    "longitude": -97.800643
-  },
-  {
-    "unitid": 430184,
-    "inst_name": "Strayer University-Maryland",
-    "city": "Suitland",
-    "state_abbr": "MD",
-    "latitude": 38.827438,
-    "longitude": -76.918039
   },
   {
     "unitid": 430670,
@@ -18566,14 +17174,6 @@
     "state_abbr": "VA",
     "latitude": 37.277669,
     "longitude": -82.095648
-  },
-  {
-    "unitid": 432384,
-    "inst_name": "Platt College-Ontario",
-    "city": "Ontario",
-    "state_abbr": "CA",
-    "latitude": 34.068595,
-    "longitude": -117.571744
   },
   {
     "unitid": 433004,
@@ -18648,22 +17248,6 @@
     "longitude": -156.679486
   },
   {
-    "unitid": 434900,
-    "inst_name": "Dewey University-Carolina",
-    "city": "Carolina",
-    "state_abbr": "PR",
-    "latitude": 18.376596,
-    "longitude": -65.958397
-  },
-  {
-    "unitid": 434937,
-    "inst_name": "Yeshiva College of the Nations Capital",
-    "city": "Silver  Spring",
-    "state_abbr": "MD",
-    "latitude": 39.042404,
-    "longitude": -77.030566
-  },
-  {
     "unitid": 435000,
     "inst_name": "Louisiana State University Health Sciences Center-Shreveport",
     "city": "Shreveport",
@@ -18686,30 +17270,6 @@
     "state_abbr": "AZ",
     "latitude": 33.273788,
     "longitude": -111.879629
-  },
-  {
-    "unitid": 436818,
-    "inst_name": "University of Connecticut-Waterbury Campus",
-    "city": "Waterbury",
-    "state_abbr": "CT",
-    "latitude": 41.555617,
-    "longitude": -73.039242
-  },
-  {
-    "unitid": 436827,
-    "inst_name": "University of Connecticut-Avery Point",
-    "city": "Groton",
-    "state_abbr": "CT",
-    "latitude": 41.316419,
-    "longitude": -72.065336
-  },
-  {
-    "unitid": 436836,
-    "inst_name": "University of Connecticut-Stamford",
-    "city": "Stamford",
-    "state_abbr": "CT",
-    "latitude": 41.056081,
-    "longitude": -73.542206
   },
   {
     "unitid": 437097,
@@ -18832,14 +17392,6 @@
     "longitude": -122.325399
   },
   {
-    "unitid": 439969,
-    "inst_name": "Acupuncture and Massage College",
-    "city": "Miami",
-    "state_abbr": "FL",
-    "latitude": 25.686382,
-    "longitude": -80.364141
-  },
-  {
     "unitid": 440031,
     "inst_name": "Keck Graduate Institute",
     "city": "Claremont",
@@ -18872,28 +17424,12 @@
     "longitude": -66.488422
   },
   {
-    "unitid": 440749,
-    "inst_name": "National American University-Ellsworth",
-    "city": "Box Elder",
-    "state_abbr": "SD",
-    "latitude": 44.131301,
-    "longitude": -103.072726
-  },
-  {
     "unitid": 440794,
     "inst_name": "Pillar College",
     "city": "Newark",
     "state_abbr": "NJ",
     "latitude": 40.738539,
     "longitude": -74.169153
-  },
-  {
-    "unitid": 440828,
-    "inst_name": "Oregon State University-Cascades Campus",
-    "city": "Bend",
-    "state_abbr": "OR",
-    "latitude": 44.042795,
-    "longitude": -121.333703
   },
   {
     "unitid": 440916,
@@ -18926,14 +17462,6 @@
     "state_abbr": "CA",
     "latitude": 34.061409,
     "longitude": -118.302836
-  },
-  {
-    "unitid": 441238,
-    "inst_name": "Irell & Manella Graduate School of Biological Sciences at City of Hope",
-    "city": "Duarte",
-    "state_abbr": "CA",
-    "latitude": 34.129048,
-    "longitude": -117.972791
   },
   {
     "unitid": 441609,
@@ -19008,28 +17536,12 @@
     "longitude": -76.247035
   },
   {
-    "unitid": 442426,
-    "inst_name": "St Louis College of Health Careers-Fenton",
-    "city": "Fenton",
-    "state_abbr": "MO",
-    "latitude": 38.544635,
-    "longitude": -90.470904
-  },
-  {
     "unitid": 442569,
     "inst_name": "University of Arkansas Grantham",
     "city": "LIttle Rock",
     "state_abbr": "AR",
     "latitude": 34.775996,
     "longitude": -92.343582
-  },
-  {
-    "unitid": 442639,
-    "inst_name": "University of the Potomac-VA Campus",
-    "city": "FALLS CHURCH",
-    "state_abbr": "VA",
-    "latitude": 38.906944,
-    "longitude": -77.216062
   },
   {
     "unitid": 442806,
@@ -19046,14 +17558,6 @@
     "state_abbr": "IL",
     "latitude": 41.886588,
     "longitude": -87.625488
-  },
-  {
-    "unitid": 442930,
-    "inst_name": "University of Antelope Valley",
-    "city": "Lancaster",
-    "state_abbr": "CA",
-    "latitude": 34.683587,
-    "longitude": -118.134968
   },
   {
     "unitid": 443049,
@@ -19152,44 +17656,12 @@
     "longitude": -96.795217
   },
   {
-    "unitid": 443766,
-    "inst_name": "Strayer University-Tennessee",
-    "city": "Memphis",
-    "state_abbr": "TN",
-    "latitude": 35.076643,
-    "longitude": -89.901042
-  },
-  {
-    "unitid": 443784,
-    "inst_name": "Strayer University-Pennsylvania",
-    "city": "Trevose",
-    "state_abbr": "PA",
-    "latitude": 40.13955,
-    "longitude": -74.962991
-  },
-  {
-    "unitid": 444088,
-    "inst_name": "Brookline College-Albuquerque",
-    "city": "Albuquerque",
-    "state_abbr": "NM",
-    "latitude": 35.08781,
-    "longitude": -106.68749
-  },
-  {
     "unitid": 444103,
     "inst_name": "Byzantine Catholic Seminary of Saints Cyril and Methodius",
     "city": "Pittsburgh",
     "state_abbr": "PA",
     "latitude": 40.484409,
     "longitude": -80.015825
-  },
-  {
-    "unitid": 444130,
-    "inst_name": "Northcentral University",
-    "city": "San Diego",
-    "state_abbr": "CA",
-    "latitude": 32.829299,
-    "longitude": -117.127296
   },
   {
     "unitid": 444325,
@@ -19248,36 +17720,12 @@
     "longitude": -111.804036
   },
   {
-    "unitid": 445054,
-    "inst_name": "Toyota Technological Institute at Chicago",
-    "city": "Chicago",
-    "state_abbr": "IL",
-    "latitude": 41.784721,
-    "longitude": -87.592682
-  },
-  {
     "unitid": 445133,
     "inst_name": "American InterContinental University-Houston",
     "city": "Houston",
     "state_abbr": "TX",
     "latitude": 29.728216,
     "longitude": -95.548302
-  },
-  {
-    "unitid": 445188,
-    "inst_name": "University of California-Merced",
-    "city": "Merced",
-    "state_abbr": "CA",
-    "latitude": 37.366237,
-    "longitude": -120.424944
-  },
-  {
-    "unitid": 445267,
-    "inst_name": "Central Methodist University-College of Graduate and Extended Studies",
-    "city": "Fayette",
-    "state_abbr": "MO",
-    "latitude": 39.150497,
-    "longitude": -92.685253
   },
   {
     "unitid": 445692,
@@ -19334,14 +17782,6 @@
     "state_abbr": "FL",
     "latitude": 26.335983,
     "longitude": -81.438945
-  },
-  {
-    "unitid": 446127,
-    "inst_name": "ATA Career Education",
-    "city": "Spring Hill",
-    "state_abbr": "FL",
-    "latitude": 28.452699,
-    "longitude": -82.595376
   },
   {
     "unitid": 446224,
@@ -19432,14 +17872,6 @@
     "longitude": -111.892792
   },
   {
-    "unitid": 447421,
-    "inst_name": "Eagle Gate College-Layton",
-    "city": "Layton",
-    "state_abbr": "UT",
-    "latitude": 41.073374,
-    "longitude": -111.973885
-  },
-  {
     "unitid": 447689,
     "inst_name": "Georgia Gwinnett College",
     "city": "Lawrenceville",
@@ -19520,22 +17952,6 @@
     "longitude": -75.382203
   },
   {
-    "unitid": 449038,
-    "inst_name": "Strayer University-Florida",
-    "city": "Tampa",
-    "state_abbr": "FL",
-    "latitude": 27.997442,
-    "longitude": -82.35991
-  },
-  {
-    "unitid": 449135,
-    "inst_name": "Dewey University-Juana Díaz",
-    "city": "Juana Diaz",
-    "state_abbr": "PR",
-    "latitude": 18.057023,
-    "longitude": -66.509285
-  },
-  {
     "unitid": 449339,
     "inst_name": "American Public University System",
     "city": "Charles Town",
@@ -19600,14 +18016,6 @@
     "longitude": -118.082964
   },
   {
-    "unitid": 449889,
-    "inst_name": "American College of Education",
-    "city": "Indianapolis",
-    "state_abbr": "IN",
-    "latitude": 39.76975,
-    "longitude": -86.160161
-  },
-  {
     "unitid": 449898,
     "inst_name": "South University-Tampa",
     "city": "Tampa",
@@ -19624,28 +18032,12 @@
     "longitude": -82.006195
   },
   {
-    "unitid": 450298,
-    "inst_name": "Strayer University-Delaware",
-    "city": "Wilmington",
-    "state_abbr": "DE",
-    "latitude": 39.743357,
-    "longitude": -75.547914
-  },
-  {
     "unitid": 450304,
     "inst_name": "Brite Divinity School",
     "city": "Fort Worth",
     "state_abbr": "TX",
     "latitude": 32.710145,
     "longitude": -97.359137
-  },
-  {
-    "unitid": 450377,
-    "inst_name": "Strayer University-Alabama",
-    "city": "Birmingham",
-    "state_abbr": "AL",
-    "latitude": 33.513375,
-    "longitude": -86.80574
   },
   {
     "unitid": 450571,
@@ -19744,84 +18136,12 @@
     "longitude": -77.690939
   },
   {
-    "unitid": 452373,
-    "inst_name": "ATA College-Cincinnati",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.29671,
-    "longitude": -84.478867
-  },
-  {
-    "unitid": 452948,
-    "inst_name": "Galen College of Nursing-Cincinnati",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.283693,
-    "longitude": -84.365946
-  },
-  {
-    "unitid": 453163,
-    "inst_name": "Strayer University-North Carolina",
-    "city": "Greensboro",
-    "state_abbr": "NC",
-    "latitude": 36.051694,
-    "longitude": -79.882713
-  },
-  {
-    "unitid": 453215,
-    "inst_name": "Strayer University-New Jersey",
-    "city": "Piscataway",
-    "state_abbr": "NJ",
-    "latitude": 40.554506,
-    "longitude": -74.474974
-  },
-  {
-    "unitid": 454184,
-    "inst_name": "The King's College",
-    "city": "New York",
-    "state_abbr": "NY",
-    "latitude": 40.706677,
-    "longitude": -74.012342
-  },
-  {
     "unitid": 454218,
     "inst_name": "Chamberlain University-Administrative Office",
     "city": "Chicago",
     "state_abbr": "IL",
     "latitude": 41.880848,
     "longitude": -87.640164
-  },
-  {
-    "unitid": 454227,
-    "inst_name": "Chamberlain University-Illinois",
-    "city": "Addison",
-    "state_abbr": "IL",
-    "latitude": 41.949727,
-    "longitude": -88.038558
-  },
-  {
-    "unitid": 454236,
-    "inst_name": "Chamberlain University-Ohio",
-    "city": "Columbus",
-    "state_abbr": "OH",
-    "latitude": 40.054055,
-    "longitude": -82.912163
-  },
-  {
-    "unitid": 454245,
-    "inst_name": "Chamberlain University-Arizona",
-    "city": "Phoenix",
-    "state_abbr": "AZ",
-    "latitude": 33.565758,
-    "longitude": -112.104601
-  },
-  {
-    "unitid": 454582,
-    "inst_name": "Ottawa University-Online",
-    "city": "Overland Park",
-    "state_abbr": "KS",
-    "latitude": 38.932055,
-    "longitude": -94.635461
   },
   {
     "unitid": 454689,
@@ -19904,22 +18224,6 @@
     "longitude": -120.45598
   },
   {
-    "unitid": 455433,
-    "inst_name": "The Chicago School at Anaheim",
-    "city": "Anaheim",
-    "state_abbr": "CA",
-    "latitude": 33.804604,
-    "longitude": -117.882312
-  },
-  {
-    "unitid": 455664,
-    "inst_name": "The Chicago School at Los Angeles",
-    "city": "Los Angeles",
-    "state_abbr": "CA",
-    "latitude": 34.049478,
-    "longitude": -118.257045
-  },
-  {
     "unitid": 455770,
     "inst_name": "Providence Christian College",
     "city": "Pasadena",
@@ -19952,44 +18256,12 @@
     "longitude": -72.567616
   },
   {
-    "unitid": 456171,
-    "inst_name": "Urbana Theological Seminary",
-    "city": "Urbana",
-    "state_abbr": "IL",
-    "latitude": 40.108244,
-    "longitude": -88.233772
-  },
-  {
-    "unitid": 456481,
-    "inst_name": "Polytechnic University of Puerto Rico-Miami",
-    "city": "Miami",
-    "state_abbr": "FL",
-    "latitude": 25.80915,
-    "longitude": -80.328482
-  },
-  {
-    "unitid": 456490,
-    "inst_name": "Polytechnic University of Puerto Rico-Orlando",
-    "city": "Orlando",
-    "state_abbr": "FL",
-    "latitude": 28.55158,
-    "longitude": -81.253943
-  },
-  {
     "unitid": 456542,
     "inst_name": "Geisinger Commonwealth School of Medicine",
     "city": "Scranton",
     "state_abbr": "PA",
     "latitude": 41.413415,
     "longitude": -75.655478
-  },
-  {
-    "unitid": 456621,
-    "inst_name": "Strayer University-West Virginia",
-    "city": "Scott Depot",
-    "state_abbr": "WV",
-    "latitude": 38.454588,
-    "longitude": -81.92619
   },
   {
     "unitid": 456959,
@@ -20006,14 +18278,6 @@
     "state_abbr": "CA",
     "latitude": 33.809096,
     "longitude": -118.35009
-  },
-  {
-    "unitid": 457129,
-    "inst_name": "Chamberlain University-Florida",
-    "city": "Jacksonville",
-    "state_abbr": "FL",
-    "latitude": 30.243517,
-    "longitude": -81.586421
   },
   {
     "unitid": 457226,
@@ -20080,62 +18344,6 @@
     "longitude": -77.624657
   },
   {
-    "unitid": 458210,
-    "inst_name": "West Coast University-Orange County",
-    "city": "Anaheim",
-    "state_abbr": "CA",
-    "latitude": 33.81104,
-    "longitude": -117.911811
-  },
-  {
-    "unitid": 458229,
-    "inst_name": "West Coast University-Ontario",
-    "city": "Ontario",
-    "state_abbr": "CA",
-    "latitude": 34.066591,
-    "longitude": -117.590035
-  },
-  {
-    "unitid": 458885,
-    "inst_name": "Strayer University-Arkansas",
-    "city": "Little Rock",
-    "state_abbr": "AR",
-    "latitude": 34.745489,
-    "longitude": -92.271192
-  },
-  {
-    "unitid": 458919,
-    "inst_name": "Strayer University-Georgia",
-    "city": "Chamblee",
-    "state_abbr": "GA",
-    "latitude": 33.870686,
-    "longitude": -84.267177
-  },
-  {
-    "unitid": 458955,
-    "inst_name": "Strayer University-Mississippi",
-    "city": "Jackson",
-    "state_abbr": "MS",
-    "latitude": 32.300562,
-    "longitude": -90.188097
-  },
-  {
-    "unitid": 458964,
-    "inst_name": "Strayer University-South Carolina",
-    "city": "Greenville",
-    "state_abbr": "SC",
-    "latitude": 34.839766,
-    "longitude": -82.399535
-  },
-  {
-    "unitid": 458973,
-    "inst_name": "Strayer University-Texas",
-    "city": "Farmers Branch",
-    "state_abbr": "TX",
-    "latitude": 32.910744,
-    "longitude": -96.887509
-  },
-  {
     "unitid": 459204,
     "inst_name": "Unitek College",
     "city": "Fremont",
@@ -20168,38 +18376,6 @@
     "longitude": -76.124288
   },
   {
-    "unitid": 459727,
-    "inst_name": "Touro University Worldwide",
-    "city": "Los Alamitos",
-    "state_abbr": "CA",
-    "latitude": 33.808683,
-    "longitude": -118.057754
-  },
-  {
-    "unitid": 459736,
-    "inst_name": "Touro University California",
-    "city": "Vallejo",
-    "state_abbr": "CA",
-    "latitude": 38.085479,
-    "longitude": -122.263949
-  },
-  {
-    "unitid": 459745,
-    "inst_name": "The Chicago School at Washington DC",
-    "city": "Washington",
-    "state_abbr": "DC",
-    "latitude": 38.90163,
-    "longitude": -77.033071
-  },
-  {
-    "unitid": 459824,
-    "inst_name": "Touro University Nevada",
-    "city": "Henderson",
-    "state_abbr": "NV",
-    "latitude": 36.043189,
-    "longitude": -115.024012
-  },
-  {
     "unitid": 459842,
     "inst_name": "Herzing University-Kenosha",
     "city": "Kenosha",
@@ -20222,38 +18398,6 @@
     "state_abbr": "TX",
     "latitude": 29.304762,
     "longitude": -98.52417
-  },
-  {
-    "unitid": 459994,
-    "inst_name": "Strayer University-Global Region",
-    "city": "Washington",
-    "state_abbr": "DC",
-    "latitude": 38.904881,
-    "longitude": -77.034133
-  },
-  {
-    "unitid": 460349,
-    "inst_name": "Johnson & Wales University-Online",
-    "city": "Providence",
-    "state_abbr": "RI",
-    "latitude": 41.819956,
-    "longitude": -71.41277
-  },
-  {
-    "unitid": 460376,
-    "inst_name": "Fairfax University of America",
-    "city": "Fairfax",
-    "state_abbr": "VA",
-    "latitude": 38.84905,
-    "longitude": -77.347751
-  },
-  {
-    "unitid": 460871,
-    "inst_name": "Chamberlain University-Virginia",
-    "city": "Vienna",
-    "state_abbr": "VA",
-    "latitude": 38.910459,
-    "longitude": -77.220505
   },
   {
     "unitid": 461023,
@@ -20328,14 +18472,6 @@
     "longitude": -78.961305
   },
   {
-    "unitid": 461643,
-    "inst_name": "Bergin University of Canine Studies",
-    "city": "Penngrove",
-    "state_abbr": "CA",
-    "latitude": 38.302849,
-    "longitude": -122.68099
-  },
-  {
     "unitid": 461759,
     "inst_name": "Simmons College of Kentucky",
     "city": "Louisville",
@@ -20384,46 +18520,6 @@
     "longitude": -117.082401
   },
   {
-    "unitid": 463056,
-    "inst_name": "University of Connecticut-Hartford Campus",
-    "city": "Hartford",
-    "state_abbr": "CT",
-    "latitude": 41.762673,
-    "longitude": -72.672175
-  },
-  {
-    "unitid": 464226,
-    "inst_name": "Ottawa University-Surprise",
-    "city": "Surprise",
-    "state_abbr": "AZ",
-    "latitude": 33.628923,
-    "longitude": -112.368233
-  },
-  {
-    "unitid": 466921,
-    "inst_name": "Chamberlain University-Missouri",
-    "city": "St. Louis",
-    "state_abbr": "MO",
-    "latitude": 38.701907,
-    "longitude": -90.436283
-  },
-  {
-    "unitid": 466930,
-    "inst_name": "Chamberlain University-Texas",
-    "city": "Houston",
-    "state_abbr": "TX",
-    "latitude": 29.838386,
-    "longitude": -95.560414
-  },
-  {
-    "unitid": 469416,
-    "inst_name": "Dewey University-Manati",
-    "city": "Manati",
-    "state_abbr": "PR",
-    "latitude": 18.433307,
-    "longitude": -66.487333
-  },
-  {
     "unitid": 474863,
     "inst_name": "Los Angeles Pacific University",
     "city": "San Dimas",
@@ -20448,52 +18544,12 @@
     "longitude": -81.105531
   },
   {
-    "unitid": 475200,
-    "inst_name": "Whitworth University-Adult Degree Programs",
-    "city": "Spokane",
-    "state_abbr": "WA",
-    "latitude": 47.751642,
-    "longitude": -117.411568
-  },
-  {
-    "unitid": 475228,
-    "inst_name": "The Colleges of Law at Santa Barbara",
-    "city": "Santa Barbara",
-    "state_abbr": "CA",
-    "latitude": 34.424542,
-    "longitude": -119.70516
-  },
-  {
-    "unitid": 475237,
-    "inst_name": "The University of America",
-    "city": "Temecula",
-    "state_abbr": "CA",
-    "latitude": 33.519293,
-    "longitude": -117.167871
-  },
-  {
-    "unitid": 475273,
-    "inst_name": "Springfield College-Regional, Online, and Continuing Education",
-    "city": "Springfield",
-    "state_abbr": "MA",
-    "latitude": 42.1022,
-    "longitude": -72.556647
-  },
-  {
     "unitid": 475398,
     "inst_name": "Catholic Distance University",
     "city": "Charles Town",
     "state_abbr": "WV",
     "latitude": 39.287311,
     "longitude": -77.859242
-  },
-  {
-    "unitid": 475477,
-    "inst_name": "City College-Hollywood",
-    "city": "Hollywood",
-    "state_abbr": "FL",
-    "latitude": 26.025173,
-    "longitude": -80.22004
   },
   {
     "unitid": 475495,
@@ -20512,36 +18568,12 @@
     "longitude": -96.77669
   },
   {
-    "unitid": 475635,
-    "inst_name": "Beverly Hills Design Institute",
-    "city": "Beverly Hills",
-    "state_abbr": "CA",
-    "latitude": 34.06463,
-    "longitude": -118.375621
-  },
-  {
     "unitid": 475714,
     "inst_name": "American Medical Academy",
     "city": "Miami",
     "state_abbr": "FL",
     "latitude": 25.66273,
     "longitude": -80.393361
-  },
-  {
-    "unitid": 475732,
-    "inst_name": "Chamberlain University-Georgia",
-    "city": "Sandy Springs",
-    "state_abbr": "GA",
-    "latitude": 33.911943,
-    "longitude": -84.351949
-  },
-  {
-    "unitid": 475741,
-    "inst_name": "Chamberlain University-Indiana",
-    "city": "Indianapolis",
-    "state_abbr": "IN",
-    "latitude": 39.91916,
-    "longitude": -86.111061
   },
   {
     "unitid": 475839,
@@ -20584,22 +18616,6 @@
     "longitude": -104.786666
   },
   {
-    "unitid": 477039,
-    "inst_name": "West Coast University-Dallas",
-    "city": "Richardson",
-    "state_abbr": "TX",
-    "latitude": 32.98221,
-    "longitude": -96.716284
-  },
-  {
-    "unitid": 479956,
-    "inst_name": "Pennsylvania State University-World Campus",
-    "city": "University Park",
-    "state_abbr": "PA",
-    "latitude": 40.7965,
-    "longitude": -77.862848
-  },
-  {
     "unitid": 480073,
     "inst_name": "South University-Austin",
     "city": "Round Rock",
@@ -20614,30 +18630,6 @@
     "state_abbr": "NY",
     "latitude": 42.790174,
     "longitude": -78.770363
-  },
-  {
-    "unitid": 480198,
-    "inst_name": "Warner Pacific University Professional and Graduate Studies",
-    "city": "Portland",
-    "state_abbr": "OR",
-    "latitude": 45.506265,
-    "longitude": -122.592498
-  },
-  {
-    "unitid": 480204,
-    "inst_name": "Platt College-Riverside",
-    "city": "Riverside",
-    "state_abbr": "CA",
-    "latitude": 33.932923,
-    "longitude": -117.298365
-  },
-  {
-    "unitid": 480569,
-    "inst_name": "Florida Institute of Technology-Online",
-    "city": "Melbourne",
-    "state_abbr": "FL",
-    "latitude": 28.065773,
-    "longitude": -80.623123
   },
   {
     "unitid": 480657,
@@ -20728,14 +18720,6 @@
     "longitude": -74.202016
   },
   {
-    "unitid": 481535,
-    "inst_name": "Sanford Burnham Prebys Medical Discovery Institute",
-    "city": "La Jolla",
-    "state_abbr": "CA",
-    "latitude": 32.900056,
-    "longitude": -117.241748
-  },
-  {
     "unitid": 481720,
     "inst_name": "South University-High Point",
     "city": "High Point",
@@ -20768,102 +18752,6 @@
     "longitude": -84.848698
   },
   {
-    "unitid": 482413,
-    "inst_name": "DeVry College of New York",
-    "city": "New York",
-    "state_abbr": "NY",
-    "latitude": 40.747747,
-    "longitude": -73.983492
-  },
-  {
-    "unitid": 482422,
-    "inst_name": "DeVry University-Arizona",
-    "city": "Phoenix",
-    "state_abbr": "AZ",
-    "latitude": 33.565758,
-    "longitude": -112.104601
-  },
-  {
-    "unitid": 482431,
-    "inst_name": "DeVry University-California",
-    "city": "Ontario",
-    "state_abbr": "CA",
-    "latitude": 34.068481,
-    "longitude": -117.5876
-  },
-  {
-    "unitid": 482459,
-    "inst_name": "DeVry University-Florida",
-    "city": "Orlando",
-    "state_abbr": "FL",
-    "latitude": 28.456226,
-    "longitude": -81.456099
-  },
-  {
-    "unitid": 482468,
-    "inst_name": "DeVry University-Georgia",
-    "city": "Decatur",
-    "state_abbr": "GA",
-    "latitude": 33.775112,
-    "longitude": -84.297316
-  },
-  {
-    "unitid": 482477,
-    "inst_name": "DeVry University-Illinois",
-    "city": "Lisle",
-    "state_abbr": "IL",
-    "latitude": 41.807204,
-    "longitude": -88.116625
-  },
-  {
-    "unitid": 482547,
-    "inst_name": "DeVry University-Nevada",
-    "city": "Henderson",
-    "state_abbr": "NV",
-    "latitude": 36.020266,
-    "longitude": -115.096601
-  },
-  {
-    "unitid": 482556,
-    "inst_name": "DeVry University-New Jersey",
-    "city": "Iselin",
-    "state_abbr": "NJ",
-    "latitude": 40.557503,
-    "longitude": -74.311372
-  },
-  {
-    "unitid": 482565,
-    "inst_name": "DeVry University-North Carolina",
-    "city": "Charlotte",
-    "state_abbr": "NC",
-    "latitude": 35.13766,
-    "longitude": -80.931971
-  },
-  {
-    "unitid": 482574,
-    "inst_name": "DeVry University-Ohio",
-    "city": "Columbus",
-    "state_abbr": "OH",
-    "latitude": 40.046679,
-    "longitude": -82.906219
-  },
-  {
-    "unitid": 482635,
-    "inst_name": "DeVry University-Texas",
-    "city": "Irving",
-    "state_abbr": "TX",
-    "latitude": 32.934524,
-    "longitude": -97.012494
-  },
-  {
-    "unitid": 482653,
-    "inst_name": "DeVry University-Virginia",
-    "city": "Arlington",
-    "state_abbr": "VA",
-    "latitude": 38.861096,
-    "longitude": -77.049759
-  },
-  {
     "unitid": 482680,
     "inst_name": "University of North Georgia",
     "city": "Dahlonega",
@@ -20878,14 +18766,6 @@
     "state_abbr": "GA",
     "latitude": 31.495903,
     "longitude": -82.855231
-  },
-  {
-    "unitid": 482705,
-    "inst_name": "Northeastern University Professional Programs",
-    "city": "Boston",
-    "state_abbr": "MA",
-    "latitude": 42.339992,
-    "longitude": -71.088782
   },
   {
     "unitid": 482936,
@@ -20910,22 +18790,6 @@
     "state_abbr": "TX",
     "latitude": 31.053407,
     "longitude": -97.775182
-  },
-  {
-    "unitid": 483124,
-    "inst_name": "Arizona State University Digital Immersion",
-    "city": "Scottsdale",
-    "state_abbr": "AZ",
-    "latitude": 33.463517,
-    "longitude": -111.924487
-  },
-  {
-    "unitid": 483221,
-    "inst_name": "Learnet Academy Inc",
-    "city": "Los Angeles",
-    "state_abbr": "CA",
-    "latitude": 34.063934,
-    "longitude": -118.293165
   },
   {
     "unitid": 483373,
@@ -20976,30 +18840,6 @@
     "longitude": -112.012761
   },
   {
-    "unitid": 484631,
-    "inst_name": "University of Phoenix-California",
-    "city": "Ontario",
-    "state_abbr": "CA",
-    "latitude": 34.065748,
-    "longitude": -117.58377
-  },
-  {
-    "unitid": 484710,
-    "inst_name": "University of Phoenix-Nevada",
-    "city": "Las Vegas",
-    "state_abbr": "NV",
-    "latitude": 36.12164,
-    "longitude": -115.322506
-  },
-  {
-    "unitid": 484756,
-    "inst_name": "University of Phoenix-Texas",
-    "city": "Dallas",
-    "state_abbr": "TX",
-    "latitude": 32.917551,
-    "longitude": -96.768673
-  },
-  {
     "unitid": 484844,
     "inst_name": "Minerva University",
     "city": "San Francisco",
@@ -21038,14 +18878,6 @@
     "state_abbr": "GA",
     "latitude": 33.07944,
     "longitude": -83.224211
-  },
-  {
-    "unitid": 485272,
-    "inst_name": "West Coast University-Miami",
-    "city": "Doral",
-    "state_abbr": "FL",
-    "latitude": 25.81071,
-    "longitude": -80.347651
   },
   {
     "unitid": 485403,
@@ -21208,30 +19040,6 @@
     "longitude": -82.29407
   },
   {
-    "unitid": 486938,
-    "inst_name": "Chamberlain University-Nevada",
-    "city": "Las Vegas",
-    "state_abbr": "NV",
-    "latitude": 36.185176,
-    "longitude": -115.313525
-  },
-  {
-    "unitid": 486947,
-    "inst_name": "Chamberlain University-Michigan",
-    "city": "Troy",
-    "state_abbr": "MI",
-    "latitude": 42.557063,
-    "longitude": -83.150571
-  },
-  {
-    "unitid": 486956,
-    "inst_name": "Chamberlain University-New Jersey",
-    "city": "North Brunswick",
-    "state_abbr": "NJ",
-    "latitude": 40.465934,
-    "longitude": -74.438877
-  },
-  {
     "unitid": 487010,
     "inst_name": "The University of Tennessee Health Science Center",
     "city": "Memphis",
@@ -21240,36 +19048,12 @@
     "longitude": -90.033196
   },
   {
-    "unitid": 487153,
-    "inst_name": "The Chicago School at Xavier University of Louisiana",
-    "city": "New Orleans",
-    "state_abbr": "LA",
-    "latitude": 29.964162,
-    "longitude": -90.107307
-  },
-  {
-    "unitid": 487375,
-    "inst_name": "Arizona College of Nursing-Las Vegas",
-    "city": "Las Vegas",
-    "state_abbr": "NV",
-    "latitude": 36.067353,
-    "longitude": -115.274149
-  },
-  {
     "unitid": 487524,
     "inst_name": "Husson University",
     "city": "Bangor",
     "state_abbr": "ME",
     "latitude": 44.829002,
     "longitude": -68.791476
-  },
-  {
-    "unitid": 487603,
-    "inst_name": "Northwest University-Center for Online and Extended Education",
-    "city": "Kirkland",
-    "state_abbr": "WA",
-    "latitude": 47.657502,
-    "longitude": -122.195774
   },
   {
     "unitid": 487649,
@@ -21392,14 +19176,6 @@
     "longitude": -119.701977
   },
   {
-    "unitid": 488679,
-    "inst_name": "Indiana Wesleyan University-National & Global",
-    "city": "Marion",
-    "state_abbr": "IN",
-    "latitude": 40.510655,
-    "longitude": -85.677641
-  },
-  {
     "unitid": 488721,
     "inst_name": "NationsUniversity",
     "city": "New Orleans",
@@ -21414,14 +19190,6 @@
     "state_abbr": "IN",
     "latitude": 41.67338,
     "longitude": -86.24973
-  },
-  {
-    "unitid": 488785,
-    "inst_name": "University of Saint Katherine",
-    "city": "San Marcos",
-    "state_abbr": "CA",
-    "latitude": 33.138387,
-    "longitude": -117.160766
   },
   {
     "unitid": 488800,
@@ -21456,36 +19224,12 @@
     "longitude": -122.266105
   },
   {
-    "unitid": 489344,
-    "inst_name": "Chamberlain University-North Carolina",
-    "city": "Charlotte",
-    "state_abbr": "NC",
-    "latitude": 35.13766,
-    "longitude": -80.931971
-  },
-  {
-    "unitid": 489353,
-    "inst_name": "Chamberlain University-California",
-    "city": "Rancho Cordova",
-    "state_abbr": "CA",
-    "latitude": 38.596193,
-    "longitude": -121.278258
-  },
-  {
     "unitid": 489779,
     "inst_name": "Purdue University Global",
     "city": "West Lafayette",
     "state_abbr": "IN",
     "latitude": 40.45655,
     "longitude": -86.928449
-  },
-  {
-    "unitid": 489858,
-    "inst_name": "West Coast University-Center for Graduate Studies",
-    "city": "Los Angeles",
-    "state_abbr": "CA",
-    "latitude": 34.081505,
-    "longitude": -118.29131
   },
   {
     "unitid": 489937,
@@ -21616,14 +19360,6 @@
     "longitude": -74.204332
   },
   {
-    "unitid": 490559,
-    "inst_name": "Gwinnett Institute",
-    "city": "Orlando",
-    "state_abbr": "FL",
-    "latitude": 28.571233,
-    "longitude": -81.208356
-  },
-  {
     "unitid": 490753,
     "inst_name": "Maine Media College",
     "city": "Rockport",
@@ -21640,44 +19376,12 @@
     "longitude": -87.474236
   },
   {
-    "unitid": 490878,
-    "inst_name": "Platt College-Anaheim",
-    "city": "Anaheim",
-    "state_abbr": "CA",
-    "latitude": 33.809417,
-    "longitude": -117.878211
-  },
-  {
     "unitid": 491057,
     "inst_name": "Yeshiva Kollel Tifereth Elizer",
     "city": "Brooklyn",
     "state_abbr": "NY",
     "latitude": 40.637096,
     "longitude": -73.992171
-  },
-  {
-    "unitid": 491190,
-    "inst_name": "The Chicago School at San Diego",
-    "city": "San Diego",
-    "state_abbr": "CA",
-    "latitude": 32.718575,
-    "longitude": -117.167054
-  },
-  {
-    "unitid": 491288,
-    "inst_name": "University of Wisconsin-Milwaukee Flex",
-    "city": "Milwaukee",
-    "state_abbr": "WI",
-    "latitude": 43.076848,
-    "longitude": -87.880488
-  },
-  {
-    "unitid": 491297,
-    "inst_name": "University of Wisconsin-Parkside Flex",
-    "city": "Kenosha",
-    "state_abbr": "WI",
-    "latitude": 42.645603,
-    "longitude": -87.855007
   },
   {
     "unitid": 491525,
@@ -21760,44 +19464,12 @@
     "longitude": -93.065945
   },
   {
-    "unitid": 492087,
-    "inst_name": "The Continents States University",
-    "city": "St. Louis",
-    "state_abbr": "MO",
-    "latitude": 38.643521,
-    "longitude": -90.260576
-  },
-  {
-    "unitid": 492209,
-    "inst_name": "Reiss-Davis Graduate School",
-    "city": "Los Angeles",
-    "state_abbr": "CA",
-    "latitude": 34.030844,
-    "longitude": -118.41001
-  },
-  {
     "unitid": 492263,
     "inst_name": "The University of Tennessee System Office",
     "city": "Knoxville",
     "state_abbr": "TN",
     "latitude": 35.966254,
     "longitude": -83.920638
-  },
-  {
-    "unitid": 492476,
-    "inst_name": "EDP University of Puerto Rico-Villalba",
-    "city": "Villalba",
-    "state_abbr": "PR",
-    "latitude": 18.109811,
-    "longitude": -66.505648
-  },
-  {
-    "unitid": 492607,
-    "inst_name": "The Chicago School at Dallas",
-    "city": "Richardson",
-    "state_abbr": "TX",
-    "latitude": 32.979753,
-    "longitude": -96.75721
   },
   {
     "unitid": 492689,
@@ -21814,38 +19486,6 @@
     "state_abbr": "PR",
     "latitude": 18.441175,
     "longitude": -66.059619
-  },
-  {
-    "unitid": 492759,
-    "inst_name": "Chamberlain University-Louisiana",
-    "city": "Jefferson",
-    "state_abbr": "LA",
-    "latitude": 29.962307,
-    "longitude": -90.152655
-  },
-  {
-    "unitid": 492801,
-    "inst_name": "Drury University-College of Continuing Professional Studies",
-    "city": "Springfield",
-    "state_abbr": "MO",
-    "latitude": 37.219681,
-    "longitude": -93.286192
-  },
-  {
-    "unitid": 492962,
-    "inst_name": "Indiana Institute of Technology-College of Professional Studies",
-    "city": "Fort Wayne",
-    "state_abbr": "IN",
-    "latitude": 41.078365,
-    "longitude": -85.116479
-  },
-  {
-    "unitid": 493363,
-    "inst_name": "Institute of Lutheran Theology",
-    "city": "Brookings",
-    "state_abbr": "SD",
-    "latitude": 44.308861,
-    "longitude": -96.789515
   },
   {
     "unitid": 493512,
@@ -21952,30 +19592,6 @@
     "longitude": -90.21479
   },
   {
-    "unitid": 494162,
-    "inst_name": "Arizona College of Nursing-Dallas",
-    "city": "Dallas",
-    "state_abbr": "TX",
-    "latitude": 32.923106,
-    "longitude": -96.75999
-  },
-  {
-    "unitid": 494278,
-    "inst_name": "EDP University of Puerto Rico-Humacao",
-    "city": "Humacao",
-    "state_abbr": "PR",
-    "latitude": 18.150762,
-    "longitude": -65.82455
-  },
-  {
-    "unitid": 494287,
-    "inst_name": "EDP University of Puerto Rico-Manati",
-    "city": "Manati",
-    "state_abbr": "PR",
-    "latitude": 18.429431,
-    "longitude": -66.490949
-  },
-  {
     "unitid": 494542,
     "inst_name": "Sattler College",
     "city": "Boston",
@@ -21990,14 +19606,6 @@
     "state_abbr": "NY",
     "latitude": 40.723346,
     "longitude": -74.001699
-  },
-  {
-    "unitid": 494597,
-    "inst_name": "Faith Theological Seminary and Christian College",
-    "city": "Tampa",
-    "state_abbr": "FL",
-    "latitude": 28.018844,
-    "longitude": -82.582376
   },
   {
     "unitid": 494603,
@@ -22040,22 +19648,6 @@
     "longitude": -73.961026
   },
   {
-    "unitid": 494746,
-    "inst_name": "North-West College-San Diego",
-    "city": "San Diego",
-    "state_abbr": "CA",
-    "latitude": 32.765537,
-    "longitude": -117.066577
-  },
-  {
-    "unitid": 494807,
-    "inst_name": "Ponce Health Sciences University-East",
-    "city": "Ponce",
-    "state_abbr": "PR",
-    "latitude": 18.0083,
-    "longitude": -66.589688
-  },
-  {
     "unitid": 495031,
     "inst_name": "Bais Medrash of Dexter Park",
     "city": "Chestnut Ridge",
@@ -22096,38 +19688,6 @@
     "longitude": -74.155128
   },
   {
-    "unitid": 495420,
-    "inst_name": "Arizona College of Nursing-Tampa",
-    "city": "Tampa",
-    "state_abbr": "FL",
-    "latitude": 27.955614,
-    "longitude": -82.523369
-  },
-  {
-    "unitid": 495439,
-    "inst_name": "Arizona College of Nursing-Fort Lauderdale",
-    "city": "Fort Lauderdale",
-    "state_abbr": "FL",
-    "latitude": 26.205783,
-    "longitude": -80.138479
-  },
-  {
-    "unitid": 495448,
-    "inst_name": "Arizona College of Nursing-Tucson",
-    "city": "Tucson",
-    "state_abbr": "AZ",
-    "latitude": 32.22113,
-    "longitude": -110.880434
-  },
-  {
-    "unitid": 495457,
-    "inst_name": "Arizona College of Nursing-Phoenix",
-    "city": "Phoenix",
-    "state_abbr": "AZ",
-    "latitude": 33.635804,
-    "longitude": -112.117327
-  },
-  {
     "unitid": 495916,
     "inst_name": "Pathways College",
     "city": "Phoenix",
@@ -22142,30 +19702,6 @@
     "state_abbr": "CA",
     "latitude": 34.077252,
     "longitude": -117.350487
-  },
-  {
-    "unitid": 496186,
-    "inst_name": "California Institute of Arts & Technology-National City",
-    "city": "National City",
-    "state_abbr": "CA",
-    "latitude": 32.661577,
-    "longitude": -117.106076
-  },
-  {
-    "unitid": 496283,
-    "inst_name": "Provo College-Idaho Falls Campus",
-    "city": "Idaho Falls",
-    "state_abbr": "ID",
-    "latitude": 43.481,
-    "longitude": -112.00228
-  },
-  {
-    "unitid": 496326,
-    "inst_name": "Eagle Gate College-Boise Campus",
-    "city": "Boise",
-    "state_abbr": "ID",
-    "latitude": 43.59091,
-    "longitude": -116.298572
   },
   {
     "unitid": 496399,
@@ -22232,28 +19768,12 @@
     "longitude": -82.335773
   },
   {
-    "unitid": 496991,
-    "inst_name": "Galen Health Institutes-Miami Campus",
-    "city": "Pembroke Pines",
-    "state_abbr": "FL",
-    "latitude": 25.997073,
-    "longitude": -80.337924
-  },
-  {
     "unitid": 497000,
     "inst_name": "Remington College-Online Dallas",
     "city": "Dallas",
     "state_abbr": "TX",
     "latitude": 32.912073,
     "longitude": -96.73302
-  },
-  {
-    "unitid": 497037,
-    "inst_name": "Abilene Christian University-Undergraduate Online",
-    "city": "Addison",
-    "state_abbr": "TX",
-    "latitude": 32.977065,
-    "longitude": -96.826833
   },
   {
     "unitid": 497107,
@@ -22264,36 +19784,12 @@
     "longitude": -121.921105
   },
   {
-    "unitid": 497116,
-    "inst_name": "Galen Health Institutes-Austin Campus",
-    "city": "Round Rock",
-    "state_abbr": "TX",
-    "latitude": 30.476575,
-    "longitude": -97.690907
-  },
-  {
-    "unitid": 497125,
-    "inst_name": "Galen Health Institutes-Nashville Campus",
-    "city": "Nashville",
-    "state_abbr": "TN",
-    "latitude": 36.162229,
-    "longitude": -86.791569
-  },
-  {
     "unitid": 497213,
     "inst_name": "Great Northern University",
     "city": "Spokane",
     "state_abbr": "WA",
     "latitude": 47.675837,
     "longitude": -117.400562
-  },
-  {
-    "unitid": 497268,
-    "inst_name": "Arizona College of Nursing-Salt Lake City",
-    "city": "Murray",
-    "state_abbr": "UT",
-    "latitude": 40.656372,
-    "longitude": -111.903426
   },
   {
     "unitid": 497408,
@@ -22328,14 +19824,6 @@
     "longitude": -122.277476
   },
   {
-    "unitid": 497666,
-    "inst_name": "California University-Silicon Valley",
-    "city": "Sunnyvale",
-    "state_abbr": "CA",
-    "latitude": 37.383513,
-    "longitude": -122.0081
-  },
-  {
     "unitid": 497693,
     "inst_name": "Kansas Health Science Center",
     "city": "Wichita",
@@ -22352,92 +19840,12 @@
     "longitude": -73.90014
   },
   {
-    "unitid": 497824,
-    "inst_name": "Evangel University-College of Online Learning",
-    "city": "Springfield",
-    "state_abbr": "MO",
-    "latitude": 37.220956,
-    "longitude": -93.262614
-  },
-  {
-    "unitid": 497833,
-    "inst_name": "Marian University-Ancilla",
-    "city": "Plymouth",
-    "state_abbr": "IN",
-    "latitude": 41.337931,
-    "longitude": -86.445875
-  },
-  {
-    "unitid": 498049,
-    "inst_name": "Arizona College of Nursing-Southfield",
-    "city": "Southfield",
-    "state_abbr": "MI",
-    "latitude": 42.48156,
-    "longitude": -83.260202
-  },
-  {
-    "unitid": 498076,
-    "inst_name": "Galen Health Institutes-Sarasota",
-    "city": "Sarasota",
-    "state_abbr": "FL",
-    "latitude": 27.342303,
-    "longitude": -82.449266
-  },
-  {
-    "unitid": 498085,
-    "inst_name": "Galen Health Institutes-Gainesville",
-    "city": "Gainesville",
-    "state_abbr": "FL",
-    "latitude": 29.630471,
-    "longitude": -82.417064
-  },
-  {
-    "unitid": 498119,
-    "inst_name": "Galen Health Institutes-Asheville",
-    "city": "Asheville",
-    "state_abbr": "NC",
-    "latitude": 35.485235,
-    "longitude": -82.557273
-  },
-  {
     "unitid": 498234,
     "inst_name": "Larkin University",
     "city": "Miami",
     "state_abbr": "FL",
     "latitude": 25.943148,
     "longitude": -80.200493
-  },
-  {
-    "unitid": 498289,
-    "inst_name": "Pontifex University",
-    "city": "Atlanta",
-    "state_abbr": "GA",
-    "latitude": 33.877785,
-    "longitude": -84.410399
-  },
-  {
-    "unitid": 498447,
-    "inst_name": "Arizona College of Nursing-Falls Church",
-    "city": "Falls Church",
-    "state_abbr": "VA",
-    "latitude": 38.860531,
-    "longitude": -77.218156
-  },
-  {
-    "unitid": 498456,
-    "inst_name": "Arizona College of Nursing-Ontario",
-    "city": "Ontario",
-    "state_abbr": "CA",
-    "latitude": 34.06676,
-    "longitude": -117.578071
-  },
-  {
-    "unitid": 498474,
-    "inst_name": "Galen Health Institutes-Houston",
-    "city": "Houston",
-    "state_abbr": "TX",
-    "latitude": 29.839951,
-    "longitude": -95.562419
   },
   {
     "unitid": 498562,
@@ -22472,14 +19880,6 @@
     "longitude": -73.990129
   },
   {
-    "unitid": 498915,
-    "inst_name": "Agora University",
-    "city": "Burke",
-    "state_abbr": "VA",
-    "latitude": 38.775104,
-    "longitude": -77.265929
-  },
-  {
     "unitid": 498924,
     "inst_name": "URBE University",
     "city": "Sweetwater",
@@ -22496,46 +19896,6 @@
     "longitude": -86.63453
   },
   {
-    "unitid": 499273,
-    "inst_name": "Galen Health Institutes-Dallas",
-    "city": "Richardson",
-    "state_abbr": "TX",
-    "latitude": 33.000073,
-    "longitude": -96.751892
-  },
-  {
-    "unitid": 499370,
-    "inst_name": "Arizona College of Nursing-Sarasota",
-    "city": "University Park",
-    "state_abbr": "FL",
-    "latitude": 27.397535,
-    "longitude": -82.452156
-  },
-  {
-    "unitid": 499389,
-    "inst_name": "Arizona College of Nursing-Aurora",
-    "city": "Aurora",
-    "state_abbr": "CO",
-    "latitude": 39.660088,
-    "longitude": -104.836952
-  },
-  {
-    "unitid": 499398,
-    "inst_name": "Arizona College of Nursing-Cincinnati",
-    "city": "Cincinnati",
-    "state_abbr": "OH",
-    "latitude": 39.275361,
-    "longitude": -84.34767
-  },
-  {
-    "unitid": 499404,
-    "inst_name": "Arizona College of Nursing-Cleveland",
-    "city": "Beachwood",
-    "state_abbr": "OH",
-    "latitude": 41.46601,
-    "longitude": -81.493304
-  },
-  {
     "unitid": 499422,
     "inst_name": "Denver College of Nursing-Houston",
     "city": "Houston",
@@ -22550,21 +19910,5 @@
     "state_abbr": "FL",
     "latitude": 28.571233,
     "longitude": -81.208356
-  },
-  {
-    "unitid": 499635,
-    "inst_name": "EDP University of Puerto Rico-Caguas",
-    "city": "Caguas",
-    "state_abbr": "PR",
-    "latitude": 18.242649,
-    "longitude": -66.025309
-  },
-  {
-    "unitid": 499671,
-    "inst_name": "Galen Health Institutes-Las Vegas",
-    "city": "Las Vegas",
-    "state_abbr": "NV",
-    "latitude": 36.071855,
-    "longitude": -115.294893
   }
 ]
