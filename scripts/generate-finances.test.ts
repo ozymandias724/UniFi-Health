@@ -5,6 +5,29 @@ import { join } from "node:path";
 import { test } from "node:test";
 import { generateFinances } from "./generate-finances.ts";
 
+const summaryFields = [
+  "parent_child_flag",
+  "parent_child_system_flag",
+  "parent_unitid",
+  "reporting_form",
+  "total_revenues_additions",
+  "total_expenses_deductions",
+  "rev_total_current",
+  "exp_total_current",
+  "assets",
+  "liabilities",
+  "equity_end",
+] as const;
+
+function expectedSummary(unitid: number, values: Record<string, number | null> = {}) {
+  return {
+    unitid,
+    year: 2023,
+    ...Object.fromEntries(summaryFields.map((field) => [field, values[field] ?? null])),
+  };
+}
+
+
 async function fixture(t: { after: (fn: () => Promise<void>) => void }) {
   const dir = await mkdtemp(join(tmpdir(), "finance-generator-test-"));
   t.after(() => rm(dir, { recursive: true, force: true }));
@@ -32,14 +55,14 @@ test("retries, follows pages, normalizes missing values, and retains missing ins
       return Response.json({
         count: 3,
         next: url.href,
-        results: [{ unitid: 101, year: 2023, total_revenues_additions: -1, total_expenses_deductions: 0 }],
+        results: [{ unitid: 101, year: 2023, parent_child_flag: 3, parent_unitid: 167358, rev_total_current: 71758000, exp_total_current: 34476000, total_revenues_additions: -1, total_expenses_deductions: 0 }],
       });
     }
     return Response.json({
       count: 3,
       next: null,
       results: [
-        { unitid: 102, year: 2023, total_revenues_additions: -10, total_expenses_deductions: -3 },
+        { unitid: 102, year: 2023, parent_child_flag: 1, assets: 0, liabilities: -2, total_revenues_additions: -10, total_expenses_deductions: -3 },
         { unitid: 104, year: 2023, total_revenues_additions: -2, total_expenses_deductions: "100" },
       ],
     });
@@ -48,10 +71,20 @@ test("retries, follows pages, normalizes missing values, and retains missing ins
   await generateFinances(directory, output);
   assert.equal(calls, 3);
   assert.deepEqual(JSON.parse(await readFile(output, "utf8")), [
-    { unitid: 101, year: 2023, total_revenues_additions: null, total_expenses_deductions: 0 },
-    { unitid: 102, year: 2023, total_revenues_additions: -10, total_expenses_deductions: null },
-    { unitid: 103, year: 2023, total_revenues_additions: null, total_expenses_deductions: null },
-    { unitid: 104, year: 2023, total_revenues_additions: null, total_expenses_deductions: null },
+    expectedSummary(101, {
+      parent_child_flag: 3,
+      parent_unitid: 167358,
+      rev_total_current: 71758000,
+      exp_total_current: 34476000,
+      total_expenses_deductions: 0,
+    }),
+    expectedSummary(102, {
+      parent_child_flag: 1,
+      assets: 0,
+      total_revenues_additions: -10,
+    }),
+    expectedSummary(103),
+    expectedSummary(104),
   ]);
 });
 

@@ -10,6 +10,8 @@ import { mkdir, open, readFile, rename, unlink } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import type { UniversityFinanceSummary } from "../src/types/finance.ts";
+
 const YEAR = 2023;
 const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds/finance/${YEAR}/`;
 const DIRECTORY_PATH = "public/data/universities.json";
@@ -17,11 +19,33 @@ const OUTPUT_PATH = "public/data/finances.json";
 const BATCH_SIZE = 300;
 const MAX_ATTEMPTS = 3;
 
-interface UniversityFinanceSummary {
-  unitid: number;
-  year: number;
-  total_revenues_additions: number | null;
-  total_expenses_deductions: number | null;
+const SUMMARY_FIELDS = [
+  "parent_child_flag",
+  "parent_child_system_flag",
+  "parent_unitid",
+  "reporting_form",
+  "total_revenues_additions",
+  "total_expenses_deductions",
+  "rev_total_current",
+  "exp_total_current",
+  "assets",
+  "liabilities",
+  "equity_end",
+] as const;
+
+
+// type SummaryField = (typeof SUMMARY_FIELDS)[number];
+// type UniversityFinanceSummary = {
+//   unitid: number;
+//   year: number;
+// } & Record<SummaryField, number | null>;
+
+function makeSummary(unitid: number, record: Record<string, unknown> = {}): UniversityFinanceSummary {
+  const summary = { unitid, year: YEAR } as UniversityFinanceSummary;
+  for (const field of SUMMARY_FIELDS) {
+    summary[field] = financeValue(record[field]);
+  }
+  return summary;
 }
 
 interface RequestCounter {
@@ -151,12 +175,7 @@ async function fetchBatch(
       ) {
         throw new Error("Unexpected or duplicate finance API record.");
       }
-      records.set(record.unitid, {
-        unitid: record.unitid,
-        year: YEAR,
-        total_revenues_additions: financeValue(record.total_revenues_additions),
-        total_expenses_deductions: financeValue(record.total_expenses_deductions),
-      });
+      records.set(record.unitid, makeSummary(record.unitid, record));
     }
 
     received += data.results.length;
@@ -177,7 +196,7 @@ function validateSummaries(
 ): void {
   const expected = new Set(unitids);
   const seen = new Set<number>();
-  const fields = ["unitid", "year", "total_revenues_additions", "total_expenses_deductions"];
+  const fields = ["unitid", "year", ...SUMMARY_FIELDS];
   for (const summary of summaries) {
     if (
       !isUnitid(summary.unitid) ||
@@ -186,10 +205,9 @@ function validateSummaries(
       summary.year !== YEAR ||
       Object.keys(summary).length !== fields.length ||
       fields.some((field) => !Object.hasOwn(summary, field)) ||
-      (summary.total_revenues_additions !== null &&
-        financeValue(summary.total_revenues_additions) !== summary.total_revenues_additions) ||
-      (summary.total_expenses_deductions !== null &&
-        financeValue(summary.total_expenses_deductions) !== summary.total_expenses_deductions)
+      SUMMARY_FIELDS.some((field) =>
+        summary[field] !== null && financeValue(summary[field]) !== summary[field]
+      )
     ) {
       throw new Error("Invalid financial summary.");
     }
@@ -226,12 +244,7 @@ export async function generateFinances(
     await fetchBatch(batch, records, requests);
   }
 
-  const summaries = unitids.map((unitid) => records.get(unitid) ?? {
-    unitid,
-    year: YEAR,
-    total_revenues_additions: null,
-    total_expenses_deductions: null,
-  });
+  const summaries = unitids.map((unitid) => records.get(unitid) ?? makeSummary(unitid));
   validateSummaries(summaries, unitids);
 
   const json = JSON.stringify(summaries);

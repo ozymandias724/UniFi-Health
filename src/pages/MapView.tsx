@@ -13,8 +13,8 @@ import {
   getUniversities,
   getFinanceSummaries,
   type University,
-  type UniversityFinanceSummary,
 } from "../services/ipeds";
+import type { UniversityFinanceSummary } from "../types/finance";
 import UniversitySearch from "../components/UniversitySearch";
 import MapNavigator from "../components/map/MapNavigator";
 

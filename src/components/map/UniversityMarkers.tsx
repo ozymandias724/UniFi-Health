@@ -14,8 +14,8 @@ import { divIcon, type Marker as LeafletMarker } from "leaflet";
 
 import type {
   University,
-  UniversityFinanceSummary,
 } from "../../services/ipeds";
+import type { UniversityFinanceSummary } from "../../types/finance";
 
 import UniversityPopup from "./UniversityPopups";
 import { getFinanceColor } from "../../utils/getFinanceColor";
