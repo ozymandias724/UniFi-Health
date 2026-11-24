@@ -4,8 +4,8 @@
  * - Accepts a unitid query parameter, including links from the map.
  * - Fetches the selected institution's 2023 finance record from the API.
  *
- * The search component owns its input, while this page owns the selected
- * institution and the financial data displayed below it.
+ * The URL owns institution selection; this page derives the selected
+ * institution and loads its financial data.
  */
 import "../App.css";
 import {
@@ -17,7 +17,7 @@ import {
   type University,
 } from "../services/ipeds";
 import UniversitySearch from "../components/UniversitySearch";
-import UniversityFinances from "../components/UniversityFinances";
+import UniversityFinances from "../components/university-finances/UniversityFinances";
 import FinancialOverview from "../components/financial-overview/FinancialOverview";
 import { useEffect, useState } from "react";
 
@@ -28,40 +28,45 @@ function Explorer() {
   // University directory
   const [universities, setUniversities] = useState<University[]>([]);
 
-  // Selected university
-  const [selectedUniversity, setSelectedUniversity] =
-    useState<University | null>(null);
-
-  const [finances, setFinances] = useState<FinanceRecord | null>(null);
+  // Associate fetched finances with their institution to avoid showing stale data.
+  const [financeResult, setFinanceResult] = useState<{
+    unitid: number;
+    data: FinanceRecord | null;
+  } | null>(null);
 
   const [variables, setVariables] = useState<Record<string, VariableMetadata>>(
     {},
   );
 
-  // The URL can initialize the selection once the directory has loaded.
-  const [searchParams] = useSearchParams();
+  // The URL is the source of truth for both map links and search selections.
+  const [searchParams, setSearchParams] = useSearchParams();
   const unitidParam = searchParams.get("unitid");
+  const unitid = unitidParam === null ? null : Number(unitidParam);
 
-  useEffect(() => {
-    if (!unitidParam || universities.length === 0) return;
-
-    const unitid = Number(unitidParam);
-
-    if (!Number.isSafeInteger(unitid) || unitid <= 0) return;
-
-    const university = universities.find(
-      (university) => university.unitid === unitid,
-    );
-
-    if (university) {
-      setSelectedUniversity(university);
-    }
-  }, [unitidParam, universities]);
+  const selectedUniversity =
+    unitid !== null && Number.isSafeInteger(unitid) && unitid > 0
+      ? (universities.find((university) => university.unitid === unitid) ??
+        null)
+      : null;
 
   function handleUniversitySelect(university: University | null) {
-    setSelectedUniversity(university);
-    setFinances(null);
+    setSearchParams((previous) => {
+      const next = new URLSearchParams(previous);
+
+      if (university) {
+        next.set("unitid", String(university.unitid));
+      } else {
+        next.delete("unitid");
+      }
+
+      return next;
+    });
   }
+
+  const finances =
+    selectedUniversity && financeResult?.unitid === selectedUniversity.unitid
+      ? financeResult.data
+      : null;
 
   // Load university directory
   useEffect(() => {
@@ -76,7 +81,9 @@ function Explorer() {
 
     getUniversityFinances(selectedUniversity.unitid, 2023)
       .then((data) => {
-        if (!cancelled) setFinances(data);
+        if (!cancelled) {
+          setFinanceResult({ unitid: selectedUniversity.unitid, data });
+        }
       })
       .catch((error) => {
         if (!cancelled) console.error(error);

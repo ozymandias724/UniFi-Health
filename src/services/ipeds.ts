@@ -17,6 +17,8 @@ export interface University {
 
 // Financial data for one university in one reporting year
 export interface FinanceRecord {
+  [key: string]: number | null;
+
   unitid: number;
   year: number;
 
@@ -60,27 +62,6 @@ export interface VariableMetadata {
 }
 
 import type { UniversityFinanceSummary } from "../types/finance.ts";
-// export interface UniversityFinanceSummary {
-//   unitid: number;
-//   year: number;
-
-//   // Financial reporting structure
-//   parent_child_flag: number | null;
-//   parent_child_system_flag: number | null;
-//   parent_unitid: number | null;
-//   reporting_form: number | null;
-
-//   // Revenue and expenditure totals
-//   total_revenues_additions: number | null;
-//   total_expenses_deductions: number | null;
-//   rev_total_current: number | null;
-//   exp_total_current: number | null;
-
-//   // Balance sheet
-//   assets: number | null;
-//   liabilities: number | null;
-//   equity_end: number | null;
-// }
 
 export async function getFinanceSummaries(): Promise<
   UniversityFinanceSummary[]

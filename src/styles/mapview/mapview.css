@@ -1,13 +1,15 @@
 /*
- * Map layout and Leaflet marker appearance. Marker and cluster colors are
- * supplied as CSS variables by UniversityMarkers.tsx.
+ * Map layout and Leaflet marker appearance.
+ * Marker and cluster colors are supplied by UniversityMarkers.tsx.
  */
 @import "./university-popup.css";
+
+/* Map layout */
 .map-view {
   width: 100%;
 }
 
-/* Leaflet uses high stacking levels; keep search results above the map. */
+/* Keep search results above Leaflet's map layers. */
 .map-view .university-search-control {
   z-index: 1000;
 }
@@ -16,7 +18,6 @@
   margin-top: var(--space-xl);
 }
 
-/* Leaflet needs a concrete map height; clamp keeps it usable on small screens. */
 .university-map {
   width: 100%;
   height: clamp(24rem, 65vh, 37.5rem);
@@ -26,78 +27,86 @@
   box-shadow: var(--shadow-elevation-1);
 }
 
-/* Override Leaflet's own font without changing its other container styles. */
 .leaflet-container.university-map {
   font-family: var(--font-sans);
 }
-/* Earlier cluster treatment retained as an inactive reference:
+
+/* Mute map tiles without desaturating markers, clusters, or popups. */
+.university-map .leaflet-tile-pane {
+  filter: grayscale(85%) brightness(1.05);
+}
+
+/* Leaflet divIcon wrappers */
+.university-marker-container,
 .university-cluster {
-  background: rgb(100 116 139 / 35%);
-  border-radius: 50%;
+  background: transparent;
+  border: none;
 }
 
-.university-cluster div {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+/* Individual universities: fading halo with a crisp, centered location dot. */
+.university-marker {
   position: relative;
-
-  background: rgb(100 116 139 / 85%);
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    var(--marker-color) 0%,
+    transparent 75%
+  );
 }
 
-.university-cluster span {
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 1;
+.university-marker::after {
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 16px;
+  height: 16px;
   transform: translate(-50%, -50%);
-} */
-
-
-/* divIcon wrappers are transparent; the inner elements provide the circles. */
-.university-marker-container {
-  background: transparent;
-  border: none;
-}
-
-.university-marker {
-  width: 32px;
-  height: 32px;
   background: var(--marker-color);
   border: 2px solid white;
   border-radius: 50%;
-  box-shadow: 0 2px 6px rgb(0 0 0 / 25%);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 35%);
+  pointer-events: none;
 }
 
-.university-cluster {
-  background: transparent;
-  border: none;
-}
-
+/* Cluster badges: crisp circles with a soft color halo behind them. */
 .university-cluster-marker {
+  position: relative;
+  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: center;
 
   width: 44px;
   height: 44px;
-
-  background: var(--cluster-color);
   border: 3px solid white;
   border-radius: 50%;
+  background: var(--cluster-color);
 
   color: white;
-  font-weight: 700;
   font-size: 0.875rem;
-
+  font-weight: 700;
   box-shadow: 0 3px 10px rgb(0 0 0 / 25%);
+}
+
+/* Decorative only: does not change cluster size or click behavior. */
+.university-cluster-marker::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    var(--cluster-color) 0%,
+    transparent 75%
+  );
+  opacity: 0.5;
+  pointer-events: none;
 }

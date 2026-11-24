@@ -15,14 +15,14 @@ export function getFinanceCategory(key: string, label: string): string {
   if (key.startsWith("exp_")) return "Expenditures";
   if (key.startsWith("sch_")) return "Scholarships and Financial Aid";
 
-  // Assets
-  if (key.includes("asset") || name.startsWith("assets:")) {
-    return "Assets";
-  }
-
   // Endowments and investments
   if (name.includes("endowment") || name.includes("investments")) {
     return "Endowments & Investments";
+  }
+
+  // Assets
+  if (key.includes("asset") || name.startsWith("assets:")) {
+    return "Assets";
   }
 
   // Pensions
