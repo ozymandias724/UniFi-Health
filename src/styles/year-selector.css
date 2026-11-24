@@ -1,0 +1,35 @@
+.year-selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-block: var(--space-md);
+}
+
+.year-selector__year {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.year-selector button {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid currentColor;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.year-selector button:hover:not(:disabled) {
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+.year-selector button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}

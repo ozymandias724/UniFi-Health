@@ -7,7 +7,10 @@
  */
 import { mkdir, writeFile } from "node:fs/promises";
 
-const DIRECTORY_YEAR = 2023;
+import { parseReportingYear } from "./utils/parseReportingYear.ts";
+
+const DIRECTORY_YEAR = parseReportingYear();
+
 const OUTPUT_PATH = `data/raw/directory-${DIRECTORY_YEAR}.json`;
 
 interface University {

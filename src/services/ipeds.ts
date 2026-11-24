@@ -62,11 +62,14 @@ export interface VariableMetadata {
 }
 
 import type { UniversityFinanceSummary } from "../types/finance.ts";
+import { DEFAULT_YEAR } from "../config/reportingYears.ts";
 
-export async function getFinanceSummaries(): Promise<
-  UniversityFinanceSummary[]
-> {
-  const response = await fetch(`${import.meta.env.BASE_URL}data/finances.json`);
+export async function getFinanceSummaries(
+  year: number = DEFAULT_YEAR,
+): Promise<UniversityFinanceSummary[]> {
+  const response = await fetch(
+    `${import.meta.env.BASE_URL}data/${year}/finances.json`,
+  );
 
   if (!response.ok) {
     throw new Error(`Failed to load financial summaries: ${response.status}`);
@@ -76,9 +79,11 @@ export async function getFinanceSummaries(): Promise<
 }
 
 // Fetch the list of universities from a local JSON file
-export async function getUniversities(): Promise<University[]> {
+export async function getUniversities(
+  year: number = DEFAULT_YEAR,
+): Promise<University[]> {
   const response = await fetch(
-    `${import.meta.env.BASE_URL}data/universities.json`,
+    `${import.meta.env.BASE_URL}data/${year}/universities.json`,
   );
 
   if (!response.ok) {

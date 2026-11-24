@@ -84,7 +84,7 @@ function FinanceDebug({ finances, variables }: FinanceDebugProps) {
   // Compare the actual record with the configured field keys, including
   // fields that fall into entirely unconfigured categories.
   const auditUnconfiguredFields = () => {
-    const configuredKeys = new Set(
+    const configuredKeys = new Set<string>(
       Object.values(financeFields).flatMap((section) =>
         section.groups.flatMap((group) => [...group.fields]),
       ),

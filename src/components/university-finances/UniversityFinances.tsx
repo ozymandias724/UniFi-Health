@@ -2,7 +2,7 @@
 import type { FinanceRecord, VariableMetadata } from "../../services/ipeds";
 import { groupFinances } from "../../utils/groupFinances";
 import FinanceCategory from "./FinanceCategory";
-import FinanceDebug from "./FinanceDebug";
+// import FinanceDebug from "./FinanceDebug";
 
 interface UniversityFinancesProps {
   finances: FinanceRecord;
@@ -17,7 +17,7 @@ function UniversityFinances({ finances, variables }: UniversityFinancesProps) {
       <div className="container">
         <h3>Financial Data ({finances.year})</h3>
 
-        <FinanceDebug finances={finances} variables={variables} />
+        {/* <FinanceDebug finances={finances} variables={variables} /> */}
 
         {sections.map((section) => (
           <FinanceCategory

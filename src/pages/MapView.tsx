@@ -19,6 +19,8 @@ import UniversitySearch from "../components/UniversitySearch";
 import MapNavigator from "../components/map/MapNavigator";
 
 import UniversityMarkers from "../components/map/UniversityMarkers";
+import { useReportingYear } from "../hooks/useReportingYear";
+import YearSelector from "../components/YearSelector";
 
 // leaflet stuff
 import { MapContainer, TileLayer } from "react-leaflet";
@@ -27,34 +29,65 @@ import "react-leaflet-cluster/dist/assets/MarkerCluster.Default.css";
 import "leaflet/dist/leaflet.css";
 
 function MapView() {
-  const [universities, setUniversities] = useState<University[]>([]);
-  const [finances, setFinances] = useState<UniversityFinanceSummary[]>([]);
+  const { year } = useReportingYear();
 
-  const [selectedUniversity, setSelectedUniversity] =
-    useState<University | null>(null);
+  const [mapData, setMapData] = useState<{
+    year: number;
+    universities: University[];
+    finances: UniversityFinanceSummary[];
+  } | null>(null);
+
+  // const universities = mapData?.year === year ? mapData.universities : [];
+  // const finances = mapData?.year === year ? mapData.finances : [];
+
+  const universities = mapData?.universities ?? [];
+  const finances = mapData?.finances ?? [];
+
+  const isLoading = mapData?.year !== year;
+
+  // Store the institution's identity independently of the reporting year.
+  const [selectedUnitid, setSelectedUnitid] = useState<number | null>(null);
+
+  // Resolve the selected institution from the current directory.
+  const selectedUniversity =
+    universities.find((university) => university.unitid === selectedUnitid) ??
+    null;
 
   const financesByUnitid = useMemo(
-    () => new Map(finances.map((record) => [record.unitid, record])),
-    [finances],
+    () =>
+      new Map(
+        (mapData?.finances ?? []).map((record) => [record.unitid, record]),
+      ),
+    [mapData],
   );
 
+  // Load matching directory and financial summaries for the reporting year.
   useEffect(() => {
+    let cancelled = false;
+
     async function loadMapData() {
       try {
         const [universities, finances] = await Promise.all([
-          getUniversities(),
-          getFinanceSummaries(),
+          getUniversities(year),
+          getFinanceSummaries(year),
         ]);
 
-        setUniversities(universities);
-        setFinances(finances);
+        if (!cancelled) {
+          setMapData({ year, universities, finances });
+        }
       } catch (error) {
-        console.error("Failed to load map data:", error);
+        if (!cancelled) {
+          console.error("Failed to load map data:", error);
+        }
       }
     }
 
     loadMapData();
-  }, []);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [year]);
 
   return (
     <main className="main">
@@ -62,13 +95,18 @@ function MapView() {
         <div className="container">
           <h1>University Map</h1>
           <p>
-            Loaded {universities.length} universities and {finances.length}{" "}
-            financial summaries.
+            {isLoading
+              ? `Loading data for ${year}...`
+              : `Loaded ${universities.length} universities and ${finances.length} financial summaries for ${year}.`}
           </p>
+
+          <YearSelector />
 
           <UniversitySearch
             universities={universities}
-            onSelect={setSelectedUniversity}
+            onSelect={(university) =>
+              setSelectedUnitid(university?.unitid ?? null)
+            }
           />
 
           <MapContainer

@@ -2,9 +2,9 @@
  * Financial Explorer page.
  * - Loads the local university directory and field metadata.
  * - Accepts a unitid query parameter, including links from the map.
- * - Fetches the selected institution's 2023 finance record from the API.
+ * - Fetches the selected institution's finance record for the reporting year from the API.
  *
- * The URL owns institution selection; this page derives the selected
+ * The URL owns institution and reporting year selection; this page derives the selected
  * institution and loads its financial data.
  */
 import "../App.css";
@@ -21,17 +21,36 @@ import UniversityFinances from "../components/university-finances/UniversityFina
 import FinancialOverview from "../components/financial-overview/FinancialOverview";
 import { useEffect, useState } from "react";
 
+import { useReportingYear } from "../hooks/useReportingYear";
+import YearSelector from "../components/YearSelector";
+
 // React Router search params for handling query parameters
 import { useSearchParams } from "react-router";
 
 function Explorer() {
-  // University directory
-  const [universities, setUniversities] = useState<University[]>([]);
+  const { year } = useReportingYear();
 
-  // Associate fetched finances with their institution to avoid showing stale data.
+  // University directory for the selected reporting year.
+  const [directoryResult, setDirectoryResult] = useState<{
+    year: number;
+    data: University[];
+    error: boolean;
+  } | null>(null);
+
+  const directoryError =
+    directoryResult?.year === year && directoryResult.error;
+
+  const isDirectoryLoaded =
+    directoryResult?.year === year && !directoryResult.error;
+
+  const universities = isDirectoryLoaded ? directoryResult.data : [];
+
+  // Associate fetched finances with their institution and reporting year.
   const [financeResult, setFinanceResult] = useState<{
     unitid: number;
+    year: number;
     data: FinanceRecord | null;
+    error: boolean;
   } | null>(null);
 
   const [variables, setVariables] = useState<Record<string, VariableMetadata>>(
@@ -49,6 +68,13 @@ function Explorer() {
         null)
       : null;
 
+  const isUniversityUnavailable =
+    isDirectoryLoaded &&
+    unitid !== null &&
+    Number.isSafeInteger(unitid) &&
+    unitid > 0 &&
+    selectedUniversity === null;
+
   function handleUniversitySelect(university: University | null) {
     setSearchParams((previous) => {
       const next = new URLSearchParams(previous);
@@ -63,36 +89,74 @@ function Explorer() {
     });
   }
 
-  const finances =
-    selectedUniversity && financeResult?.unitid === selectedUniversity.unitid
-      ? financeResult.data
-      : null;
+  const isCurrentFinanceResult =
+    selectedUniversity !== null &&
+    financeResult?.unitid === selectedUniversity.unitid &&
+    financeResult.year === year;
 
-  // Load university directory
+  const financeError = isCurrentFinanceResult && financeResult.error;
+
+  const isFinanceLoaded = isCurrentFinanceResult && !financeResult.error;
+
+  const finances = isFinanceLoaded ? financeResult.data : null;
+
+  const isFinanceUnavailable = isFinanceLoaded && finances === null;
+
+  // Load the university directory for the selected reporting year.
   useEffect(() => {
-    getUniversities().then(setUniversities).catch(console.error);
-  }, []);
-
-  // Ignore responses for a previous selection after the effect is cleaned up.
-  useEffect(() => {
-    if (!selectedUniversity) return;
-
     let cancelled = false;
 
-    getUniversityFinances(selectedUniversity.unitid, 2023)
+    getUniversities(year)
       .then((data) => {
         if (!cancelled) {
-          setFinanceResult({ unitid: selectedUniversity.unitid, data });
+          setDirectoryResult({ year, data, error: false });
         }
       })
       .catch((error) => {
-        if (!cancelled) console.error(error);
+        if (!cancelled) {
+          console.error(error);
+          setDirectoryResult({ year, data: [], error: true });
+        }
       });
 
     return () => {
       cancelled = true;
     };
-  }, [selectedUniversity]);
+  }, [year]);
+
+  // Ignore responses for a previous institution or reporting year.
+  useEffect(() => {
+    if (!selectedUniversity) return;
+
+    let cancelled = false;
+
+    getUniversityFinances(selectedUniversity.unitid, year)
+      .then((data) => {
+        if (!cancelled) {
+          setFinanceResult({
+            unitid: selectedUniversity.unitid,
+            year,
+            data,
+            error: false,
+          });
+        }
+      })
+      .catch((error) => {
+        if (!cancelled) {
+          console.error(error);
+          setFinanceResult({
+            unitid: selectedUniversity.unitid,
+            year,
+            data: null,
+            error: true,
+          });
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedUniversity, year]);
 
   // Load variable metadata
   useEffect(() => {
@@ -106,7 +170,10 @@ function Explorer() {
         <section className="intro">
           <div className="container">
             <h1>University Financial Explorer</h1>
-            <p>Loaded {universities.length} universities.</p>
+            <p>
+              Loaded {universities.length} universities for {year}.
+            </p>
+            <YearSelector />
           </div>
         </section>
 
@@ -128,6 +195,41 @@ function Explorer() {
               <p>IPEDS ID: {selectedUniversity.unitid}</p>
             </div>
           </section>
+        )}
+
+        {/* Reporting data availability */}
+        {directoryError && (
+          <p role="alert">
+            Unable to load the university directory for {year}. Please try
+            again.
+          </p>
+        )}
+
+        {!isDirectoryLoaded && !directoryError && (
+          <p role="status">Loading university directory for {year}...</p>
+        )}
+
+        {isUniversityUnavailable && (
+          <p role="status">
+            The selected university is not available in the {year} dataset. Try
+            selecting another reporting year.
+          </p>
+        )}
+
+        {selectedUniversity && financeError && (
+          <p role="alert">
+            Unable to load financial data for {year}. Please try again.
+          </p>
+        )}
+
+        {selectedUniversity && !isFinanceLoaded && !financeError && (
+          <p role="status">Loading financial data for {year}...</p>
+        )}
+
+        {isFinanceUnavailable && (
+          <p role="status">
+            No financial data is available for this university in {year}.
+          </p>
         )}
 
         {/* Display financial data for the selected university */}

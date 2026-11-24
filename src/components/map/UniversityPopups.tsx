@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import type { University } from "../../services/ipeds";
 
+import { useReportingYear } from "../../hooks/useReportingYear";
+
 interface UniversityPopupProps {
   university: University;
   ratio: number | null;
@@ -8,8 +10,8 @@ interface UniversityPopupProps {
 
 function UniversityPopup({ university, ratio }: UniversityPopupProps) {
   // Placeholder data until we build our financial data pipeline.
-  
-  const reportingYear = 2023;
+
+  const { year: reportingYear } = useReportingYear();
 
   return (
     <div className="university-popup">
@@ -31,7 +33,9 @@ function UniversityPopup({ university, ratio }: UniversityPopupProps) {
         </div>
       </div>
 
-      <Link to={`/?unitid=${university.unitid}`}>View Financial Profile →</Link>
+      <Link to={`/?unitid=${university.unitid}&year=${reportingYear}`}>
+        View Financial Profile →
+      </Link>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 /*
- * Generate the 2023 map finance summaries for IDs in universities.json.
+ * Generate map finance summaries for institutions in the selected
+ * reporting year's raw directory.
  * Requests are batched and paginated, with retries for transient failures.
  * Missing/suppressed values are normalized to null, and output is validated
  * before replacing the previous file. See generate-finances.test.ts for
@@ -12,7 +13,9 @@ import { fileURLToPath } from "node:url";
 
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 
-const YEAR = 2023;
+import { parseReportingYear } from "./utils/parseReportingYear.ts";
+const YEAR = parseReportingYear();
+
 const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds/finance/${YEAR}/`;
 const DIRECTORY_PATH = `data/raw/directory-${YEAR}.json`;
 const OUTPUT_PATH = `data/raw/finances-${YEAR}.json`;
@@ -286,7 +289,7 @@ export async function generateFinances(
     );
     await fetchBatch(batch, records, requests);
   }
-  
+
   const summaries = unitids
     .filter((unitid) => records.has(unitid))
     .map((unitid) => records.get(unitid)!);

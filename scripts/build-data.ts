@@ -3,13 +3,16 @@ import { dirname } from "node:path";
 
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 
-const YEAR = 2023;
+import { parseReportingYear } from "./utils/parseReportingYear.ts";
+const YEAR = parseReportingYear();
 
 const DIRECTORY_PATH = `data/raw/directory-${YEAR}.json`;
 const FINANCES_PATH = `data/raw/finances-${YEAR}.json`;
 
-const UNIVERSITIES_OUTPUT = "public/data/universities.json";
-const FINANCES_OUTPUT = "public/data/finances.json";
+const OUTPUT_DIR = `public/data/${YEAR}`;
+
+const UNIVERSITIES_OUTPUT = `${OUTPUT_DIR}/universities.json`;
+const FINANCES_OUTPUT = `${OUTPUT_DIR}/finances.json`;
 
 const EXCLUDED_FLAGS = new Set([2, 3, 4, 5, 6]);
 
