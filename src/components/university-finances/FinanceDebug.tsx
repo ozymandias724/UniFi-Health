@@ -52,6 +52,12 @@ const fieldsToInspect = [
   "plant_prop_equip_debt",
 ] as const;
 
+const configuredKeys = new Set<string>(
+  Object.values(financeFields).flatMap((section) =>
+    section.groups.flatMap((group) => group.fields),
+  ),
+);
+
 type InspectedField = {
   key: string;
   label: string;
@@ -67,7 +73,7 @@ function inspectFinancialReporting(
   const record = finances as unknown as Record<string, unknown>;
 
   return fieldsToInspect.map((key) => {
-    const exists = Object.prototype.hasOwnProperty.call(record, key);
+    const exists = Object.hasOwn(record, key);
     const value = record[key];
 
     return {
@@ -85,12 +91,6 @@ function FinanceDebug({ finances, variables }: FinanceDebugProps) {
   // Compare the actual record with the configured field keys, including
   // fields that fall into entirely unconfigured categories.
   const auditUnconfiguredFields = () => {
-    const configuredKeys = new Set<string>(
-      Object.values(financeFields).flatMap((section) =>
-        section.groups.flatMap((group) => [...group.fields]),
-      ),
-    );
-
     const rows = Object.entries(finances)
       .filter(([key]) => !configuredKeys.has(key))
       .map(([key, value]) => ({

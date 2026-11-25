@@ -1,166 +1,219 @@
 # Uni Fi Health (University Financial Health)
 
-A React and TypeScript application for exploring historical financial information
-reported by U.S. universities. It combines an institution search, a financial
-overview, and an interactive map. The figures are reported data, not a
-complete assessment of an institution's financial health. Currently supported
-reporting years are 2022 and 2023, with 2023 as the default.
+Uni Fi Health is an interactive application for exploring historical financial information reported by U.S. universities. It combines institutional search, financial visualizations, and geographic exploration to make publicly available higher education financial data more accessible.
 
-## Getting started
+[Live Application](https://kylemarcy.com/financial-explorer-beta/)
 
-Install dependencies and start the Vite development server:
+## Features
+
+- Fuzzy search by institution name.
+- Detailed institutional financial profiles.
+- Revenue and expenditure visualizations.
+- Interactive map with financial color coding and marker clustering.
+- Annual reporting year selection.
+- Shareable institution and reporting year URLs.
+- Responsive layouts with automatic light and dark themes.
+
+Currently supported reporting years are **2021, 2022, and 2023**, with 2023 as the default.
+
+## Getting Started
+
+The application is built with React, TypeScript, and Vite, using React Leaflet for mapping, Recharts for financial visualizations, and Fuse.js for institutional search.
+
+Node.js 24 is recommended for application development and the TypeScript data pipeline.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite. Vite requires Node.js 20.19+ in the 20.x
-series or 22.12+ in newer supported releases. The TypeScript data-generation
-scripts require Node.js 22.18+ or Node.js 24.
+### Development Commands
 
-Other useful commands:
+| Command             | Description                              |
+| ------------------- | ---------------------------------------- |
+| `npm run dev`       | Start the development server             |
+| `npm test`          | Run automated tests                      |
+| `npm run lint`      | Run Oxlint                               |
+| `npm run typecheck` | Validate TypeScript                      |
+| `npm run build`     | Type-check and create a production build |
+| `npm run preview`   | Preview the production build             |
 
-```sh
-npm run build                         # Type-check and create dist/
-npm run preview                       # Serve the production build locally
-npm run lint                          # Run Oxlint
-node --test scripts/*.test.ts         # Run data pipeline tests
-```
+## Application Architecture
 
-## Pages and interaction
+### Financial Explorer (`/`)
 
-- **Financial Explorer (`/`)**: search for a university and view its revenue
-  coverage, reported figures, and revenue and expenditure charts. A `unitid`
-  query parameter, such as `/?unitid=166027&year=2022`, selects an institution from the
-  directory; map popups link to a financial profile with both UNITID and year.
-  Detailed financial fields are displayed alongside the overview.
-- **Map View (`/map-view`)**: search for an institution or explore clustered
-  markers. Selecting a search result moves the map to it when coordinates are
-  available. Individual marker colors reflect revenue divided by expenses;
-  cluster colors reflect the share of institutions with expenses above revenue,
-  considering only records with a valid ratio.
-- **Kitchen Sink (`/kitchen-sink`)**: a small reference page for shared buttons.
+Search for an institution and explore its reported financial information through summary figures, charts, and categorized financial records.
 
-Both data views use the shared `YearSelector` and `useReportingYear` hook.
-The `year` query parameter is the source of truth; missing or unsupported years
-resolve to the configured default. Explorer preserves the selected UNITID when
-changing years, including when an institution is absent from a dataset. Map
-selection stores the UNITID and resolves it against the current directory.
+Institution directories and variable metadata are loaded from local JSON datasets. Detailed financial records are retrieved from the Education Data Portal API on demand.
 
-The shared `UniversitySearch` component uses Fuse.js and reports selections to
-its parent; each page decides what to do with a selection. The header uses a
-native modal dialog: full-screen on mobile and a sliding panel on wider screens.
+### Map View (`/map-view`)
 
-## Data sources and refreshes
+Explore institutions geographically using pre-generated annual financial summaries.
 
-The application uses IPEDS data provided by the Urban Institute's
-[Education Data Portal](https://educationdata.urban.org/), under the
-[ODC Attribution License](https://opendatacommons.org/licenses/by/1-0/).
-The directory and finance summaries are published separately for each reporting
-year. Supported years and the default are defined in
-`src/config/reportingYears.ts`.
+Individual marker colors represent the ratio of revenue to expenses. Cluster colors represent the percentage of institutions with expenses exceeding revenue, considering only institutions with valid ratios.
 
-| Source | Used for |
-| --- | --- |
-| `public/data/<year>/universities.json` | Search and map locations for active, degree-granting, four-year institutions. |
-| `public/data/variables.json` | Labels and metadata for financial fields. |
-| `public/data/<year>/finances.json` | Revenue and expense summaries used by map markers and clusters. |
-| Education Data Portal finance API | Live, detailed finance record for the selected institution on the Explorer page. |
-| OpenStreetMap tile server | Map tiles, with attribution displayed on the map. |
+Institutions and clusters without valid ratios are displayed in a neutral color.
 
-The JSON files are served with the app; loading detailed Explorer finances and
-map tiles also requires network access. The Explorer fetch is made by the
-browser, so verify the API works from the deployed site's origin. Explorer distinguishes loading, unavailable institutions, and missing finance
-records. Map loading and popup transitions remain areas for future refinement.
+### Navigation
 
-## Data pipeline
+Both views share institutional search and reporting year selection. The `year` query parameter is the source of truth for the selected reporting year. Missing or unsupported years resolve to the configured default.
 
-Run these commands from the project root, using the same reporting year for
-all annual stages (2022 is used here as an example):
+Institution selection uses the IPEDS UNITID, allowing users to navigate between views, change reporting years, and share institution-specific links.
 
-```sh
-node scripts/generate-directory.ts --year 2022
-node scripts/generate-finances.ts --year 2022
-node scripts/build-data.ts --year 2022
-node scripts/build-data.ts --year 2022 --publish
-node scripts/audit-finances.ts --year 2022
-```
+A separate Kitchen Sink page (`/kitchen-sink`) provides a reference for shared UI elements.
 
-The directory generator writes `data/raw/directory-2022.json`. The finance
-generator reads that directory and writes `data/raw/finances-2022.json`.
-`build-data.ts` validates and reconciles the inputs, reporting unmatched or
-incomplete records and eligible institutions. Without `--publish` it performs
-a dry run; with that flag it writes the matching annual directory and finance
-summaries to `public/data/2022/`. The audit script reports coverage of the
-published finance summaries without modifying them.
+## Data Sources
 
-Omitting `--year` uses the configured default. Refresh shared field metadata
-separately when needed:
+Institutional and financial data is provided by the Urban Institute's [Education Data Portal](https://educationdata.urban.org/), using data from the Integrated Postsecondary Education Data System (IPEDS).
+
+The initial institutional directory is restricted to active, degree-granting, four-year institutions. The publication process further excludes institutions without matching financial records, with specified parent-child reporting classifications, or with missing revenue and expense totals.
+
+| Source                                 | Purpose                                  |
+| -------------------------------------- | ---------------------------------------- |
+| `public/data/{year}/universities.json` | Published institutional directory        |
+| `public/data/{year}/finances.json`     | Annual financial summaries               |
+| `public/data/variables.json`           | Financial field labels and metadata      |
+| Education Data Portal finance API      | Detailed institutional financial records |
+| OpenStreetMap                          | Map tiles                                |
+
+Education Data Portal data is provided under the [Open Data Commons Attribution License](https://opendatacommons.org/licenses/by/1-0/).
+
+Detailed financial records and map tiles require network access.
+
+### Data Interpretation
+
+Reported financial figures are not a comprehensive assessment of institutional financial health.
+
+The Explorer's revenue coverage visualization compares **expenses / revenue**, while the map compares **revenue / expenses**. These ratios answer different questions and should not be interpreted as interchangeable percentages.
+
+Missing or suppressed summary values are represented as `null`. Institutional coverage may vary between reporting years, and absence from a dataset does not necessarily indicate institutional closure.
+
+## Data Pipeline
+
+The data pipeline maintains separate raw and published annual datasets. Data generation is independent of normal application development and production builds.
+
+### Generate an Annual Dataset
+
+Run the following commands from the project root, using the same reporting year throughout:
 
 ```sh
-node scripts/generate-variables.ts
+npm run generate:directory -- --year 2023
+npm run generate:finances -- --year 2023
+npm run data:build -- --year 2023
+npm run data:build -- --year 2023 --publish
+npm run data:audit -- --year 2023
 ```
 
-Missing or suppressed summary values are represented as `null`. Published
-coverage can differ between years because of directory and financial eligibility
-criteria; absence from a dataset is not proof that an institution closed.
-Generation requires access to the Education Data Portal and is not part of
-normal development or builds.
+The directory generator retrieves institutional records. The finance generator uses that directory to retrieve corresponding financial summaries.
 
-To add a reporting year, generate, validate, publish and audit its datasets,
-then add the year to `SUPPORTED_YEARS` in chronological order. Change
-`DEFAULT_YEAR` only if the application's default should change.
+The build script validates and reconciles both datasets. It performs a dry run by default; review the reported statistics before running it with `--publish`.
 
-The Explorer's donut compares **expenses / revenue**, while the map's
-revenue-to-expense ratio is **revenue / expenses**. They answer different
-questions and should not be read as interchangeable percentages.
+The audit script reports financial field coverage and reporting classifications without modifying the published datasets.
 
-## Project structure
+Omitting `--year` uses the configured default reporting year.
 
-- `src/App.tsx`: router, shared header and footer, and lazy-loaded pages.
-- `src/pages/`: the Explorer, map, and component reference pages.
-- `src/components/`: reusable search and header, financial charts, and map
-  markers and popups, the shared year selector, and detailed financial views.
-- `src/services/ipeds.ts`: data types and functions for the local JSON files
-  and live finance API.
-- `src/hooks/`: reusable hooks, including URL-driven reporting year selection.
-- `src/utils/` and `src/config/`: formatting, finance calculations, map
-  settings, and reporting year configuration.
-- `src/styles/`: plain CSS organized into shared and component styles.
-- `scripts/`: data generators, build and audit scripts, and tests.
-- `data/raw/`: intermediate annual datasets.
-- `public/data/`: shared metadata and published annual JSON datasets.
+### Refresh Variable Metadata
+
+Financial field labels and descriptions are maintained separately from annual datasets.
+
+```sh
+npm run generate:variables
+```
+
+### Add a Reporting Year
+
+1. Generate the directory and financial summaries for the desired year.
+2. Validate, publish, and audit the annual datasets.
+3. Add the year to `SUPPORTED_YEARS` in `src/config/reportingYears.ts`, maintaining chronological order.
+4. Update `DEFAULT_YEAR` if appropriate.
+5. Verify both application views and run the automated tests.
+
+### Pipeline Reliability
+
+The data pipeline includes:
+
+- Shared HTTP request handling with timeouts and retries.
+- Batched financial data retrieval.
+- Runtime validation of institutional and financial records.
+- Duplicate UNITID detection.
+- Reconciliation of directory and finance datasets.
+- Protection against publishing empty datasets.
+- Atomic writes for individual JSON files.
+
+Raw datasets are retained for reproducibility. Published datasets contain the reconciled institutional directory and financial summaries consumed by the application.
+
+## Project Structure
+
+```text
+src/
+├── components/     # Reusable UI, financial charts, and map components
+├── config/         # Financial fields, reporting years, and map settings
+├── hooks/          # Reusable React hooks
+├── pages/          # Application views
+├── services/       # Local and remote data access
+├── styles/         # Shared and component-specific CSS
+├── types/          # Shared TypeScript data definitions
+└── utils/          # Financial calculations, formatting, and helpers
+
+scripts/
+├── utils/
+├── generate-directory.ts
+├── generate-finances.ts
+├── generate-variables.ts
+├── build-data.ts
+├── audit-finances.ts
+└── *.test.ts
+
+data/
+└── raw/
+    ├── directory-{year}.json
+    └── finances-{year}.json
+
+public/
+└── data/
+    ├── variables.json
+    └── {year}/
+        ├── universities.json
+        └── finances.json
+```
+
+The application and data pipeline share financial summary definitions, data types, and reporting year configuration.
+
+## Testing
+
+Automated tests use the Node.js test runner and cover data validation, publication, HTTP requests, atomic file writes, institutional eligibility, financial calculations, formatting, categorization, and map cluster calculations.
+
+Run the complete verification sequence before publishing changes:
+
+```sh
+npm test
+npm run lint
+npm run typecheck
+npm run build
+```
 
 ## Styling
 
-`src/main.tsx` loads `modern-normalize` before `src/index.css`. The latter loads
-the self-hosted fonts, reset, theme and layout styles, then component styles.
-The Explorer also imports `src/App.css`, which currently contains no rules.
-
-`src/styles/global.css` defines semantic color, spacing, radius, shadow, and
-font tokens. The default palette is light; `prefers-color-scheme: dark`
-overrides the colors automatically. Dark panels are translucent charcoal.
-Use semantic UI colors for surfaces and text, chart tokens for charts, and
-status colors for assessments. Lato headings and Open Sans body text are
-self-hosted through Fontsource; both use the SIL Open Font License 1.1.
-
-`layout.css` sets the centered page width and spacing between direct sections.
-Pages generally group section content inside a `.container`; individual
-components own their internal layout. Component styles are split among
-`header.css`, `elements.css`, `financial.css`, `financial-overview/`,
-`university-search/`, and `mapview/`. Check both themes and narrow screens when
-changing shared styles.
+The application uses plain CSS organized into shared and component-specific stylesheets. Semantic design tokens are defined in `src/styles/global.css`, with automatic light and dark themes based on system preferences. Lato and Open Sans are self-hosted through Fontsource.
 
 ## Deployment
 
-`npm run build` writes a static Vite build to `dist/`; `npm run preview` can
-check it locally. Configure the host to serve `index.html` for client-side
-routes such as `/map-view` on direct visits and refreshes.
+Uni Fi Health is deployed as a static single-page application.
 
-For deployment under a subpath, build with the appropriate Vite base, for
-example `npm run build -- --base=/portfolio/`. The router and local data URLs
-use Vite's `BASE_URL`. The hosting platform must also rewrite routes under that
-base to the app's `index.html`. Test direct links, API access, and map tiles on
-the actual host; OpenStreetMap's public tile service has a
-[usage policy](https://operations.osmfoundation.org/policies/tiles/).
+```sh
+npm run build
+```
+
+The production build is generated in `dist/`, including the published JSON datasets.
+
+The current deployment base is `/financial-explorer-beta/`, configured in `vite.config.ts`. To build for another deployment path:
+
+```sh
+npm run build -- --base=/another-path/
+```
+
+The router and local data services use Vite's configured base URL. The hosting environment must support client-side route fallback to the application's `index.html`.
+
+After deployment, verify direct route navigation, reporting year selection, financial API access, and map tile loading.
+
+Use of OpenStreetMap's public tile service is subject to its [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).

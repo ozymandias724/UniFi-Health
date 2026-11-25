@@ -9,7 +9,6 @@ interface UniversityPopupProps {
 }
 
 function UniversityPopup({ university, ratio }: UniversityPopupProps) {
-  // Placeholder data until we build our financial data pipeline.
 
   const { year: reportingYear } = useReportingYear();
 

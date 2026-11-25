@@ -11,34 +11,38 @@ import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import type { FinanceRecord } from "../../types/finance.ts";
 import { currencyFormatter, percentageFormatter } from "../../utils/formatters";
+import { getRevenueCoverage } from "../../utils/getRevenueCoverage.ts";
 
 interface RevenueCoverageDonutProps {
   finances: FinanceRecord;
 }
 
 function RevenueCoverageDonut({ finances }: RevenueCoverageDonutProps) {
-  const revenue = finances.total_revenues_additions;
-  const expenses = finances.total_expenses_deductions;
+  const coverage = getRevenueCoverage(
+    finances.total_revenues_additions,
+    finances.total_expenses_deductions,
+  );
 
-  // ! TEST ONLY: Simulate expenses at 125% of revenue
-  // const expenses = revenue !== null ? revenue * 1.25 : null;
-
-  if (revenue == null || expenses == null || revenue <= 0 || expenses < 0) {
+  if (!coverage) {
     return (
       <section className="revenue-coverage">
-        <h3>Revenue Coverage</h3>
-        <p>Revenue coverage is unavailable for this institution.</p>
+        <div className="container">
+          <h3>Revenue Coverage</h3>
+          <p>Revenue coverage is unavailable for this institution.</p>
+        </div>
       </section>
     );
   }
 
-  const expenseShare = expenses / revenue;
-  const exceededRevenue = expenses > revenue;
-
-  const expenseWithinRevenue = Math.min(expenses, revenue);
-  const revenueAboveExpenses = Math.max(revenue - expenses, 0);
-
-  const overrunShare = Math.min(Math.max((expenses - revenue) / revenue, 0), 1);
+  const {
+    revenue,
+    expenses,
+    expenseShare,
+    exceededRevenue,
+    expenseWithinRevenue,
+    revenueAboveExpenses,
+    overrunShare,
+  } = coverage;
 
   const chartData = [
     {

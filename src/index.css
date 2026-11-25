@@ -17,7 +17,7 @@
 @import "./styles/elements.css";
 @import "./styles/header.css";
 @import "./styles/footer.css";
-@import "./styles/financial.css";
+@import "./styles/university-finances.css";
 @import "./styles/university-search/university-search.css";
 @import "./styles/financial-overview/financial-overview.css";
 /* mapview.css imports the popup styles; the map also loads Leaflet's CSS. */

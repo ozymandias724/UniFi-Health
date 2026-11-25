@@ -32,15 +32,16 @@ function MapView() {
     year: number;
     universities: University[];
     finances: UniversityFinanceSummary[];
+    error: boolean;
   } | null>(null);
 
-  // const universities = mapData?.year === year ? mapData.universities : [];
-  // const finances = mapData?.year === year ? mapData.finances : [];
+  const currentData = mapData?.year === year ? mapData : null;
 
-  const universities = mapData?.universities ?? [];
-  const finances = mapData?.finances ?? [];
+  const universities = currentData?.universities ?? [];
+  const finances = currentData?.finances ?? [];
 
-  const isLoading = mapData?.year !== year;
+  const isLoading = currentData === null;
+  const hasError = currentData?.error === true;
 
   // Store the institution's identity independently of the reporting year.
   const [selectedUnitid, setSelectedUnitid] = useState<number | null>(null);
@@ -53,37 +54,45 @@ function MapView() {
   const financesByUnitid = useMemo(
     () =>
       new Map(
-        (mapData?.finances ?? []).map((record) => [record.unitid, record]),
+        (currentData?.finances ?? []).map((record) => [record.unitid, record]),
       ),
-    [mapData],
+    [currentData],
   );
 
   // Load matching directory and financial summaries for the reporting year.
   useEffect(() => {
-    let cancelled = false;
+    const controller = new AbortController();
 
-    async function loadMapData() {
-      try {
-        const [universities, finances] = await Promise.all([
-          getUniversities(year),
-          getFinanceSummaries(year),
-        ]);
-
-        if (!cancelled) {
-          setMapData({ year, universities, finances });
+    Promise.all([
+      getUniversities(year, controller.signal),
+      getFinanceSummaries(year, controller.signal),
+    ])
+      .then(([universities, finances]) => {
+        if (!controller.signal.aborted) {
+          setMapData({
+            year,
+            universities,
+            finances,
+            error: false,
+          });
         }
-      } catch (error) {
-        if (!cancelled) {
+      })
+      .catch((error) => {
+        if (!controller.signal.aborted) {
           console.error("Failed to load map data:", error);
+
+          setMapData({
+            year,
+            universities: [],
+            finances: [],
+            error: true,
+          });
+
+          controller.abort();
         }
-      }
-    }
+      });
 
-    loadMapData();
-
-    return () => {
-      cancelled = true;
-    };
+    return () => controller.abort();
   }, [year]);
 
   return (
@@ -91,10 +100,12 @@ function MapView() {
       <section className="map-view">
         <div className="container">
           <h1>University Map</h1>
-          <p>
+          <p role="status">
             {isLoading
               ? `Loading data for ${year}...`
-              : `Loaded ${universities.length} universities and ${finances.length} financial summaries for ${year}.`}
+              : hasError
+                ? `Unable to load data for ${year}. Please try again.`
+                : `Loaded ${universities.length} universities and ${finances.length} financial summaries for ${year}.`}
           </p>
 
           <YearSelector />

@@ -11,7 +11,7 @@
  * debouncing, and prebuilding the Fuse index.
  *
  * Fuse.js reference: https://www.fusejs.io/articles/using-fuse-with-react.html
-*/
+ */
 import Fuse from "fuse.js";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { University } from "../types/university.ts";
@@ -70,9 +70,13 @@ function UniversitySearch({ universities, onSelect }: UniversitySearchProps) {
     [universities],
   );
 
-  const results = search.trim()
-    ? fuse.search(search.trim(), { limit: 10 }).map((result) => result.item)
-    : [];
+  const results = useMemo(() => {
+    const query = search.trim();
+
+    return query
+      ? fuse.search(query, { limit: 10 }).map((result) => result.item)
+      : [];
+  }, [fuse, search]);
 
   return (
     <section className="university-search">

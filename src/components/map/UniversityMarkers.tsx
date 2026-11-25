@@ -12,13 +12,12 @@ import { Marker, Popup, useMap } from "react-leaflet";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import { divIcon, type Marker as LeafletMarker } from "leaflet";
 
-import type {
-  University,
-} from "../../types/university.ts";
+import type { University } from "../../types/university.ts";
 import type { UniversityFinanceSummary } from "../../types/finance";
 
 import UniversityPopup from "./UniversityPopups";
 import { getFinanceColor } from "../../utils/getFinanceColor";
+import { getClusterFinance } from "../../utils/getClusterFinance.ts";
 import { getRevenueExpenseRatio } from "../../utils/getRevenueExpenseRatio";
 import { MAP_FOCUS_ZOOM } from "../../config/map";
 
@@ -68,52 +67,25 @@ function UniversityMarkers({
   // Generate cluster colors based on the percentage of
   // universities reporting expenses greater than revenue.
   const createClusterIcon = (cluster: UniversityCluster) => {
-    const markers = cluster.getAllChildMarkers();
-
-    let deficitCount = 0;
-    let validCount = 0;
-
-    markers.forEach((marker) => {
-      if (marker.universityId === undefined) return;
+    const ratios = cluster.getAllChildMarkers().map((marker) => {
+      if (marker.universityId === undefined) return null;
 
       const finance = financesByUnitid.get(marker.universityId);
 
-      if (!finance) return;
+      if (!finance) return null;
 
-      const ratio = getRevenueExpenseRatio(
+      return getRevenueExpenseRatio(
         finance.total_revenues_additions,
         finance.total_expenses_deductions,
       );
-
-      if (ratio === null) return;
-
-      validCount++;
-
-      if (ratio < 100) {
-        deficitCount++;
-      }
     });
 
-    const deficitPercentage =
-      validCount > 0 ? (deficitCount / validCount) * 100 : null;
-
-    const color =
-      deficitPercentage === null
-        ? "#94a3b8"
-        : deficitPercentage >= 80
-          ? "#dc2626"
-          : deficitPercentage >= 60
-            ? "#f97316"
-            : deficitPercentage >= 40
-              ? "#eab308"
-              : deficitPercentage >= 20
-                ? "#84cc16"
-                : "#16a34a";
+    const { color } = getClusterFinance(ratios);
 
     return divIcon({
       html: `<div class="university-cluster-marker" style="--cluster-color: ${color}">
-        <span>${cluster.getChildCount()}</span>
-      </div>`,
+      <span>${cluster.getChildCount()}</span>
+    </div>`,
       className: "university-cluster",
       iconSize: [44, 44],
       iconAnchor: [22, 22],

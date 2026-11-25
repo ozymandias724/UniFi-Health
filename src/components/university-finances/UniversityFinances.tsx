@@ -1,6 +1,7 @@
 /** Coordinates the detailed IPEDS financial data display. */
 import type { FinanceRecord } from "../../types/finance.ts";
 import type { VariableMetadata } from "../../types/metadata.ts";
+import { useMemo } from "react";
 
 import { groupFinances } from "../../utils/groupFinances";
 import FinanceCategory from "./FinanceCategory";
@@ -12,7 +13,10 @@ interface UniversityFinancesProps {
 }
 
 function UniversityFinances({ finances, variables }: UniversityFinancesProps) {
-  const sections = groupFinances(finances, variables);
+  const sections = useMemo(
+    () => groupFinances(finances, variables),
+    [finances, variables],
+  );
 
   return (
     <section className="university-finances">

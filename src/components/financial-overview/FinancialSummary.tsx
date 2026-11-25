@@ -46,7 +46,11 @@ function FinancialSummary({ finances }: FinancialSummaryProps) {
           {metrics.map(({ label, value }) => (
             <div key={label} className="financial-summary-metric">
               <dt>{label}</dt>
-              <dd>{value == null ? "N/A" : currencyFormatter.format(value)}</dd>
+              <dd>
+                {value == null || !Number.isFinite(value)
+                  ? "N/A"
+                  : currencyFormatter.format(value)}
+              </dd>
             </div>
           ))}
         </dl>
@@ -54,7 +58,7 @@ function FinancialSummary({ finances }: FinancialSummaryProps) {
         <p className="financial-summary-enrollment">
           Estimated full-time equivalent enrollment:{" "}
           <strong>
-            {finances.est_fte == null
+            {finances.est_fte == null || !Number.isFinite(finances.est_fte)
               ? "N/A"
               : integerFormatter.format(finances.est_fte)}
           </strong>
