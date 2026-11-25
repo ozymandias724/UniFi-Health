@@ -6,19 +6,34 @@
  */
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
+import ComparisonSidebar from "./comparison/ComparisonSidebar";
 
 function Header() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
   const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const navigationParams = new URLSearchParams();
+
+  for (const key of ["unitid", "year"]) {
+    const value = searchParams.get(key);
+
+    if (value !== null) {
+      navigationParams.set(key, value);
+    }
+  }
+
+  const search = navigationParams.toString();
+
   const explorerLink = {
     pathname: "/",
-    search: location.search,
+    search,
   };
 
   const mapLink = {
     pathname: "/map-view",
-    search: location.search,
+    search,
   };
 
   // Also close the menu when browser history changes the current route.
@@ -56,22 +71,25 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container">
-        <Link className="site-brand" to={explorerLink}>
+        <Link className="site-brand" to="/">
           Financial Explorer
         </Link>
-        <button
-          className="nav-icon-button"
-          type="button"
-          aria-label="Open navigation menu"
-          aria-haspopup="dialog"
-          aria-controls="site-navigation"
-          aria-expanded={isOpen}
-          onClick={openMenu}
-        >
-          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
-            <path d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
+        <div className="header-actions">
+          <ComparisonSidebar />
+          <button
+            className="nav-icon-button"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-haspopup="dialog"
+            aria-controls="site-navigation"
+            aria-expanded={isOpen}
+            onClick={openMenu}
+          >
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <dialog

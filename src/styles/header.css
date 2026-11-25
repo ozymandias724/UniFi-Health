@@ -107,6 +107,12 @@
   color: var(--accent-primary);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
 /* Wider screens use a slide-in drawer instead of covering the whole page. */
 @media (min-width: 768px) {
   .site-nav-dialog {
@@ -134,5 +140,19 @@
 @media (prefers-reduced-motion: reduce) {
   .site-nav-dialog[open] {
     animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .site-header {
+    padding-inline: var(--space-md);
+  }
+
+  .site-header > .container {
+    gap: var(--space-sm);
+  }
+
+  .header-actions {
+    flex-shrink: 0;
   }
 }

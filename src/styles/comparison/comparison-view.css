@@ -1,0 +1,83 @@
+/* Comparison cards share the same surfaces and spacing as Explorer. */
+.comparison-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: var(--space-md);
+}
+
+.comparison-results > p {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.comparison-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--bg-panel);
+  box-shadow: var(--shadow-elevation-1);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.comparison-card h2 {
+  font-size: 1.25rem;
+  margin-block: var(--space-xs);
+}
+
+.comparison-card p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.comparison-card .comparison-card-year {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  font-weight: 600;
+}
+
+.comparison-card .btn {
+  margin-block-start: auto;
+  white-space: normal;
+  max-width: 100%;
+}
+
+/* Shared actions in the selected institution panel and map popup. */
+.university-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-md);
+}
+
+.university-popup .university-actions {
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  margin-block-start: var(--space-sm);
+}
+
+.university-popup .university-actions a {
+  margin-block-start: 0;
+}
+
+.btn.add-to-compare-button[aria-pressed="true"] {
+  --_bg: color-mix(in srgb, var(--accent-primary) 12%, var(--bg-surface));
+  --_fg: var(--accent-primary);
+  --_border: var(--accent-primary);
+  --_hover-bg: color-mix(in srgb, var(--accent-primary) 20%, var(--bg-surface));
+}
+
+.add-to-compare-button {
+  white-space: normal;
+  max-width: 100%;
+}

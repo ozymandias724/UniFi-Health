@@ -22,3 +22,6 @@
 @import "./styles/financial-overview/financial-overview.css";
 /* mapview.css imports the popup styles; the map also loads Leaflet's CSS. */
 @import "./styles/mapview/mapview.css";
+/* Comparison sidebar styles */
+@import "./styles/comparison/comparison-sidebar.css";
+@import "./styles/comparison/comparison-view.css";

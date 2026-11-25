@@ -1,0 +1,110 @@
+.comparison-sidebar {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: min(100%, 26rem);
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  padding: var(--space-lg);
+  border: 0;
+  border-inline-start: 1px solid var(--border-default);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-elevation-2);
+  overflow-y: auto;
+}
+
+.comparison-sidebar[open] {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  overscroll-behavior: contain;
+}
+
+.comparison-sidebar::backdrop {
+  background: rgb(0 0 0 / 55%);
+}
+
+.comparison-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.comparison-selections {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comparison-selections > li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-subtle);
+}
+
+.comparison-sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-block-start: auto;
+}
+
+.comparison-sidebar-header h2 {
+  font-size: 1.5rem;
+}
+
+.comparison-sidebar > p,
+.comparison-selections p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.comparison-selections > li > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.comparison-selections strong {
+  display: block;
+  line-height: 1.35;
+  margin-block-end: var(--space-xs);
+}
+
+.comparison-sidebar-actions {
+  padding-block-start: var(--space-md);
+  border-block-start: 1px solid var(--border-default);
+}
+
+.comparison-sidebar-actions .btn {
+  min-height: 2.75rem;
+}
+
+.comparison-toggle {
+  min-height: 2.75rem;
+}
+
+@media (max-width: 480px) {
+  .comparison-sidebar {
+    padding: var(--space-md);
+    border-inline-start: 0;
+  }
+
+  .comparison-selections > li {
+    gap: var(--space-sm);
+  }
+
+  .comparison-toggle {
+    padding-inline: var(--space-sm);
+  }
+}

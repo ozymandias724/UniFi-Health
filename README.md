@@ -12,6 +12,9 @@ Uni Fi Health is an interactive application for exploring historical financial i
 - Interactive map with financial color coding and marker clustering.
 - Annual reporting year selection.
 - Shareable institution and reporting year URLs.
+- Institutional comparison view supporting up to four institution-year selections.
+- Persistent comparison cart accessible from Explorer and Map View.
+- Shareable comparison URLs independent of saved selections.
 - Responsive layouts with automatic light and dark themes.
 
 Currently supported reporting years are **2021, 2022, and 2023**, with 2023 as the default.
@@ -54,11 +57,29 @@ Individual marker colors represent the ratio of revenue to expenses. Cluster col
 
 Institutions and clusters without valid ratios are displayed in a neutral color.
 
+### Comparison View (`/compare`)
+
+Add institutions to the comparison cart from Financial Explorer or Map View. Each selection is identified by its IPEDS UNITID and reporting year, allowing the same institution to be selected across multiple years.
+
+The comparison sidebar supports up to four unique selections, individual removal, and clearing the cart. Selections are maintained through React Context and persisted in localStorage when available.
+
+The comparison page resolves institutional names and locations from the published annual directories, requesting each required reporting year once per loading cycle. Cards display institutional information and links to the corresponding financial profiles. Financial metrics and comparative visualizations are planned for a subsequent development cycle.
+
+The `items` query parameter is the source of truth for the displayed comparison. For example:
+
+```text
+/compare?items=166027:2023,166683:2022
+```
+
+URL parameters may be percent-encoded by the browser. Comparison inputs are validated against supported reporting years, positive safe integer UNITIDs, duplicate selections, and the four-selection limit. Shared comparison URLs work independently of the saved cart and do not overwrite it.
+
 ### Navigation
 
-Both views share institutional search and reporting year selection. The `year` query parameter is the source of truth for the selected reporting year. Missing or unsupported years resolve to the configured default.
+Financial Explorer and Map View share institutional search and reporting year selection. The `year` query parameter is the source of truth for the selected reporting year. Missing or unsupported years resolve to the configured default.
 
 Institution selection uses the IPEDS UNITID, allowing users to navigate between views, change reporting years, and share institution-specific links.
+
+Navigation between Explorer and Map View preserves the `unitid` and `year` parameters. The site brand returns to a clean Explorer URL without clearing the comparison cart. Comparison-specific parameters are not carried into other views.
 
 A separate Kitchen Sink page (`/kitchen-sink`) provides a reference for shared UI elements.
 
@@ -126,7 +147,7 @@ npm run generate:variables
 2. Validate, publish, and audit the annual datasets.
 3. Add the year to `SUPPORTED_YEARS` in `src/config/reportingYears.ts`, maintaining chronological order.
 4. Update `DEFAULT_YEAR` if appropriate.
-5. Verify both application views and run the automated tests.
+5. Verify Explorer, Map View, and cross-year comparisons, then run the automated tests.
 
 ### Pipeline Reliability
 
@@ -147,7 +168,8 @@ Raw datasets are retained for reproducibility. Published datasets contain the re
 ```text
 src/
 ├── components/     # Reusable UI, financial charts, and map components
-├── config/         # Financial fields, reporting years, and map settings
+├── config/         # Financial fields, reporting years, and application settings
+├── context/        # Shared comparison state and persistence
 ├── hooks/          # Reusable React hooks
 ├── pages/          # Application views
 ├── services/       # Local and remote data access
@@ -181,7 +203,9 @@ The application and data pipeline share financial summary definitions, data type
 
 ## Testing
 
-Automated tests use the Node.js test runner and cover data validation, publication, HTTP requests, atomic file writes, institutional eligibility, financial calculations, formatting, categorization, and map cluster calculations.
+Automated tests use the Node.js test runner and cover data validation, publication, HTTP requests, atomic file writes, institutional eligibility, financial calculations, formatting, categorization, map cluster calculations, comparison selection identity, and comparison URL serialization and validation.
+
+The test suite contains 115 automated tests, including 27 comparison utility tests. The comparison feature has also passed 23 manual regression checks covering selection behavior, persistence, navigation, and malformed URLs.
 
 Run the complete verification sequence before publishing changes:
 
@@ -191,6 +215,14 @@ npm run lint
 npm run typecheck
 npm run build
 ```
+
+## Development Roadmap
+
+The institutional comparison scaffolding is complete. Planned development includes:
+
+- Financial metrics and side-by-side comparative visualizations.
+- Historical financial trends and expanded reporting year coverage.
+- Shared annual directory caching to reduce repeated data loading across views.
 
 ## Styling
 
@@ -214,6 +246,6 @@ npm run build -- --base=/another-path/
 
 The router and local data services use Vite's configured base URL. The hosting environment must support client-side route fallback to the application's `index.html`.
 
-After deployment, verify direct route navigation, reporting year selection, financial API access, and map tile loading.
+After deployment, verify direct route navigation (including shared comparison URLs), reporting year selection, comparison cart persistence, financial API access, and map tile loading.
 
 Use of OpenStreetMap's public tile service is subject to its [tile usage policy](https://operations.osmfoundation.org/policies/tiles/).

@@ -25,6 +25,8 @@ import { useEffect, useState } from "react";
 import { useReportingYear } from "../hooks/useReportingYear";
 import YearSelector from "../components/YearSelector";
 
+import AddToCompareButton from "../components/comparison/AddToCompareButton";
+
 // React Router search params for handling query parameters
 import { Link, useSearchParams } from "react-router";
 
@@ -204,11 +206,19 @@ function Explorer() {
               {selectedUniversity.city}, {selectedUniversity.state_abbr}
             </p>
             <p>IPEDS ID: {selectedUniversity.unitid}</p>
-            <Link
-              to={`/map-view?unitid=${selectedUniversity.unitid}&year=${year}`}
-            >
-              View on Map
-            </Link>
+            <div className="university-actions">
+              <Link
+                className="btn"
+                data-variant="secondary"
+                to={`/map-view?unitid=${selectedUniversity.unitid}&year=${year}`}
+              >
+                View on Map
+              </Link>
+              <AddToCompareButton
+                unitid={selectedUniversity.unitid}
+                year={year}
+              />
+            </div>
           </div>
         </section>
       )}

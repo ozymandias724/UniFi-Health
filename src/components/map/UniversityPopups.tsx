@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import type { University } from "../../types/university.ts";
 
+import AddToCompareButton from "../comparison/AddToCompareButton";
+
 import { useReportingYear } from "../../hooks/useReportingYear";
 
 interface UniversityPopupProps {
@@ -32,9 +34,12 @@ function UniversityPopup({ university, ratio }: UniversityPopupProps) {
         </div>
       </div>
 
-      <Link to={`/?unitid=${university.unitid}&year=${reportingYear}`}>
-        View Financial Profile →
-      </Link>
+      <div className="university-actions">
+        <Link to={`/?unitid=${university.unitid}&year=${reportingYear}`}>
+          View Financial Profile →
+        </Link>
+        <AddToCompareButton unitid={university.unitid} year={reportingYear} />
+      </div>
     </div>
   );
 }
