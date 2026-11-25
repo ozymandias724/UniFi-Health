@@ -10,6 +10,11 @@ import { fileURLToPath } from "node:url";
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 
+import {
+  EXCLUDED_PARENT_CHILD_FLAGS,
+  hasExcludedReportingFlag,
+} from "./utils/institutionEligibility.ts";
+
 import { isRecord } from "./utils/validation.ts";
 
 import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
@@ -106,7 +111,7 @@ function coverage(rows: RecordRow[]): void {
 }
 
 function isRetained(row: RecordRow): boolean {
-  return ![2, 3, 4, 5, 6].includes(row.parent_child_flag as number);
+  return !hasExcludedReportingFlag(row.parent_child_flag);
 }
 
 export async function auditFinances(path = DEFAULT_PATH): Promise<void> {
@@ -128,7 +133,9 @@ export async function auditFinances(path = DEFAULT_PATH): Promise<void> {
 
   console.log("\n2. COVERAGE — ALL DIRECTORY ENTRIES");
   coverage(rows);
-  console.log(`\n3. PROPOSED FILTER: exclude flags 2, 3, 4, 5, 6`);
+  console.log(
+    `\n3. PROPOSED FILTER: exclude flags ${EXCLUDED_PARENT_CHILD_FLAGS.join(", ")}`,
+  );
   console.log(
     `Retained: ${retained.length} (${percent(retained.length, rows.length)})`,
   );

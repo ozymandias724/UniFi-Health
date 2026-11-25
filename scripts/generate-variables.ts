@@ -4,6 +4,7 @@
  * Run from the project root; the script replaces variables.json.
  */
 import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
+import { requestJson } from "./utils/requestJson.ts";
 import * as he from "he";
 
 const API_URL = "https://educationdata.urban.org/api/v1/api-variables";
@@ -40,22 +41,9 @@ interface VariableMetadata {
 async function generateVariables(): Promise<void> {
   console.log("Fetching Urban Institute variable definitions...");
 
-  const response = await fetch(API_URL, {
-    signal: AbortSignal.timeout(60000), // 60-second timeout
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-      Accept: "application/json, text/plain, */*",
-      "Accept-Language": "en-US,en;q=0.9",
-      Referer: "https://www.urban.org/",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`Variables API error: ${response.status}`);
-  }
-
-  const data = (await response.json()) as APIResponse;
+  const data = (await requestJson(API_URL, {
+    label: "Variables API",
+  })) as APIResponse;
 
   // Ensure we received the complete dataset
   if (
@@ -68,7 +56,7 @@ async function generateVariables(): Promise<void> {
 
   // Convert the array into an object keyed by variable name
   const variables: Record<string, VariableMetadata> = {};
-  
+
   for (const item of data.results) {
     if (Object.hasOwn(variables, item.variable)) {
       console.warn(`Duplicate variable definition: ${item.variable}`);

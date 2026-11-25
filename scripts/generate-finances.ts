@@ -15,6 +15,7 @@ import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 import { isRecord, isUnitid } from "./utils/validation.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
+import { requestJson } from "./utils/requestJson.ts";
 
 const YEAR = parseReportingYear();
 
@@ -22,7 +23,7 @@ const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds
 const DIRECTORY_PATH = `data/raw/directory-${YEAR}.json`;
 const OUTPUT_PATH = `data/raw/finances-${YEAR}.json`;
 const BATCH_SIZE = 300;
-const MAX_ATTEMPTS = 3;
+// const MAX_ATTEMPTS = 3;
 
 import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
 
@@ -51,87 +52,6 @@ function financeValue(value: unknown): number | null {
     : null;
 }
 
-async function requestPage(
-  url: string,
-  requests: RequestCounter,
-): Promise<unknown> {
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
-    let response: Response;
-    try {
-      requests.count++;
-      response = await fetch(url, {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-          Accept: "application/json, text/plain, */*",
-          "Accept-Language": "en-US,en;q=0.9",
-          Referer: "https://www.urban.org/",
-        },
-        signal: AbortSignal.timeout(60000),
-      });
-    } catch (error) {
-      if (attempt === MAX_ATTEMPTS) {
-        throw new Error(
-          `Finance API request failed after ${attempt} attempts`,
-          {
-            cause: error,
-          },
-        );
-      }
-      console.warn(
-        `Finance API request failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
-      );
-      await new Promise((resolve) =>
-        setTimeout(resolve, 500 * 2 ** (attempt - 1)),
-      );
-      continue;
-    }
-
-    if (response.ok) {
-      try {
-        return await response.json();
-      } catch (error) {
-        if (error instanceof SyntaxError) {
-          throw new Error("Finance API returned invalid JSON.", {
-            cause: error,
-          });
-        }
-        if (attempt === MAX_ATTEMPTS) {
-          throw new Error(
-            `Finance API response failed after ${attempt} attempts`,
-            {
-              cause: error,
-            },
-          );
-        }
-        console.warn(
-          `Finance API response failed; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
-        );
-        await new Promise((resolve) =>
-          setTimeout(resolve, 500 * 2 ** (attempt - 1)),
-        );
-        continue;
-      }
-    }
-    if (
-      (response.status === 429 || response.status >= 500) &&
-      attempt < MAX_ATTEMPTS
-    ) {
-      console.warn(
-        `Finance API returned ${response.status}; retrying (attempt ${attempt + 1}/${MAX_ATTEMPTS}).`,
-      );
-      await new Promise((resolve) =>
-        setTimeout(resolve, 500 * 2 ** (attempt - 1)),
-      );
-      continue;
-    }
-    throw new Error(
-      `Finance API error: ${response.status} ${response.statusText}`,
-    );
-  }
-  throw new Error("Finance API request exhausted its retries.");
-}
-
 async function fetchBatch(
   unitids: number[],
   records: Map<number, UniversityFinanceSummary>,
@@ -158,7 +78,12 @@ async function fetchBatch(
     }
     visited.add(pageUrl.href);
 
-    const data = await requestPage(pageUrl.href, requests);
+    const data = await requestJson(pageUrl.href, {
+      label: "Finance API",
+      onAttempt: () => {
+        requests.count++;
+      },
+    });
     if (
       !isRecord(data) ||
       typeof data.count !== "number" ||

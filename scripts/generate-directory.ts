@@ -8,6 +8,8 @@
 import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 
+import { requestJson } from "./utils/requestJson.ts";
+
 const DIRECTORY_YEAR = parseReportingYear();
 
 const OUTPUT_PATH = `data/raw/directory-${DIRECTORY_YEAR}.json`;
@@ -38,22 +40,9 @@ async function generateDirectory(): Promise<void> {
 
   console.log(`Fetching IPEDS directory for ${DIRECTORY_YEAR}...`);
 
-  const response = await fetch(url, {
-    signal: AbortSignal.timeout(60000), // 60-second timeout for the request
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-      Accept: "application/json, text/plain, */*",
-      "Accept-Language": "en-US,en;q=0.9",
-      Referer: "https://www.urban.org/",
-    },
-  });
-
-  if (!response.ok) {
-    throw new Error(`IPEDS API error: ${response.status}`);
-  }
-
-  const data = (await response.json()) as IPEDSResponse;
+  const data = (await requestJson(url, {
+    label: "IPEDS API",
+  })) as IPEDSResponse;
 
   if (
     data.count === 0 ||

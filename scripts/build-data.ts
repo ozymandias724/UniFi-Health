@@ -12,6 +12,8 @@ import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 
 import { isRecord, isUnitid, isNullableNumber } from "./utils/validation.ts";
 
+import { hasExcludedReportingFlag } from "./utils/institutionEligibility.ts";
+
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 const YEAR = parseReportingYear();
 
@@ -22,8 +24,6 @@ const OUTPUT_DIR = `public/data/${YEAR}`;
 
 const UNIVERSITIES_OUTPUT = `${OUTPUT_DIR}/universities.json`;
 const FINANCES_OUTPUT = `${OUTPUT_DIR}/finances.json`;
-
-const EXCLUDED_FLAGS = new Set([2, 3, 4, 5, 6]);
 
 interface University {
   unitid: number;
@@ -171,10 +171,7 @@ export async function buildData(publish = false): Promise<void> {
       continue;
     }
 
-    if (
-      finance.parent_child_flag !== null &&
-      EXCLUDED_FLAGS.has(finance.parent_child_flag)
-    ) {
+    if (hasExcludedReportingFlag(finance.parent_child_flag)) {
       stats.partialReporting++;
       continue;
     }
