@@ -1,5 +1,5 @@
 {
-  "name": "unifinexplorer",
+  "name": "unifihealth",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,8 +7,14 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
+    "typecheck": "tsc -b --pretty",
     "preview": "vite preview",
-    "generate:finances": "node scripts/generate-finances.ts"
+    "test": "node --test scripts/*.test.ts",
+    "generate:directory": "node scripts/generate-directory.ts",
+    "generate:finances": "node scripts/generate-finances.ts",
+    "generate:variables": "node scripts/generate-variables.ts",
+    "data:build": "node scripts/build-data.ts",
+    "data:audit": "node scripts/audit-finances.ts"
   },
   "dependencies": {
     "@fontsource/lato": "^5.3.0",

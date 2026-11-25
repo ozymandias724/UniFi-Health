@@ -137,10 +137,8 @@ function validateFinances(
   }
 }
 
-function isEligible(finance: UniversityFinanceSummary): boolean {
+function hasFinancialTotals(finance: UniversityFinanceSummary): boolean {
   return (
-    (finance.parent_child_flag === null ||
-      !EXCLUDED_FLAGS.has(finance.parent_child_flag)) &&
     finance.total_revenues_additions !== null &&
     finance.total_expenses_deductions !== null
   );
@@ -194,7 +192,7 @@ export async function buildData(publish = false): Promise<void> {
       continue;
     }
 
-    if (!isEligible(finance)) {
+    if (!hasFinancialTotals(finance)) {
       stats.missingTotals++;
       continue;
     }
@@ -234,6 +232,9 @@ export async function buildData(publish = false): Promise<void> {
   if (!publish) {
     console.log("Dry run complete. No published files modified.");
     return;
+  }
+  if (eligibleUniversities.length === 0) {
+    throw new Error("Cannot publish an empty institutional dataset.");
   }
 
   await mkdir(dirname(UNIVERSITIES_OUTPUT), { recursive: true });

@@ -41,6 +41,7 @@ async function generateVariables(): Promise<void> {
   console.log("Fetching Urban Institute variable definitions...");
 
   const response = await fetch(API_URL, {
+    signal: AbortSignal.timeout(60000), // 60-second timeout
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
@@ -57,14 +58,22 @@ async function generateVariables(): Promise<void> {
   const data = (await response.json()) as APIResponse;
 
   // Ensure we received the complete dataset
-  if (data.next !== null || data.results.length !== data.count) {
-    throw new Error("Incomplete variable definitions response.");
+  if (
+    data.count === 0 ||
+    data.next !== null ||
+    data.results.length !== data.count
+  ) {
+    throw new Error("Empty or incomplete variable definitions response.");
   }
 
   // Convert the array into an object keyed by variable name
   const variables: Record<string, VariableMetadata> = {};
-
+  
   for (const item of data.results) {
+    if (Object.hasOwn(variables, item.variable)) {
+      console.warn(`Duplicate variable definition: ${item.variable}`);
+    }
+
     variables[item.variable] = {
       label: he.decode(item.label),
       format: item.format,

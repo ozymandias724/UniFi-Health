@@ -1,1 +1,18 @@
+# Dependencies
 node_modules/
+
+# Production build
+dist/
+
+# Local environment
+.env.local
+.env.*.local
+
+# Operating system
+.DS_Store
+
+# TypeScript build cache
+*.tsbuildinfo
+
+# Logs
+*.log

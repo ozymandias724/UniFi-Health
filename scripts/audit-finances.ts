@@ -52,11 +52,22 @@ function isPopulated(value: unknown): value is number {
   );
 }
 
+function isReportingForm(value: unknown): value is string | number {
+  return (
+    isPopulated(value) || (typeof value === "string" && value.trim().length > 0)
+  );
+}
+
 function countBy(rows: RecordRow[], field: string): void {
   const counts = new Map<string, number>();
   for (const row of rows) {
     const value = row[field];
-    const key = isPopulated(value) ? String(value) : "null / missing";
+
+    const populated =
+      field === "reporting_form" ? isReportingForm(value) : isPopulated(value);
+
+    const key = populated ? String(value) : "null / missing";
+
     counts.set(key, (counts.get(key) ?? 0) + 1);
   }
   console.table(
@@ -66,7 +77,7 @@ function countBy(rows: RecordRow[], field: string): void {
           ? 1
           : b === "null / missing"
             ? -1
-            : Number(a) - Number(b),
+            : a.localeCompare(b, undefined, { numeric: true }),
       )
       .map(([value, count]) => ({
         value,
@@ -83,7 +94,11 @@ function percent(n: number, total: number): string {
 function coverage(rows: RecordRow[]): void {
   console.table(
     [...REPORTING_FIELDS, ...FINANCIAL_FIELDS].map((field) => {
-      const populated = rows.filter((row) => isPopulated(row[field])).length;
+      const populated = rows.filter((row) =>
+        field === "reporting_form"
+          ? isReportingForm(row[field])
+          : isPopulated(row[field]),
+      ).length;
       const missingKey = rows.filter(
         (row) => !Object.hasOwn(row, field),
       ).length;
@@ -148,8 +163,10 @@ export async function auditFinances(path = DEFAULT_PATH): Promise<void> {
   console.log("\n4. REPORTING FORM COUNTS — RETAINED ENTRIES");
   countBy(retained, "reporting_form");
   const forms = [...new Set(retained.map((row) => row.reporting_form))]
-    .filter(isPopulated)
-    .sort((a, b) => a - b);
+    .filter(isReportingForm)
+    .sort((a, b) =>
+      String(a).localeCompare(String(b), undefined, { numeric: true }),
+    );
   console.log("\nREVENUE TOTAL COVERAGE BY REPORTING FORM (retained)");
   console.table(
     forms.map((form) => {
@@ -169,7 +186,7 @@ export async function auditFinances(path = DEFAULT_PATH): Promise<void> {
     }),
   );
   const unknownForm = retained.filter(
-    (row) => !isPopulated(row.reporting_form),
+    (row) => !isReportingForm(row.reporting_form),
   );
   if (unknownForm.length) {
     console.log(

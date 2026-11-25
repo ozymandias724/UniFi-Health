@@ -147,6 +147,23 @@ test("publish writes aligned eligible UNITIDs in directory order", () => {
   );
 });
 
+test("rejects publication when no institutions are eligible", () => {
+  withBuild(
+    [university(1)],
+    [finance(1, { parent_child_flag: 3 })],
+    true,
+    (result) => {
+      assert.notEqual(result.status, 0, result.output);
+      assert.match(
+        result.output,
+        /Cannot publish an empty institutional dataset/,
+      );
+      assert.equal(result.universities, "original universities");
+      assert.equal(result.finances, "original finances");
+    },
+  );
+});
+
 const invalidCases: Array<[string, unknown, unknown, RegExp]> = [
   [
     "duplicate directory UNITID",

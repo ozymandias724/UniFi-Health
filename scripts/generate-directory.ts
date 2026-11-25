@@ -1,6 +1,6 @@
 /**
- * Fetch the 2023 directory of active, degree-granting, four-year institutions
- * and save a source snapshot to data/raw.
+ * Fetch the annual directory of active, degree-granting,
+ * four-year institutions and save a source snapshot to data/raw.
  *
  * Run from the project root.
  * Does not modify the application's published university directory.
@@ -40,6 +40,7 @@ async function generateDirectory(): Promise<void> {
   console.log(`Fetching IPEDS directory for ${DIRECTORY_YEAR}...`);
 
   const response = await fetch(url, {
+    signal: AbortSignal.timeout(60000), // 60-second timeout for the request
     headers: {
       "User-Agent":
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
@@ -55,8 +56,12 @@ async function generateDirectory(): Promise<void> {
 
   const data = (await response.json()) as IPEDSResponse;
 
-  if (data.next !== null || data.results.length !== data.count) {
-    throw new Error("Incomplete IPEDS directory response.");
+  if (
+    data.count === 0 ||
+    data.next !== null ||
+    data.results.length !== data.count
+  ) {
+    throw new Error("Empty or incomplete IPEDS directory response.");
   }
 
   const universities: University[] = data.results.map((university) => ({

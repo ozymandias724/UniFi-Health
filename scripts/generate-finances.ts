@@ -36,12 +36,6 @@ const SUMMARY_FIELDS = [
   "equity_end",
 ] as const;
 
-// type SummaryField = (typeof SUMMARY_FIELDS)[number];
-// type UniversityFinanceSummary = {
-//   unitid: number;
-//   year: number;
-// } & Record<SummaryField, number | null>;
-
 function makeSummary(
   unitid: number,
   record: Record<string, unknown> = {},
@@ -91,7 +85,7 @@ async function requestPage(
           "Accept-Language": "en-US,en;q=0.9",
           Referer: "https://www.urban.org/",
         },
-        signal: AbortSignal.timeout(60_000),
+        signal: AbortSignal.timeout(60000),
       });
     } catch (error) {
       if (attempt === MAX_ATTEMPTS) {
@@ -293,6 +287,10 @@ export async function generateFinances(
   const summaries = unitids
     .filter((unitid) => records.has(unitid))
     .map((unitid) => records.get(unitid)!);
+
+  if (summaries.length === 0) {
+    throw new Error("No financial records returned for the reporting year.");
+  }
 
   validateSummaries(summaries, unitids);
 

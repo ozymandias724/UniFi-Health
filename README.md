@@ -1,4 +1,4 @@
-# University Financial Explorer
+# Uni Fi Health (University Financial Health)
 
 A React and TypeScript application for exploring historical financial information
 reported by U.S. universities. It combines an institution search, a financial
