@@ -7,7 +7,7 @@
 
 // react stuff
 import { useEffect, useState, useMemo } from "react";
-
+import { useSearchParams } from "react-router";
 // my components
 import { getUniversities, getFinanceSummaries } from "../services/ipeds";
 import type { University } from "../types/university.ts";
@@ -43,13 +43,30 @@ function MapView() {
   const isLoading = currentData === null;
   const hasError = currentData?.error === true;
 
-  // Store the institution's identity independently of the reporting year.
-  const [selectedUnitid, setSelectedUnitid] = useState<number | null>(null);
+  // The URL is the source of truth for institution selection.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const unitidParam = searchParams.get("unitid");
+  const unitid = unitidParam === null ? null : Number(unitidParam);
 
   // Resolve the selected institution from the current directory.
   const selectedUniversity =
-    universities.find((university) => university.unitid === selectedUnitid) ??
-    null;
+    unitid !== null && Number.isSafeInteger(unitid) && unitid > 0
+      ? (universities.find((university) => university.unitid === unitid) ??
+        null)
+      : null;
+  function handleUniversitySelect(university: University | null) {
+    setSearchParams((previous) => {
+      const next = new URLSearchParams(previous);
+
+      if (university) {
+        next.set("unitid", String(university.unitid));
+      } else {
+        next.delete("unitid");
+      }
+
+      return next;
+    });
+  }
 
   const financesByUnitid = useMemo(
     () =>
@@ -112,9 +129,7 @@ function MapView() {
 
           <UniversitySearch
             universities={universities}
-            onSelect={(university) =>
-              setSelectedUnitid(university?.unitid ?? null)
-            }
+            onSelect={handleUniversitySelect}
           />
 
           <MapContainer
@@ -134,6 +149,7 @@ function MapView() {
               universities={universities}
               selectedUniversity={selectedUniversity}
               financesByUnitid={financesByUnitid}
+              onSelect={handleUniversitySelect}
             />
           </MapContainer>
         </div>

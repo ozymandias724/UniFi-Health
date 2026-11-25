@@ -26,7 +26,7 @@ import { useReportingYear } from "../hooks/useReportingYear";
 import YearSelector from "../components/YearSelector";
 
 // React Router search params for handling query parameters
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 
 function Explorer() {
   const { year } = useReportingYear();
@@ -204,6 +204,11 @@ function Explorer() {
               {selectedUniversity.city}, {selectedUniversity.state_abbr}
             </p>
             <p>IPEDS ID: {selectedUniversity.unitid}</p>
+            <Link
+              to={`/map-view?unitid=${selectedUniversity.unitid}&year=${year}`}
+            >
+              View on Map
+            </Link>
           </div>
         </section>
       )}

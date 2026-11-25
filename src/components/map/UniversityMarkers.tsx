@@ -25,6 +25,7 @@ interface UniversityMarkersProps {
   universities: University[];
   selectedUniversity: University | null;
   financesByUnitid: Map<number, UniversityFinanceSummary>;
+  onSelect: (university: University) => void;
 }
 
 type UniversityMarker = LeafletMarker & {
@@ -57,6 +58,7 @@ function UniversityMarkers({
   universities,
   selectedUniversity,
   financesByUnitid,
+  onSelect,
 }: UniversityMarkersProps) {
   const map = useMap();
 
@@ -153,6 +155,13 @@ function UniversityMarkers({
               key={university.unitid}
               position={[university.latitude!, university.longitude!]}
               icon={createUniversityIcon(ratio)}
+              eventHandlers={{
+                click: () => {
+                  if (selectedUniversity?.unitid !== university.unitid) {
+                    onSelect(university);
+                  }
+                },
+              }}
               ref={(marker) => {
                 if (marker) {
                   const universityMarker = marker as UniversityMarker;

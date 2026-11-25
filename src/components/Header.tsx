@@ -11,6 +11,15 @@ function Header() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const explorerLink = {
+    pathname: "/",
+    search: location.search,
+  };
+
+  const mapLink = {
+    pathname: "/map-view",
+    search: location.search,
+  };
 
   // Also close the menu when browser history changes the current route.
   useEffect(() => {
@@ -47,7 +56,7 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container">
-        <Link className="site-brand" to="/">
+        <Link className="site-brand" to={explorerLink}>
           Financial Explorer
         </Link>
         <button
@@ -103,13 +112,13 @@ function Header() {
         </button>
 
         <nav aria-label="Main navigation">
-          <Link to="/" onClick={closeMenu}>
+          <Link to={explorerLink} onClick={closeMenu}>
             Financial Explorer
           </Link>
           <Link to="/kitchen-sink" onClick={closeMenu}>
             Kitchen Sink
           </Link>
-          <Link to="/map-view" onClick={closeMenu}>
+          <Link to={mapLink} onClick={closeMenu}>
             Map View
           </Link>
         </nav>
