@@ -6,14 +6,16 @@
  * before replacing the previous file. See generate-finances.test.ts for
  * failure and data-normalization cases.
  */
-import { randomUUID } from "node:crypto";
-import { mkdir, open, readFile, rename, unlink } from "node:fs/promises";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 
+import { fileURLToPath } from "node:url";
+import { readFile } from "node:fs/promises";
+import { resolve } from "node:path";
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 
+import { isRecord, isUnitid } from "./utils/validation.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
+import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
+
 const YEAR = parseReportingYear();
 
 const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds/finance/${YEAR}/`;
@@ -22,19 +24,7 @@ const OUTPUT_PATH = `data/raw/finances-${YEAR}.json`;
 const BATCH_SIZE = 300;
 const MAX_ATTEMPTS = 3;
 
-const SUMMARY_FIELDS = [
-  "parent_child_flag",
-  "parent_child_system_flag",
-  "parent_unitid",
-  "reporting_form",
-  "total_revenues_additions",
-  "total_expenses_deductions",
-  "rev_total_current",
-  "exp_total_current",
-  "assets",
-  "liabilities",
-  "equity_end",
-] as const;
+import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
 
 function makeSummary(
   unitid: number,
@@ -49,14 +39,6 @@ function makeSummary(
 
 interface RequestCounter {
   count: number;
-}
-
-function isObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function isUnitid(value: unknown): value is number {
-  return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
 }
 
 function financeValue(value: unknown): number | null {
@@ -178,7 +160,7 @@ async function fetchBatch(
 
     const data = await requestPage(pageUrl.href, requests);
     if (
-      !isObject(data) ||
+      !isRecord(data) ||
       typeof data.count !== "number" ||
       !Number.isSafeInteger(data.count) ||
       data.count < 0 ||
@@ -194,7 +176,7 @@ async function fetchBatch(
 
     for (const record of data.results) {
       if (
-        !isObject(record) ||
+        !isRecord(record) ||
         !isUnitid(record.unitid) ||
         !requested.has(record.unitid) ||
         record.year !== YEAR ||
@@ -262,7 +244,7 @@ export async function generateFinances(
   const seen = new Set<number>();
   for (const university of directory) {
     if (
-      !isObject(university) ||
+      !isRecord(university) ||
       !isUnitid(university.unitid) ||
       seen.has(university.unitid)
     ) {
@@ -294,20 +276,7 @@ export async function generateFinances(
 
   validateSummaries(summaries, unitids);
 
-  const json = JSON.stringify(summaries);
-  await mkdir(dirname(outputPath), { recursive: true });
-  const temporaryPath = `${outputPath}.${randomUUID()}.tmp`;
-  const file = await open(temporaryPath, "wx");
-  let renamed = false;
-  try {
-    await file.writeFile(json, "utf8");
-    await file.close();
-    await rename(temporaryPath, outputPath);
-    renamed = true;
-  } finally {
-    await file.close();
-    if (!renamed) await unlink(temporaryPath);
-  }
+  const bytes = await writeJsonAtomic(outputPath, summaries);
 
   const usable = summaries.filter(
     (summary) =>
@@ -321,7 +290,7 @@ export async function generateFinances(
   );
   console.log(`Universities with usable revenue and expense data: ${usable}`);
   console.log(`API requests: ${requests.count}`);
-  console.log(`Saved ${outputPath} (${Buffer.byteLength(json)} bytes)`);
+  console.log(`Saved ${outputPath} (${bytes} bytes)`);
 }
 
 if (

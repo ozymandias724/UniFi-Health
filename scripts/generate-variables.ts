@@ -3,7 +3,7 @@
  * keyed by variable name for the Explorer's financial labels.
  * Run from the project root; the script replaces variables.json.
  */
-import { mkdir, writeFile } from "node:fs/promises";
+import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
 import * as he from "he";
 
 const API_URL = "https://educationdata.urban.org/api/v1/api-variables";
@@ -83,9 +83,7 @@ async function generateVariables(): Promise<void> {
     };
   }
 
-  await mkdir("public/data", { recursive: true });
-
-  await writeFile(OUTPUT_PATH, JSON.stringify(variables, null, 2), "utf8");
+  await writeJsonAtomic(OUTPUT_PATH, variables, 2);
 
   console.log(
     `Saved ${Object.keys(variables).length} variable definitions to ${OUTPUT_PATH}`,

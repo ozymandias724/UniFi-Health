@@ -10,24 +10,11 @@ import { fileURLToPath } from "node:url";
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 
+import { isRecord } from "./utils/validation.ts";
+
+import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
+
 const DEFAULT_PATH = `public/data/${parseReportingYear([])}/finances.json`;
-
-const FINANCIAL_FIELDS = [
-  "total_revenues_additions",
-  "total_expenses_deductions",
-  "rev_total_current",
-  "exp_total_current",
-  "assets",
-  "liabilities",
-  "equity_end",
-] as const satisfies readonly (keyof UniversityFinanceSummary)[];
-
-const REPORTING_FIELDS = [
-  "parent_child_flag",
-  "parent_child_system_flag",
-  "parent_unitid",
-  "reporting_form",
-] as const satisfies readonly (keyof UniversityFinanceSummary)[];
 
 const PAIRS = [
   ["Broad totals", "total_revenues_additions", "total_expenses_deductions"],
@@ -39,10 +26,6 @@ const PAIRS = [
 ][];
 
 type RecordRow = Record<string, unknown>;
-
-function isObject(value: unknown): value is RecordRow {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
 
 function isPopulated(value: unknown): value is number {
   return (
@@ -93,7 +76,7 @@ function percent(n: number, total: number): string {
 
 function coverage(rows: RecordRow[]): void {
   console.table(
-    [...REPORTING_FIELDS, ...FINANCIAL_FIELDS].map((field) => {
+    SUMMARY_FIELDS.map((field) => {
       const populated = rows.filter((row) =>
         field === "reporting_form"
           ? isReportingForm(row[field])
@@ -128,7 +111,7 @@ function isRetained(row: RecordRow): boolean {
 
 export async function auditFinances(path = DEFAULT_PATH): Promise<void> {
   const raw: unknown = JSON.parse(await readFile(path, "utf8"));
-  if (!Array.isArray(raw) || !raw.every(isObject)) {
+  if (!Array.isArray(raw) || !raw.every(isRecord)) {
     throw new Error("Expected finances.json to contain an array of objects.");
   }
   const rows: RecordRow[] = raw;

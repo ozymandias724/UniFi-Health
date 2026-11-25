@@ -1,7 +1,16 @@
-import { readFile, mkdir, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+/* 
+  Build aggregated data for universities and their finances.
+  Reads raw directory and finance data, validates it, and outputs
+  eligible universities and finance summaries to the public data directory.
+*/
 
+import { readFile } from "node:fs/promises";
+import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
+
+import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
 import type { UniversityFinanceSummary } from "../src/types/finance.ts";
+
+import { isRecord, isUnitid, isNullableNumber } from "./utils/validation.ts";
 
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 const YEAR = parseReportingYear();
@@ -31,20 +40,6 @@ interface BuildStats {
   partialReporting: number;
   missingTotals: number;
   eligible: number;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function isUnitid(value: unknown): value is number {
-  return typeof value === "number" && Number.isSafeInteger(value) && value > 0;
-}
-
-function isNullableNumber(value: unknown): boolean {
-  return (
-    value === null || (typeof value === "number" && Number.isFinite(value))
-  );
 }
 
 function validateDirectory(data: unknown): asserts data is University[] {
@@ -89,18 +84,10 @@ function validateFinances(
   }
 
   const seen = new Set<number>();
-  const nullableFields = [
-    "parent_child_flag",
-    "parent_child_system_flag",
-    "parent_unitid",
-    "total_revenues_additions",
-    "total_expenses_deductions",
-    "rev_total_current",
-    "exp_total_current",
-    "assets",
-    "liabilities",
-    "equity_end",
-  ];
+
+  const nullableFields = SUMMARY_FIELDS.filter(
+    (field) => field !== "reporting_form",
+  );
 
   for (const finance of data) {
     if (!isRecord(finance) || !isUnitid(finance.unitid)) {
@@ -237,15 +224,8 @@ export async function buildData(publish = false): Promise<void> {
     throw new Error("Cannot publish an empty institutional dataset.");
   }
 
-  await mkdir(dirname(UNIVERSITIES_OUTPUT), { recursive: true });
-
-  await writeFile(
-    UNIVERSITIES_OUTPUT,
-    JSON.stringify(eligibleUniversities, null, 2),
-    "utf8",
-  );
-
-  await writeFile(FINANCES_OUTPUT, JSON.stringify(eligibleFinances), "utf8");
+  await writeJsonAtomic(UNIVERSITIES_OUTPUT, eligibleUniversities, 2);
+  await writeJsonAtomic(FINANCES_OUTPUT, eligibleFinances);
 
   console.log("Published universities.json and finances.json");
 }

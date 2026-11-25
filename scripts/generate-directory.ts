@@ -5,8 +5,7 @@
  * Run from the project root.
  * Does not modify the application's published university directory.
  */
-import { mkdir, writeFile } from "node:fs/promises";
-
+import { writeJsonAtomic } from "./utils/writeJsonAtomic.ts";
 import { parseReportingYear } from "./utils/parseReportingYear.ts";
 
 const DIRECTORY_YEAR = parseReportingYear();
@@ -73,9 +72,7 @@ async function generateDirectory(): Promise<void> {
     longitude: university.longitude,
   }));
 
-  await mkdir("data/raw", { recursive: true });
-
-  await writeFile(OUTPUT_PATH, JSON.stringify(universities, null, 2), "utf8");
+  await writeJsonAtomic(OUTPUT_PATH, universities, 2);
 
   console.log(`Saved ${universities.length} universities to ${OUTPUT_PATH}`);
 }
