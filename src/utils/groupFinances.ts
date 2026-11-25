@@ -3,9 +3,15 @@
  * Configured fields appear in their specified order; unconfigured fields
  * remain visible in fallback groups using the existing category classifier.
  */
-import type { FinanceRecord, VariableMetadata } from "../services/ipeds";
-import { financeFields } from "../config/financeFields";
-import { getFinanceCategory } from "./getFinanceCategory";
+import type { FinanceRecord } from "../types/finance.ts";
+import type { VariableMetadata } from "../types/metadata.ts";
+
+import {
+  financeFields,
+  type FinanceSectionConfig,
+} from "../config/financeFields.ts";
+
+import { getFinanceCategory } from "./getFinanceCategory.ts";
 
 export type FinanceEntry = [string, number | null];
 
@@ -28,17 +34,7 @@ export function groupFinances(
   const record: Record<string, number | null> = finances;
   const assigned = new Set<string>();
   const sections: FinanceSection[] = [];
-  const configured = financeFields as Record<
-    string,
-    {
-      description?: string;
-      groups: readonly {
-        title: string;
-        description?: string;
-        fields: readonly string[];
-      }[];
-    }
-  >;
+  const configured: Record<string, FinanceSectionConfig> = financeFields;
 
   for (const [title, config] of Object.entries(configured)) {
     const groups: FinanceGroup[] = [];
@@ -47,10 +43,7 @@ export function groupFinances(
       const fields: FinanceEntry[] = [];
 
       for (const key of group.fields) {
-        if (
-          Object.prototype.hasOwnProperty.call(record, key) &&
-          !assigned.has(key)
-        ) {
+        if (Object.hasOwn(record, key) && !assigned.has(key)) {
           fields.push([key, record[key]]);
           assigned.add(key);
         }

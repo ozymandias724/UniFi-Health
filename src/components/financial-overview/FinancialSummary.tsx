@@ -2,7 +2,7 @@
  * Displays selected reported totals and estimated enrollment. A null value is
  * shown as N/A rather than being presented as zero.
  */
-import type { FinanceRecord } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
 import { currencyFormatter, integerFormatter } from "../../utils/formatters";
 
 interface FinancialSummaryProps {

@@ -1,4 +1,4 @@
-import type { FinanceRecord } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
 
 export type FinanceCategoryKey = keyof FinanceRecord;
 

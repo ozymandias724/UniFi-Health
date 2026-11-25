@@ -3,7 +3,8 @@
  * Receives the same record and metadata as UniversityFinances.
  */
 import { useEffect } from "react";
-import type { FinanceRecord, VariableMetadata } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
+import type { VariableMetadata } from "../../types/metadata.ts";
 import { financeFields } from "../../config/financeFields";
 import { getFinanceCategory } from "../../utils/getFinanceCategory";
 

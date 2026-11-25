@@ -12,10 +12,12 @@ import {
   getUniversities,
   getUniversityFinances,
   getVariables,
-  type FinanceRecord,
-  type VariableMetadata,
-  type University,
 } from "../services/ipeds";
+
+import type { University } from "../types/university.ts";
+import type { FinanceRecord } from "../types/finance.ts";
+import type { VariableMetadata } from "../types/metadata.ts";
+
 import UniversitySearch from "../components/UniversitySearch";
 import UniversityFinances from "../components/university-finances/UniversityFinances";
 import FinancialOverview from "../components/financial-overview/FinancialOverview";

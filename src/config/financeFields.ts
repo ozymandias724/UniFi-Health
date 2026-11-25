@@ -4,7 +4,16 @@
  * Fields not listed here continue through the existing fallback grouping.
  * Subtotals and overlapping classifications should not be summed together.
  */
+export interface FinanceGroupConfig {
+  title: string;
+  description?: string;
+  fields: readonly string[];
+}
 
+export interface FinanceSectionConfig {
+  description?: string;
+  groups: readonly FinanceGroupConfig[];
+}
 export const financeFields = {
   Revenue: {
     description:
@@ -435,4 +444,4 @@ export const financeFields = {
       },
     ],
   },
-} as const;
+} as const satisfies Record<string, FinanceSectionConfig>;

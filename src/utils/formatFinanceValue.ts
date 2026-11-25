@@ -9,12 +9,14 @@
  * not assumed to represent dollars, and source percentage scales are retained.
  * This module changes presentation only; it does not normalize API values.
  */
-import type { VariableMetadata } from "../services/ipeds";
+import type { VariableMetadata } from "../types/metadata.ts";
 import {
   integerFormatter,
   decimalFormatter,
   currencyFormatter,
-} from "./formatters";
+} from "./formatters.ts";
+
+import { getCodeLabel } from "./getCodeLabel.ts";
 
 // The display formats supported by the classifier below.
 type FinanceValueKind =
@@ -56,45 +58,15 @@ const missingCodes: Record<number, string> = {
   [-3]: "Suppressed",
 };
 
-// Some API code labels contain HTML entities rather than literal punctuation.
-function decodeMetadataText(text: string): string {
-  return text
-    .replace(/&mdash;|&#8212;/g, "—")
-    .replace(/&ndash;|&#8211;/g, "–")
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;|&apos;/g, "'");
-}
-
-// Metadata values use Python-dict-like syntax, not JSON. Read only numeric
-// keys and quoted labels; never evaluate the string as executable code.
-function getCodeLabel(
-  values: string | undefined,
-  value: number,
-): string | undefined {
-  if (!values) return undefined;
-  // Match only numeric keys with single-quoted descriptions.
-  const pattern = /(-?\d+)\s*:\s*'((?:\\'|[^'])*)'/g;
-  for (const match of values.matchAll(pattern)) {
-    if (Number(match[1]) === value) {
-      return (
-        decodeMetadataText(match[2].replace(/\\'/g, "'"))
-          // The API often repeats the numeric code at the start of its label.
-          .replace(/^\s*-?\d+\s*-\s*/, "")
-          .trim()
-      );
-    }
-  }
-  return undefined;
-}
-
 // Apply the most specific classification rules before general fallbacks.
 function getValueKind(
   key: string,
   category: string,
   metadata?: VariableMetadata,
 ): FinanceValueKind {
-  if (fieldKinds[key]) return fieldKinds[key];
+  if (Object.hasOwn(fieldKinds, key)) {
+    return fieldKinds[key];
+  }
 
   // Non-numeric formats (including yes_no) encode categories, not amounts.
   if (metadata?.format && !["numeric", "string"].includes(metadata.format)) {
@@ -126,7 +98,12 @@ export function formatFinanceValue(
 
   // Classify first, then look up a possible human-readable coded response.
   const kind = getValueKind(key, category, metadata);
-  const codeLabel = getCodeLabel(metadata?.values, value);
+
+  const codeLabel =
+    kind === "code" ||
+    (kind !== "currency" && Object.hasOwn(missingCodes, value))
+      ? getCodeLabel(metadata?.values, value)
+      : undefined;
 
   // IPEDS documents these special codes. For financial measurements a small
   // negative value could also be real, so don't reinterpret it as missing.

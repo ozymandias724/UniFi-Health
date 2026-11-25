@@ -1,5 +1,7 @@
 /** Coordinates the detailed IPEDS financial data display. */
-import type { FinanceRecord, VariableMetadata } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
+import type { VariableMetadata } from "../../types/metadata.ts";
+
 import { groupFinances } from "../../utils/groupFinances";
 import FinanceCategory from "./FinanceCategory";
 // import FinanceDebug from "./FinanceDebug";

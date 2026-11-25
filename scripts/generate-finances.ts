@@ -23,7 +23,6 @@ const API_URL = `https://educationdata.urban.org/api/v1/college-university/ipeds
 const DIRECTORY_PATH = `data/raw/directory-${YEAR}.json`;
 const OUTPUT_PATH = `data/raw/finances-${YEAR}.json`;
 const BATCH_SIZE = 300;
-// const MAX_ATTEMPTS = 3;
 
 import { SUMMARY_FIELDS } from "../src/config/financeSummaryFields.ts";
 

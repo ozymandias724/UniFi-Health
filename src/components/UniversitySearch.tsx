@@ -14,7 +14,7 @@
 */
 import Fuse from "fuse.js";
 import { useEffect, useMemo, useRef, useState } from "react";
-import type { University } from "../services/ipeds";
+import type { University } from "../types/university.ts";
 
 interface UniversitySearchProps {
   universities: University[];

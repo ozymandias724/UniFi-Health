@@ -9,7 +9,7 @@
  */
 import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import type { FinanceRecord } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
 import { currencyFormatter, percentageFormatter } from "../../utils/formatters";
 
 interface RevenueCoverageDonutProps {

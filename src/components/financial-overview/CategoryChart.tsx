@@ -13,7 +13,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-import type { FinanceRecord, VariableMetadata } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
+import type { VariableMetadata } from "../../types/metadata.ts";
+
 import {
   currencyFormatter,
   compactCurrencyFormatter,

@@ -14,7 +14,7 @@ import { divIcon, type Marker as LeafletMarker } from "leaflet";
 
 import type {
   University,
-} from "../../services/ipeds";
+} from "../../types/university.ts";
 import type { UniversityFinanceSummary } from "../../types/finance";
 
 import UniversityPopup from "./UniversityPopups";

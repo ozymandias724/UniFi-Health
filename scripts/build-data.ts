@@ -25,14 +25,7 @@ const OUTPUT_DIR = `public/data/${YEAR}`;
 const UNIVERSITIES_OUTPUT = `${OUTPUT_DIR}/universities.json`;
 const FINANCES_OUTPUT = `${OUTPUT_DIR}/finances.json`;
 
-interface University {
-  unitid: number;
-  inst_name: string;
-  city: string;
-  state_abbr: string;
-  latitude: number | null;
-  longitude: number | null;
-}
+import type { University } from "../src/types/university.ts";
 
 interface BuildStats {
   total: number;

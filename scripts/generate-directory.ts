@@ -14,14 +14,8 @@ const DIRECTORY_YEAR = parseReportingYear();
 
 const OUTPUT_PATH = `data/raw/directory-${DIRECTORY_YEAR}.json`;
 
-interface University {
-  unitid: number;
-  inst_name: string;
-  city: string;
-  state_abbr: string;
-  latitude: number | null;
-  longitude: number | null;
-}
+import type { University } from "../src/types/university.ts";
+
 
 interface IPEDSResponse {
   count: number;

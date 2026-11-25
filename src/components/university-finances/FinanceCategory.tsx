@@ -3,7 +3,7 @@
  * and their subgroups. Revenue opens initially; subgroups start collapsed.
  * Existing field formatting and grouping are unchanged.
  */
-import type { VariableMetadata } from "../../services/ipeds";
+import type { VariableMetadata } from "../../types/metadata.ts";
 import type { FinanceSection } from "../../utils/groupFinances";
 import { formatFinanceValue } from "../../utils/formatFinanceValue";
 import { formatFinanceLabel } from "../../utils/formatFinanceLabel";

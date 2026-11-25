@@ -3,7 +3,8 @@
  * The sections remain siblings so the page layout can space each card; the
  * category lists define which reported fields appear in the two bar charts.
  */
-import type { FinanceRecord, VariableMetadata } from "../../services/ipeds";
+import type { FinanceRecord } from "../../types/finance.ts";
+import type { VariableMetadata } from "../../types/metadata.ts";
 import FinancialSummary from "./FinancialSummary";
 import RevenueCoverageDonut from "./RevenueCoverageDonut";
 import CategoryChart from "./CategoryChart";

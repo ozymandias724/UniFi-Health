@@ -4,7 +4,7 @@
  */
 import { useEffect } from "react";
 import { useMap } from "react-leaflet";
-import type { University } from "../../services/ipeds";
+import type { University } from "../../types/university.ts";
 import { MAP_FOCUS_ZOOM } from "../../config/map";
 
 

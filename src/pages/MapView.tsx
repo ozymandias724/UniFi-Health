@@ -9,11 +9,8 @@
 import { useEffect, useState, useMemo } from "react";
 
 // my components
-import {
-  getUniversities,
-  getFinanceSummaries,
-  type University,
-} from "../services/ipeds";
+import { getUniversities, getFinanceSummaries } from "../services/ipeds";
+import type { University } from "../types/university.ts";
 import type { UniversityFinanceSummary } from "../types/finance";
 import UniversitySearch from "../components/UniversitySearch";
 import MapNavigator from "../components/map/MapNavigator";

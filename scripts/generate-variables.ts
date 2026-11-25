@@ -30,13 +30,7 @@ interface APIResponse {
 }
 
 // Metadata we want to save
-interface VariableMetadata {
-  label: string;
-  format: string;
-  data_type: string;
-  values: string;
-  description: string | null;
-}
+import type { VariableMetadata } from "../src/types/metadata.ts";
 
 async function generateVariables(): Promise<void> {
   console.log("Fetching Urban Institute variable definitions...");

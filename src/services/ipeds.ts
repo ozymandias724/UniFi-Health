@@ -6,111 +6,54 @@
  * Nullable fields represent unavailable values; callers decide how to render
  * or exclude them. Failed HTTP responses throw so pages can report errors.
  */
-export interface University {
-  unitid: number;
-  inst_name: string;
-  city: string;
-  state_abbr: string;
-  latitude: number | null;
-  longitude: number | null;
-}
+import type {
+  FinanceRecord,
+  UniversityFinanceSummary,
+} from "../types/finance.ts";
+import type { University } from "../types/university.ts";
+import type { VariableMetadata } from "../types/metadata.ts";
 
-// Financial data for one university in one reporting year
-export interface FinanceRecord {
-  [key: string]: number | null;
-
-  unitid: number;
-  year: number;
-
-  // Financial overview
-  total_revenues_additions: number | null;
-  total_expenses_deductions: number | null;
-  income_net: number | null;
-
-  // Assets and liabilities
-  assets: number | null;
-  liabilities: number | null;
-  endowment_end: number | null;
-
-  // Enrollment
-  est_fte: number | null;
-
-  // Revenue
-  rev_tuition_fees_net: number | null;
-  rev_appropriations_state: number | null;
-  rev_fed_approps_grants: number | null;
-  rev_gifts_grants_contracts: number | null;
-  rev_auxiliary_enterprises_net: number | null;
-  rev_investment_return: number | null;
-
-  // Expenditures
-  exp_instruc_total: number | null;
-  exp_research_total: number | null;
-  exp_pub_serv_total: number | null;
-  exp_acad_supp_total: number | null;
-  exp_student_serv_total: number | null;
-  exp_inst_supp_total: number | null;
-  exp_aux_ent_total: number | null;
-}
-
-export interface VariableMetadata {
-  label: string;
-  format: string;
-  data_type: string;
-  values: string;
-  description: string | null;
-}
-
-import type { UniversityFinanceSummary } from "../types/finance.ts";
 import { DEFAULT_YEAR } from "../config/reportingYears.ts";
+import { fetchJson } from "../utils/fetchJson.ts";
 
-export async function getFinanceSummaries(
+const DATA_URL = `${import.meta.env.BASE_URL}data`;
+
+export function getFinanceSummaries(
   year: number = DEFAULT_YEAR,
+  signal?: AbortSignal,
 ): Promise<UniversityFinanceSummary[]> {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}data/${year}/finances.json`,
+  return fetchJson<UniversityFinanceSummary[]>(
+    `${DATA_URL}/${year}/finances.json`,
+    "Failed to load financial summaries",
+    signal,
   );
-
-  if (!response.ok) {
-    throw new Error(`Failed to load financial summaries: ${response.status}`);
-  }
-
-  return (await response.json()) as UniversityFinanceSummary[];
 }
 
-// Fetch the list of universities from a local JSON file
-export async function getUniversities(
+export function getUniversities(
   year: number = DEFAULT_YEAR,
+  signal?: AbortSignal,
 ): Promise<University[]> {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}data/${year}/universities.json`,
+  return fetchJson<University[]>(
+    `${DATA_URL}/${year}/universities.json`,
+    "Failed to load university directory",
+    signal,
   );
-
-  if (!response.ok) {
-    throw new Error(`Failed to load university directory: ${response.status}`);
-  }
-
-  return (await response.json()) as University[];
 }
 
-export async function getVariables(): Promise<
-  Record<string, VariableMetadata>
-> {
-  const response = await fetch(
-    `${import.meta.env.BASE_URL}data/variables.json`,
+export function getVariables(
+  signal?: AbortSignal,
+): Promise<Record<string, VariableMetadata>> {
+  return fetchJson<Record<string, VariableMetadata>>(
+    `${DATA_URL}/variables.json`,
+    "Failed to load variable metadata",
+    signal,
   );
-
-  if (!response.ok) {
-    throw new Error(`Failed to load variable metadata: ${response.status}`);
-  }
-
-  return (await response.json()) as Record<string, VariableMetadata>;
 }
 
-// Fetch financial data for a specific university and year using the Urban Institute Education Data API
 export async function getUniversityFinances(
   unitid: number,
   year: number,
+  signal?: AbortSignal,
 ): Promise<FinanceRecord | null> {
   const url = new URL(
     `https://educationdata.urban.org/api/v1/college-university/ipeds/finance/${year}/`,
@@ -118,15 +61,15 @@ export async function getUniversityFinances(
 
   url.searchParams.set("unitid", String(unitid));
 
-  const response = await fetch(url);
+  const data = await fetchJson<{ results: FinanceRecord[] }>(
+    url,
+    "Finance API error",
+    signal,
+  );
 
-  if (!response.ok) {
-    throw new Error(`Finance API error: ${response.status}`);
+  if (!Array.isArray(data?.results)) {
+    throw new Error("Finance API returned an invalid response.");
   }
-
-  const data = (await response.json()) as {
-    results: FinanceRecord[];
-  };
 
   return data.results[0] ?? null;
 }

@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import type { University } from "../../services/ipeds";
+import type { University } from "../../types/university.ts";
 
 import { useReportingYear } from "../../hooks/useReportingYear";
 
